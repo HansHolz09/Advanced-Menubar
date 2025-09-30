@@ -72,7 +72,6 @@ object MacCocoaMenu {
         data class Zoom(val title: String = "Zoomen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : WindowStd()
         data class BringAllToFront(val title: String = "Alle nach vorne bringen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : WindowStd()
 
-        // Tabs optional
         data class ShowNextTab(val title: String = "Nächster Tab", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : WindowStd()
         data class ShowPreviousTab(val title: String = "Vorheriger Tab", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : WindowStd()
         data class MergeAllWindows(val title: String = "Alle Fenster zusammenführen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : WindowStd()
@@ -122,6 +121,163 @@ object MacCocoaMenu {
         const val command: Long = 1L shl 20
         fun combo(vararg flags: Long): Long = flags.fold(0L) { acc, f -> acc or f }
     }
+
+
+    @Volatile private var currentMenuBar: Pointer? = null
+    @Volatile private var lastStructureSignature: List<String>? = null
+
+    private fun elementsOfTopMenu(t: TopMenu): List<MenuElement> = when (t) {
+        is TopMenu.Application -> t.elements
+        is TopMenu.Edit -> t.elements
+        is TopMenu.View -> t.elements
+        is TopMenu.Window -> t.elements
+        is TopMenu.Help -> t.elements
+        is TopMenu.Custom -> t.elements
+    }
+
+    private fun enabledOf(el: MenuElement): Boolean? = when (el) {
+        is SystemItem.About -> el.enabled
+        is SystemItem.Settings -> el.enabled
+        is SystemItem.Hide -> el.enabled
+        is SystemItem.HideOthers -> el.enabled
+        is SystemItem.ShowAll -> el.enabled
+        is SystemItem.Quit -> el.enabled
+
+        is HelpItem.AppHelp -> el.enabled
+
+        is EditStd.Undo -> el.enabled
+        is EditStd.Redo -> el.enabled
+        is EditStd.Cut -> el.enabled
+        is EditStd.Copy -> el.enabled
+        is EditStd.Paste -> el.enabled
+        is EditStd.PasteAndMatchStyle -> el.enabled
+        is EditStd.Delete -> el.enabled
+        is EditStd.SelectAll -> el.enabled
+
+        is ViewStd.ShowToolbar -> el.enabled
+        is ViewStd.CustomizeToolbar -> el.enabled
+        is ViewStd.ToggleFullScreen -> el.enabled
+
+        is WindowStd.Close -> el.enabled
+        is WindowStd.Minimize -> el.enabled
+        is WindowStd.MinimizeAll -> el.enabled
+        is WindowStd.Zoom -> el.enabled
+        is WindowStd.BringAllToFront -> el.enabled
+        is WindowStd.ShowNextTab -> el.enabled
+        is WindowStd.ShowPreviousTab -> el.enabled
+        is WindowStd.MergeAllWindows -> el.enabled
+        is WindowStd.MoveTabToNewWindow -> el.enabled
+
+        is TextItem -> el.enabled
+        is CustomItem -> el.enabled
+        is CheckboxItem -> el.enabled
+        is Submenu -> el.enabled
+        else -> null
+    }
+
+    private fun signatureOf(el: MenuElement): String {
+        val k = el::class.java.simpleName
+        val title = when (el) {
+            is SystemItem.About -> el.title
+            is SystemItem.Settings -> el.title
+            is SystemItem.Services -> el.title
+            is SystemItem.Hide -> el.title
+            is SystemItem.HideOthers -> el.title
+            is SystemItem.ShowAll -> el.title
+            is SystemItem.Quit -> el.title
+            is HelpItem.AppHelp -> el.title
+            is EditStd.Undo -> el.title
+            is EditStd.Redo -> el.title
+            is EditStd.Cut -> el.title
+            is EditStd.Copy -> el.title
+            is EditStd.Paste -> el.title
+            is EditStd.PasteAndMatchStyle -> el.title
+            is EditStd.Delete -> el.title
+            is EditStd.SelectAll -> el.title
+            is ViewStd.ShowToolbar -> el.title
+            is ViewStd.CustomizeToolbar -> el.title
+            is ViewStd.ToggleFullScreen -> el.title
+            is WindowStd.Close -> el.title
+            is WindowStd.Minimize -> el.title
+            is WindowStd.MinimizeAll -> el.title
+            is WindowStd.Zoom -> el.title
+            is WindowStd.BringAllToFront -> el.title
+            is WindowStd.ShowNextTab -> el.title
+            is WindowStd.ShowPreviousTab -> el.title
+            is WindowStd.MergeAllWindows -> el.title
+            is WindowStd.MoveTabToNewWindow -> el.title
+            is TextItem -> el.title
+            is CustomItem -> "${el.title}|${el.keyEquivalent}|${el.modifierMask}"
+            is CheckboxItem -> "${el.title}|${el.keyEquivalent}|${el.modifierMask}"
+            is Submenu -> el.title
+            Separator -> "-"
+        }
+        val children = if (el is Submenu) el.children.size else -1
+        return "$k|$title|$children"
+    }
+
+    private fun topSignatureOf(t: TopMenu): String = when (t) {
+        is TopMenu.Application -> "T|Application"
+        is TopMenu.Edit        -> "T|Edit|${t.title}"
+        is TopMenu.View        -> "T|View|${t.title}"
+        is TopMenu.Window      -> "T|Window|${t.title}|${t.suppressAutoWindowList}"
+        is TopMenu.Help        -> "T|Help|${t.title}"
+        is TopMenu.Custom      -> "T|Custom|${t.title}"
+    }
+
+    private fun collectStructureSignature(menus: List<TopMenu>): List<String> {
+        val sig = mutableListOf<String>()
+        fun walk(list: List<MenuElement>) {
+            list.forEach { el ->
+                sig += "E|" + signatureOf(el)
+                if (el is Submenu) walk(el.children)
+            }
+        }
+        menus.forEach { t ->
+            sig += topSignatureOf(t)
+            walk(elementsOfTopMenu(t))
+        }
+        return sig
+    }
+
+    private fun itemAt(menu: Pointer?, index: Int): Pointer =
+        msgSendPL(menu, "itemAtIndex:", index.toLong())
+
+    private fun submenuOf(item: Pointer?): Pointer =
+        msgSendP(item, "submenu")
+
+    private fun topModelIndexToMenubarIndex(menus: List<TopMenu>, modelIdx: Int): Int {
+        val hasApp = menus.any { it is TopMenu.Application }
+        return if (hasApp) {
+            if (menus[modelIdx] is TopMenu.Application) 0
+            else {
+                val nonAppUpTo = menus.subList(0, modelIdx + 1).count { it !is TopMenu.Application }
+                nonAppUpTo
+            }
+        } else 1 + modelIdx
+    }
+
+    private fun applyEnabledLinear(menus: List<TopMenu>) {
+        val bar = currentMenuBar ?: return
+        fun walk(menuPtr: Pointer, els: List<MenuElement>) {
+            var i = 0
+            for (el in els) {
+                val item = itemAt(menuPtr, i++)
+                enabledOf(el)?.let { setEnabled(item, it) }
+                if (el is Submenu) {
+                    val sub = submenuOf(item)
+                    walk(sub, el.children)
+                }
+            }
+        }
+        menus.forEachIndexed { idx, t ->
+            val menubarIdx = topModelIndexToMenubarIndex(menus, idx)
+            val topItem = itemAt(bar, menubarIdx)
+            val topSub = submenuOf(topItem)
+            walk(topSub, elementsOfTopMenu(t))
+        }
+    }
+
 
     private fun isNull(p: Pointer?): Boolean = p == null || Pointer.nativeValue(p) == 0L
     private fun nn(p: Pointer?): Pointer = p ?: Pointer.NULL
@@ -536,6 +692,13 @@ object MacCocoaMenu {
     fun rebuildMenuBar(menus: List<TopMenu>) {
         if (!System.getProperty("os.name").lowercase().contains("mac")) return
         runOnMain {
+            val newSig = collectStructureSignature(menus)
+
+            if (currentMenuBar != null && lastStructureSignature == newSig) {
+                applyEnabledLinear(menus)
+                return@runOnMain
+            }
+
             val nsapp = getNsApp()
             val menubar = createMenu("MainMenu")
 
@@ -586,6 +749,9 @@ object MacCocoaMenu {
             }
 
             msgSendPP(nsapp, "setMainMenu:", menubar)
+
+            currentMenuBar = menubar
+            lastStructureSignature = newSig
         }
     }
 }
