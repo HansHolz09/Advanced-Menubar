@@ -1,0 +1,19 @@
+<resources>
+    <string name="file">File</string>
+    <string name="new">New</string>
+    <string name="project">Project</string>
+    <string name="open">Open</string>
+    <string name="export">Export</string>
+    <string name="as_pdf">As PDF</string>
+    <string name="as_image">As Image</string>
+    <string name="custom">Custom</string>
+    <string name="custom_item">Custom Item</string>
+    <string name="custom_submenu">Custom Submenu</string>
+    <string name="disabled_item">Disabled Item</string>
+    <string name="options">Options</string>
+    <string name="checkbox_item">Checkbox Item</string>
+    <string name="release_notes">Release Notes</string>
+    <string name="resources">Resources</string>
+    <string name="website">Website</string>
+    <string name="community_forum">Community Forum</string>
+</resources>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="about">Über %1$s</string>
+    <string name="settings">Einstellungen ...</string>
+    <string name="services">Dienste</string>
+    <string name="hide">%1$s ausblenden</string>
+    <string name="hide_others">Andere ausblenden</string>
+    <string name="show_all">Alle einblenden</string>
+    <string name="quit">%1$s beenden</string>
+
+    <string name="undo">Widerrufen</string>
+    <string name="redo">Wiederholen</string>
+    <string name="cut">Ausschneiden</string>
+    <string name="copy">Kopieren</string>
+    <string name="paste">Einsetzen</string>
+    <string name="paste_and_match_style">Einsetzen und Stil anpassen</string>
+    <string name="delete">Löschen</string>
+    <string name="select_all">Alles auswählen</string>
+
+    <string name="show_toolbar">Symbolleiste einblenden</string>
+    <string name="customize_toolbar">Symbolleiste anpassen …</string>
+    <string name="full_screen">Vollbildmodus</string>
+
+    <string name="close">Fenster schließen</string>
+    <string name="minimize">Im Dock ablegen</string>
+    <string name="minimize_all">Alle minimieren</string>
+    <string name="zoom">Zoomen</string>
+    <string name="bring_all_to_front">Alle nach vorne bringen</string>
+    <string name="show_next_tab">Nächster Tab</string>
+    <string name="show_previous_tab">Vorheriger Tab</string>
+    <string name="merge_all_windows">Alle Fenster zusammenführen</string>
+    <string name="move_tab_to_new_window">Tab in neues Fenster bewegen</string>
+
+    <string name="app_help">%1$s-Hilfe</string>
+
+    <string name="edit">Bearbeiten</string>
+    <string name="view">Darstellung</string>
+    <string name="window">Fenster</string>
+    <string name="help">Hilfe</string>
+</resources>
