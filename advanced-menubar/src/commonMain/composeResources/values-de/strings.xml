@@ -1,11 +1,27 @@
 <resources>
     <string name="about">Über %1$s</string>
-    <string name="settings">Einstellungen ...</string>
+    <string name="settings">Einstellungen …</string>
     <string name="services">Dienste</string>
     <string name="hide">%1$s ausblenden</string>
     <string name="hide_others">Andere ausblenden</string>
     <string name="show_all">Alle einblenden</string>
     <string name="quit">%1$s beenden</string>
+
+    <string name="file">Ablage</string>
+    <string name="file_new">Neu</string>
+    <string name="file_open">Öffnen …</string>
+    <string name="file_open_recent">Zuletzt geöffnet</string>
+    <string name="file_clear_recent">Menü löschen</string>
+    <string name="file_close">Schließen</string>
+    <string name="file_close_all">Alle schließen</string>
+    <string name="file_save">Sichern</string>
+    <string name="file_save_as">Sichern unter …</string>
+    <string name="file_duplicate">Duplizieren</string>
+    <string name="file_rename">Umbenennen …</string>
+    <string name="file_move_to">Verschieben nach …</string>
+    <string name="file_revert">Wiederherstellen</string>
+    <string name="file_page_setup">Seite einrichten …</string>
+    <string name="file_print">Drucken …</string>
 
     <string name="undo">Widerrufen</string>
     <string name="redo">Wiederholen</string>
@@ -16,9 +32,60 @@
     <string name="delete">Löschen</string>
     <string name="select_all">Alles auswählen</string>
 
+    <string name="find">Suchen</string>
+    <string name="find_dots">Suchen …</string>
+    <string name="find_next">Weitersuchen</string>
+    <string name="find_previous">Vorheriges suchen</string>
+    <string name="use_selection_for_find">Auswahl suchen</string>
+    <string name="jump_to_selection">Zur Auswahl springen</string>
+    <string name="replace">Ersetzen …</string>
+    <string name="replace_and_find">Ersetzen &amp; Weitersuchen</string>
+    <string name="replace_all">Alle ersetzen</string>
+
+    <string name="substitutions">Ersetzungen</string>
+    <string name="toggle_smart_quotes">Intelligente Anführungszeichen</string>
+    <string name="toggle_smart_dashes">Intelligente Gedankenstriche</string>
+    <string name="toggle_smart_links">Links erkennen</string>
+    <string name="toggle_text_replacement">Text-Ersetzungen</string>
+    <string name="toggle_correct_spelling_automatically">Rechtschreibung automatisch korrigieren</string>
+
+    <string name="transformations">Transformationen</string>
+    <string name="make_upper_case">Großbuchstaben</string>
+    <string name="make_lower_case">Kleinbuchstaben</string>
+    <string name="capitalize">Großschreiben</string>
+
+    <string name="show_fonts">Schriften einblenden …</string>
+    <string name="show_colors">Farben einblenden …</string>
+    <string name="bold">Fett</string>
+    <string name="italic">Kursiv</string>
+    <string name="underline">Unterstreichen</string>
+    <string name="bigger">Größer</string>
+    <string name="smaller">Kleiner</string>
+    <string name="kerning_standard">Standard-Kerning</string>
+    <string name="kerning_none">Kerning aus</string>
+    <string name="kerning_tighten">Kerning enger</string>
+    <string name="kerning_loosen">Kerning weiter</string>
+    <string name="ligatures_none">Ligaturen aus</string>
+    <string name="ligatures_standard">Standard-Ligaturen</string>
+    <string name="ligatures_all">Alle Ligaturen</string>
+    <string name="raise_baseline">Grundlinie erhöhen</string>
+    <string name="lower_baseline">Grundlinie senken</string>
+    <string name="superscript">Hochgestellt</string>
+    <string name="subscript">Tiefgestellt</string>
+    <string name="align_left">Linksbündig</string>
+    <string name="align_center">Zentriert</string>
+    <string name="align_right">Rechtsbündig</string>
+    <string name="align_justified">Blocksatz</string>
+
+    <string name="speech">Sprachausgabe</string>
+    <string name="start_speaking">Sprachausgabe starten</string>
+    <string name="stop_speaking">Sprachausgabe stoppen</string>
+
     <string name="show_toolbar">Symbolleiste einblenden</string>
     <string name="customize_toolbar">Symbolleiste anpassen …</string>
     <string name="full_screen">Vollbildmodus</string>
+    <string name="show_sidebar">Seitenleiste einblenden</string>
+    <string name="show_tab_bar">Tab-Leiste einblenden</string>
 
     <string name="close">Fenster schließen</string>
     <string name="minimize">Im Dock ablegen</string>
@@ -33,6 +100,7 @@
     <string name="app_help">%1$s-Hilfe</string>
 
     <string name="edit">Bearbeiten</string>
+    <string name="format">Format</string>
     <string name="view">Darstellung</string>
     <string name="window">Fenster</string>
     <string name="help">Hilfe</string>

@@ -34,6 +34,7 @@ object MacCocoaMenu {
     sealed interface MenuElement
     data object Separator : MenuElement
 
+
     sealed class SystemItem : MenuElement {
         data class About(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : SystemItem()
         data class Settings(val title: String = "Einstellungen …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : SystemItem()
@@ -57,12 +58,36 @@ object MacCocoaMenu {
         data class PasteAndMatchStyle(val title: String = "Format übernehmen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
         data class Delete(val title: String = "Löschen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
         data class SelectAll(val title: String = "Alles auswählen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+
+        data class Find(val title: String = "Suchen …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+        data class FindNext(val title: String = "Weitersuchen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+        data class FindPrevious(val title: String = "Vorheriges suchen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+        data class UseSelectionForFind(val title: String = "Auswahl suchen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+        data class JumpToSelection(val title: String = "Zur Auswahl springen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+        data class Replace(val title: String = "Ersetzen …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+        data class ReplaceAndFind(val title: String = "Ersetzen & Weitersuchen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+        data class ReplaceAll(val title: String = "Alle ersetzen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+
+        data class ToggleSmartQuotes(val title: String = "Intelligente Anführungszeichen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+        data class ToggleSmartDashes(val title: String = "Intelligente Gedankenstriche", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+        data class ToggleLinkDetection(val title: String = "Links erkennen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+        data class ToggleTextReplacement(val title: String = "Text-Ersetzungen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+        data class ToggleSpellingCorrection(val title: String = "Rechtschreibkorrektur", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+
+        data class Uppercase(val title: String = "In Großbuchstaben", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+        data class Lowercase(val title: String = "In Kleinbuchstaben", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+        data class Capitalize(val title: String = "Wortanfänge groß", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+
+        data class StartSpeaking(val title: String = "Sprachausgabe starten", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+        data class StopSpeaking(val title: String = "Sprachausgabe stoppen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
     }
 
     sealed class ViewStd : MenuElement {
         data class ShowToolbar(val title: String = "Symbolleiste ein-/ausblenden", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : ViewStd()
         data class CustomizeToolbar(val title: String = "Symbolleiste anpassen …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : ViewStd()
         data class ToggleFullScreen(val title: String = "Vollbild", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : ViewStd()
+        data class ToggleSidebar(val title: String = "Seitenleiste ein-/ausblenden", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): ViewStd()
+        data class ToggleTabBar(val title: String = "Tab-Leiste ein-/ausblenden", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): ViewStd()
     }
 
     sealed class WindowStd : MenuElement {
@@ -78,7 +103,53 @@ object MacCocoaMenu {
         data class MoveTabToNewWindow(val title: String = "Tab in neues Fenster bewegen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : WindowStd()
     }
 
-    data class TextItem(val title: String, val enabled: Boolean = false, val icon: MenuIcon? = null) : MenuElement
+    sealed class FileStd : MenuElement {
+        data class New(val title: String = "Neu", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class Open(val title: String = "Öffnen …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class OpenRecent(val title: String = "Zuletzt geöffnet", val enabled: Boolean = true, val icon: MenuIcon? = null): FileStd()
+        data class Close(val title: String = "Schließen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class CloseAll(val title: String = "Alle schließen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class Save(val title: String = "Sichern", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class SaveAs(val title: String = "Sichern unter …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class Duplicate(val title: String = "Duplizieren", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class Rename(val title: String = "Umbenennen …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class MoveTo(val title: String = "Verschieben nach …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class Revert(val title: String = "Wiederherstellen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class PageSetup(val title: String = "Seite einrichten …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class Print(val title: String = "Drucken …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+        data class ClearRecent(val title: String = "Menü leeren", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
+    }
+
+    sealed class FormatStd : MenuElement {
+        data class ShowFonts(val title: String = "Schriften einblenden …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class ShowColors(val title: String = "Farben einblenden …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+
+        data class Bold(val title: String = "Fett", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class Italic(val title: String = "Kursiv", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class Underline(val title: String = "Unterstreichen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class Bigger(val title: String = "Größer", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class Smaller(val title: String = "Kleiner", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+
+        data class KerningStandard(val title: String = "Standard-Kerning", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class KerningNone(val title: String = "Kerning aus", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class KerningTighten(val title: String = "Kerning enger", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class KerningLoosen(val title: String = "Kerning weiter", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+
+        data class LigaturesNone(val title: String = "Ligaturen aus", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class LigaturesStandard(val title: String = "Standard-Ligaturen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class LigaturesAll(val title: String = "Alle Ligaturen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+
+        data class RaiseBaseline(val title: String = "Grundlinie erhöhen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class LowerBaseline(val title: String = "Grundlinie senken", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class Superscript(val title: String = "Hochgestellt", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class Subscript(val title: String = "Tiefgestellt", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+
+        data class AlignLeft(val title: String = "Linksbündig", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class AlignCenter(val title: String = "Zentriert", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class AlignRight(val title: String = "Rechtsbündig", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class AlignJustified(val title: String = "Blocksatz", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+    }
+
     data class CustomItem(
         val title: String,
         val keyEquivalent: String = "",
@@ -100,7 +171,9 @@ object MacCocoaMenu {
 
     sealed class TopMenu {
         data class Application(val elements: List<MenuElement>) : TopMenu()
+        data class File(val title: String, val elements: List<MenuElement>) : TopMenu()
         data class Edit(val title: String, val elements: List<MenuElement>) : TopMenu()
+        data class Format(val title: String, val elements: List<MenuElement>) : TopMenu()
         data class View(val title: String, val elements: List<MenuElement>) : TopMenu()
         data class Window(val title: String, val elements: List<MenuElement>, val suppressAutoWindowList: Boolean) : TopMenu()
         data class Help(val title: String, val elements: List<MenuElement>) : TopMenu()
@@ -128,7 +201,9 @@ object MacCocoaMenu {
 
     private fun elementsOfTopMenu(t: TopMenu): List<MenuElement> = when (t) {
         is TopMenu.Application -> t.elements
+        is TopMenu.File -> t.elements
         is TopMenu.Edit -> t.elements
+        is TopMenu.Format -> t.elements
         is TopMenu.View -> t.elements
         is TopMenu.Window -> t.elements
         is TopMenu.Help -> t.elements
@@ -153,10 +228,30 @@ object MacCocoaMenu {
         is EditStd.PasteAndMatchStyle -> el.enabled
         is EditStd.Delete -> el.enabled
         is EditStd.SelectAll -> el.enabled
+        is EditStd.Find -> el.enabled
+        is EditStd.FindNext -> el.enabled
+        is EditStd.FindPrevious -> el.enabled
+        is EditStd.UseSelectionForFind -> el.enabled
+        is EditStd.JumpToSelection -> el.enabled
+        is EditStd.Replace -> el.enabled
+        is EditStd.ReplaceAndFind -> el.enabled
+        is EditStd.ReplaceAll -> el.enabled
+        is EditStd.ToggleSmartQuotes -> el.enabled
+        is EditStd.ToggleSmartDashes -> el.enabled
+        is EditStd.ToggleLinkDetection -> el.enabled
+        is EditStd.ToggleTextReplacement -> el.enabled
+        is EditStd.ToggleSpellingCorrection -> el.enabled
+        is EditStd.Uppercase -> el.enabled
+        is EditStd.Lowercase -> el.enabled
+        is EditStd.Capitalize -> el.enabled
+        is EditStd.StartSpeaking -> el.enabled
+        is EditStd.StopSpeaking -> el.enabled
 
         is ViewStd.ShowToolbar -> el.enabled
         is ViewStd.CustomizeToolbar -> el.enabled
         is ViewStd.ToggleFullScreen -> el.enabled
+        is ViewStd.ToggleSidebar -> el.enabled
+        is ViewStd.ToggleTabBar -> el.enabled
 
         is WindowStd.Close -> el.enabled
         is WindowStd.Minimize -> el.enabled
@@ -168,7 +263,44 @@ object MacCocoaMenu {
         is WindowStd.MergeAllWindows -> el.enabled
         is WindowStd.MoveTabToNewWindow -> el.enabled
 
-        is TextItem -> el.enabled
+        is FileStd.New -> el.enabled
+        is FileStd.Open -> el.enabled
+        is FileStd.OpenRecent -> el.enabled
+        is FileStd.Close -> el.enabled
+        is FileStd.CloseAll -> el.enabled
+        is FileStd.Save -> el.enabled
+        is FileStd.SaveAs -> el.enabled
+        is FileStd.Duplicate -> el.enabled
+        is FileStd.Rename -> el.enabled
+        is FileStd.MoveTo -> el.enabled
+        is FileStd.Revert -> el.enabled
+        is FileStd.PageSetup -> el.enabled
+        is FileStd.Print -> el.enabled
+        is FileStd.ClearRecent -> el.enabled
+
+        is FormatStd.ShowFonts -> el.enabled
+        is FormatStd.ShowColors -> el.enabled
+        is FormatStd.Bold -> el.enabled
+        is FormatStd.Italic -> el.enabled
+        is FormatStd.Underline -> el.enabled
+        is FormatStd.Bigger -> el.enabled
+        is FormatStd.Smaller -> el.enabled
+        is FormatStd.KerningStandard -> el.enabled
+        is FormatStd.KerningNone -> el.enabled
+        is FormatStd.KerningTighten -> el.enabled
+        is FormatStd.KerningLoosen -> el.enabled
+        is FormatStd.LigaturesNone -> el.enabled
+        is FormatStd.LigaturesStandard -> el.enabled
+        is FormatStd.LigaturesAll -> el.enabled
+        is FormatStd.RaiseBaseline -> el.enabled
+        is FormatStd.LowerBaseline -> el.enabled
+        is FormatStd.Superscript -> el.enabled
+        is FormatStd.Subscript -> el.enabled
+        is FormatStd.AlignLeft -> el.enabled
+        is FormatStd.AlignCenter -> el.enabled
+        is FormatStd.AlignRight -> el.enabled
+        is FormatStd.AlignJustified -> el.enabled
+
         is CustomItem -> el.enabled
         is CheckboxItem -> el.enabled
         is Submenu -> el.enabled
@@ -185,7 +317,9 @@ object MacCocoaMenu {
             is SystemItem.HideOthers -> el.title
             is SystemItem.ShowAll -> el.title
             is SystemItem.Quit -> el.title
+
             is HelpItem.AppHelp -> el.title
+
             is EditStd.Undo -> el.title
             is EditStd.Redo -> el.title
             is EditStd.Cut -> el.title
@@ -194,9 +328,31 @@ object MacCocoaMenu {
             is EditStd.PasteAndMatchStyle -> el.title
             is EditStd.Delete -> el.title
             is EditStd.SelectAll -> el.title
+            is EditStd.Find -> el.title
+            is EditStd.FindNext -> el.title
+            is EditStd.FindPrevious -> el.title
+            is EditStd.UseSelectionForFind -> el.title
+            is EditStd.JumpToSelection -> el.title
+            is EditStd.Replace -> el.title
+            is EditStd.ReplaceAndFind -> el.title
+            is EditStd.ReplaceAll -> el.title
+            is EditStd.ToggleSmartQuotes -> el.title
+            is EditStd.ToggleSmartDashes -> el.title
+            is EditStd.ToggleLinkDetection -> el.title
+            is EditStd.ToggleTextReplacement -> el.title
+            is EditStd.ToggleSpellingCorrection -> el.title
+            is EditStd.Uppercase -> el.title
+            is EditStd.Lowercase -> el.title
+            is EditStd.Capitalize -> el.title
+            is EditStd.StartSpeaking -> el.title
+            is EditStd.StopSpeaking -> el.title
+
             is ViewStd.ShowToolbar -> el.title
             is ViewStd.CustomizeToolbar -> el.title
             is ViewStd.ToggleFullScreen -> el.title
+            is ViewStd.ToggleSidebar -> el.title
+            is ViewStd.ToggleTabBar -> el.title
+
             is WindowStd.Close -> el.title
             is WindowStd.Minimize -> el.title
             is WindowStd.MinimizeAll -> el.title
@@ -206,7 +362,45 @@ object MacCocoaMenu {
             is WindowStd.ShowPreviousTab -> el.title
             is WindowStd.MergeAllWindows -> el.title
             is WindowStd.MoveTabToNewWindow -> el.title
-            is TextItem -> el.title
+
+            is FileStd.New -> el.title
+            is FileStd.Open -> el.title
+            is FileStd.OpenRecent -> el.title
+            is FileStd.Close -> el.title
+            is FileStd.CloseAll -> el.title
+            is FileStd.Save -> el.title
+            is FileStd.SaveAs -> el.title
+            is FileStd.Duplicate -> el.title
+            is FileStd.Rename -> el.title
+            is FileStd.MoveTo -> el.title
+            is FileStd.Revert -> el.title
+            is FileStd.PageSetup -> el.title
+            is FileStd.Print -> el.title
+            is FileStd.ClearRecent -> el.title
+
+            is FormatStd.ShowFonts -> el.title
+            is FormatStd.ShowColors -> el.title
+            is FormatStd.Bold -> el.title
+            is FormatStd.Italic -> el.title
+            is FormatStd.Underline -> el.title
+            is FormatStd.Bigger -> el.title
+            is FormatStd.Smaller -> el.title
+            is FormatStd.KerningStandard -> el.title
+            is FormatStd.KerningNone -> el.title
+            is FormatStd.KerningTighten -> el.title
+            is FormatStd.KerningLoosen -> el.title
+            is FormatStd.LigaturesNone -> el.title
+            is FormatStd.LigaturesStandard -> el.title
+            is FormatStd.LigaturesAll -> el.title
+            is FormatStd.RaiseBaseline -> el.title
+            is FormatStd.LowerBaseline -> el.title
+            is FormatStd.Superscript -> el.title
+            is FormatStd.Subscript -> el.title
+            is FormatStd.AlignLeft -> el.title
+            is FormatStd.AlignCenter -> el.title
+            is FormatStd.AlignRight -> el.title
+            is FormatStd.AlignJustified -> el.title
+
             is CustomItem -> "${el.title}|${el.keyEquivalent}|${el.modifierMask}"
             is CheckboxItem -> "${el.title}|${el.keyEquivalent}|${el.modifierMask}"
             is Submenu -> el.title
@@ -218,7 +412,9 @@ object MacCocoaMenu {
 
     private fun topSignatureOf(t: TopMenu): String = when (t) {
         is TopMenu.Application -> "T|Application"
+        is TopMenu.File        -> "T|File|${t.title}"
         is TopMenu.Edit        -> "T|Edit|${t.title}"
+        is TopMenu.Format      -> "T|Format|${t.title}"
         is TopMenu.View        -> "T|View|${t.title}"
         is TopMenu.Window      -> "T|Window|${t.title}|${t.suppressAutoWindowList}"
         is TopMenu.Help        -> "T|Help|${t.title}"
@@ -373,6 +569,7 @@ object MacCocoaMenu {
     private fun setState(item: Pointer?, checked: Boolean) { if (!isNull(item)) msgSendPL(item, "setState:", if (checked) 1 else 0) }
     private fun setImage(item: Pointer?, icon: MenuIcon?) { if (!isNull(item) && icon != null) msgSendPP(item, "setImage:", nsImageFrom(icon)) }
     private fun setTarget(item: Pointer?, target: Pointer?) { if (!isNull(item) && !isNull(target)) msgSendPP(item, "setTarget:", target) }
+    private fun setTag(item: Pointer?, tag: Int) { if (!isNull(item)) msgSendPL(item, "setTag:", tag.toLong()) }
 
     private val actionSelectorName = "invokeMenuItem:"
     private val actionSelector: Pointer get() = sel(actionSelectorName)
@@ -424,98 +621,22 @@ object MacCocoaMenu {
                         val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); child.onToggle(now)
                     }
                 }
-                is TextItem -> {
-                    val it = createMenuItem(child.title, null, ""); setEnabled(it, child.enabled); setImage(it, child.icon); addItemToMenu(menuPtr, it)
-                }
                 is Submenu -> {
                     val parent = createMenuItem(child.title, null, ""); val sub = createMenu(child.title)
                     setEnabled(parent, child.enabled); setImage(parent, child.icon)
                     msgSendPP(parent, "setSubmenu:", sub); addItemToMenu(menuPtr, parent)
                     populateSubmenu(sub, child.children, nsapp, customTarget)
                 }
-                Separator -> addSeparator(menuPtr)
-
-                // Allowed in Submenus
-                is SystemItem.Hide -> addSystemItemTo(menuPtr, child.title, "hide:", "h", Modifiers.command, child.enabled, child.icon, nsapp, child.onClick)
-                is SystemItem.HideOthers -> addSystemItemTo(menuPtr, child.title, "hideOtherApplications:", "h", Modifiers.combo(Modifiers.command, Modifiers.option), child.enabled, child.icon, nsapp, child.onClick)
-                is SystemItem.ShowAll -> addSystemItemTo(menuPtr, child.title, "unhideAllApplications:", "", Modifiers.none, child.enabled, child.icon, nsapp, child.onClick)
-
-                // Not allowed in Submenus
-                else -> Unit
+                is Separator -> addSeparator(menuPtr)
+                is SystemItem-> addSystemStd(menuPtr, child, nsapp, customTarget)
+                is FileStd   -> addFileStd(menuPtr, child, customTarget)
+                is EditStd   -> addEditStd(menuPtr, child, customTarget)
+                is FormatStd -> addFormatStd(menuPtr, child, customTarget)
+                is ViewStd   -> addViewStd(menuPtr, child, customTarget)
+                is WindowStd -> addWindowStd(menuPtr, child, nsapp, customTarget)
+                is HelpItem  -> addHelpStd(menuPtr, child, nsapp, customTarget)
             }
         }
-    }
-
-    private fun addSystemItemTo(menu: Pointer, title: String, defaultSelector: String, key: String, mods: Long, enabled: Boolean, icon: MenuIcon?, nsapp: Pointer, override: (() -> Unit)?) {
-        val it = createMenuItem(title, if (override != null) actionSelectorName else defaultSelector, key)
-        if (mods != 0L) setModifiers(it, mods)
-        setEnabled(it, enabled); setImage(it, icon)
-        setTarget(it, if (override != null) ensureActionTargetInstance() else nsapp)
-        addItemToMenu(menu, it)
-        if (override != null) menuActions[Pointer.nativeValue(it)] = override
-    }
-
-
-    private fun buildApplicationSubmenu(elements: List<MenuElement>): Pointer {
-        val nsapp = getNsApp()
-        val submenu = createMenu("")
-
-        val customTarget = ensureActionTargetInstance()
-        for (el in elements) {
-            when (el) {
-                is SystemItem.About -> {
-                    val has = el.onClick != null
-                    val it = createMenuItem(el.title, if (has) actionSelectorName else "orderFrontStandardAboutPanel:", "")
-                    setEnabled(it, el.enabled); setImage(it, el.icon); setTarget(it, if (has) customTarget else nsapp)
-                    addItemToMenu(submenu, it); if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
-                }
-                is SystemItem.Settings -> {
-                    val has = el.onClick != null
-                    val it = createMenuItem(el.title, if (has) actionSelectorName else "showPreferences:", ",")
-                    setModifiers(it, Modifiers.command); setEnabled(it, el.enabled); setImage(it, el.icon)
-                    setTarget(it, if (has) customTarget else nsapp); addItemToMenu(submenu, it)
-                    if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
-                }
-                is SystemItem.Services -> {
-                    val services = createMenu(el.title)
-                    msgSendPP(nsapp, "setServicesMenu:", services)
-                    val it = createMenuItem(el.title, null, "")
-                    msgSendPP(it, "setSubmenu:", services)
-                    addItemToMenu(submenu, it)
-                }
-                is SystemItem.Hide -> addSystemItemTo(submenu, el.title, "hide:", "h", Modifiers.command, el.enabled, el.icon, nsapp, el.onClick)
-                is SystemItem.HideOthers -> addSystemItemTo(submenu, el.title, "hideOtherApplications:", "h", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, nsapp, el.onClick)
-                is SystemItem.ShowAll -> addSystemItemTo(submenu, el.title, "unhideAllApplications:", "", Modifiers.none, el.enabled, el.icon, nsapp, el.onClick)
-                is SystemItem.Quit -> {
-                    val has = el.onClick != null
-                    val it = createMenuItem(el.title, if (has) actionSelectorName else "terminate:", "q")
-                    setModifiers(it, Modifiers.command); setEnabled(it, el.enabled); setImage(it, el.icon)
-                    setTarget(it, if (has) customTarget else nsapp); addItemToMenu(submenu, it)
-                    if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
-                }
-                is CustomItem -> {
-                    val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
-                    setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setImage(it, el.icon)
-                    setTarget(it, customTarget); addItemToMenu(submenu, it); menuActions[Pointer.nativeValue(it)] = el.onClick
-                }
-                is CheckboxItem -> {
-                    val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
-                    setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
-                    setTarget(it, customTarget); addItemToMenu(submenu, it)
-                    val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
-                    menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
-                }
-                is TextItem -> { val it = createMenuItem(el.title, null, ""); setEnabled(it, el.enabled); setImage(it, el.icon); addItemToMenu(submenu, it) }
-                is Submenu -> {
-                    val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
-                    setEnabled(it, el.enabled); setImage(it, el.icon); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(submenu, it)
-                    populateSubmenu(sub, el.children, nsapp, customTarget)
-                }
-                Separator -> addSeparator(submenu)
-                else -> Unit
-            }
-        }
-        return submenu
     }
 
     private fun buildGenericMenu(title: String, elements: List<MenuElement>): Pointer {
@@ -536,17 +657,127 @@ object MacCocoaMenu {
                     val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
                     menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
                 }
-                is TextItem -> { val it = createMenuItem(el.title, null, ""); setEnabled(it, el.enabled); setImage(it, el.icon); addItemToMenu(menu, it) }
                 is Submenu -> {
                     val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
                     setEnabled(it, el.enabled); setImage(it, el.icon); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
                     populateSubmenu(sub, el.children, nsapp = nsapp, customTarget = target)
                 }
                 Separator -> addSeparator(menu)
-                is EditStd, is ViewStd, is WindowStd, is HelpItem, is SystemItem -> {}
+                is EditStd, is ViewStd, is WindowStd, is HelpItem, is SystemItem, is FileStd, is FormatStd -> {}
             }
         }
         return menu
+    }
+
+    private fun addSystemItemTo(menu: Pointer, title: String, defaultSelector: String, key: String, mods: Long, enabled: Boolean, icon: MenuIcon?, nsapp: Pointer, override: (() -> Unit)?) {
+        val it = createMenuItem(title, if (override != null) actionSelectorName else defaultSelector, key)
+        if (mods != 0L) setModifiers(it, mods)
+        setEnabled(it, enabled); setImage(it, icon)
+        setTarget(it, if (override != null) ensureActionTargetInstance() else nsapp)
+        addItemToMenu(menu, it)
+        if (override != null) menuActions[Pointer.nativeValue(it)] = override
+    }
+
+    private fun addSystemStd(submenu: Pointer, el: SystemItem, nsapp: Pointer, customTarget: Pointer) {
+        when (el) {
+            is SystemItem.About -> {
+                val has = el.onClick != null
+                val it = createMenuItem(el.title, if (has) actionSelectorName else "orderFrontStandardAboutPanel:", "")
+                setEnabled(it, el.enabled); setImage(it, el.icon); setTarget(it, if (has) customTarget else nsapp)
+                addItemToMenu(submenu, it); if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
+            }
+            is SystemItem.Settings -> {
+                val has = el.onClick != null
+                val it = createMenuItem(el.title, if (has) actionSelectorName else "showPreferences:", ",")
+                setModifiers(it, Modifiers.command); setEnabled(it, el.enabled); setImage(it, el.icon)
+                setTarget(it, if (has) customTarget else nsapp); addItemToMenu(submenu, it)
+                if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
+            }
+            is SystemItem.Services -> {
+                val services = createMenu(el.title)
+                msgSendPP(nsapp, "setServicesMenu:", services)
+                val it = createMenuItem(el.title, null, "")
+                msgSendPP(it, "setSubmenu:", services)
+                addItemToMenu(submenu, it)
+            }
+            is SystemItem.Hide -> addSystemItemTo(submenu, el.title, "hide:", "h", Modifiers.command, el.enabled, el.icon, nsapp, el.onClick)
+            is SystemItem.HideOthers -> addSystemItemTo(submenu, el.title, "hideOtherApplications:", "h", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, nsapp, el.onClick)
+            is SystemItem.ShowAll -> addSystemItemTo(submenu, el.title, "unhideAllApplications:", "", Modifiers.none, el.enabled, el.icon, nsapp, el.onClick)
+            is SystemItem.Quit -> {
+                val has = el.onClick != null
+                val it = createMenuItem(el.title, if (has) actionSelectorName else "terminate:", "q")
+                setModifiers(it, Modifiers.command); setEnabled(it, el.enabled); setImage(it, el.icon)
+                setTarget(it, if (has) customTarget else nsapp); addItemToMenu(submenu, it)
+                if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
+            }
+        }
+    }
+
+    private fun buildApplicationSubmenu(elements: List<MenuElement>): Pointer {
+        val nsapp = getNsApp()
+        val submenu = createMenu("")
+
+        val customTarget = ensureActionTargetInstance()
+        for (el in elements) {
+            when (el) {
+                is SystemItem -> addSystemStd(submenu, el, nsapp, customTarget)
+                is CustomItem -> {
+                    val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
+                    setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setImage(it, el.icon)
+                    setTarget(it, customTarget); addItemToMenu(submenu, it); menuActions[Pointer.nativeValue(it)] = el.onClick
+                }
+                is CheckboxItem -> {
+                    val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
+                    setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
+                    setTarget(it, customTarget); addItemToMenu(submenu, it)
+                    val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
+                    menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
+                }
+                is Submenu -> {
+                    val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
+                    setEnabled(it, el.enabled); setImage(it, el.icon); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(submenu, it)
+                    populateSubmenu(sub, el.children, nsapp, customTarget)
+                }
+                Separator -> addSeparator(submenu)
+                else -> Unit
+            }
+        }
+        return submenu
+    }
+
+    private fun addEditStd(menu: Pointer, el: EditStd, target: Pointer) {
+        when (el) {
+            is EditStd.Undo -> addStd(menu, el.title, "undo:", "z", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.Redo -> addStd(menu, el.title, "redo:", "Z", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
+            is EditStd.Cut -> addStd(menu, el.title, "cut:", "x", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.Copy -> addStd(menu, el.title, "copy:", "c", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.Paste -> addStd(menu, el.title, "paste:", "v", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.PasteAndMatchStyle -> addStd(menu, el.title, "pasteAndMatchStyle:", "V", Modifiers.combo(Modifiers.command, Modifiers.option, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
+            is EditStd.Delete -> addStd(menu, el.title, "delete:", "\u0008", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.SelectAll -> addStd(menu, el.title, "selectAll:", "a", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+
+            is EditStd.Find -> addFind(menu, el.title, FIND_TAG_SHOW, "f", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.FindNext -> addFind(menu, el.title, FIND_TAG_NEXT, "g", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.FindPrevious -> addFind(menu, el.title, FIND_TAG_PREV, "G", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
+            is EditStd.UseSelectionForFind -> addFind(menu, el.title, FIND_TAG_SET_FIND, "e", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.JumpToSelection -> addStd(menu, el.title, "centerSelectionInVisibleArea:", "j", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.Replace -> addFind(menu, el.title, FIND_TAG_REPLACE, "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.ReplaceAndFind -> addFind(menu, el.title, FIND_TAG_REPLACE_AND_FIND, "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.ReplaceAll -> addFind(menu, el.title, FIND_TAG_REPLACE_ALL, "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+
+            is EditStd.ToggleSmartQuotes -> addStd(menu, el.title, "toggleAutomaticQuoteSubstitution:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.ToggleSmartDashes -> addStd(menu, el.title, "toggleAutomaticDashSubstitution:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.ToggleLinkDetection -> addStd(menu, el.title, "toggleAutomaticLinkDetection:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.ToggleTextReplacement -> addStd(menu, el.title, "toggleAutomaticTextReplacement:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.ToggleSpellingCorrection -> addStd(menu, el.title, "toggleAutomaticSpellingCorrection:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+
+            is EditStd.Uppercase -> addStd(menu, el.title, "uppercaseWord:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.Lowercase -> addStd(menu, el.title, "lowercaseWord:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.Capitalize -> addStd(menu, el.title, "capitalizeWord:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+
+            is EditStd.StartSpeaking -> addStd(menu, el.title, "startSpeaking:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.StopSpeaking -> addStd(menu, el.title, "stopSpeaking:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+        }
     }
 
     private fun buildEditMenu(title: String, elements: List<MenuElement>): Pointer {
@@ -554,18 +785,10 @@ object MacCocoaMenu {
         val target = ensureActionTargetInstance()
         for (el in elements) {
             when (el) {
-                is EditStd.Undo -> addStd(menu, el.title, "undo:", "z", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-                is EditStd.Redo -> addStd(menu, el.title, "redo:", "Z", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
-                is EditStd.Cut -> addStd(menu, el.title, "cut:", "x", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-                is EditStd.Copy -> addStd(menu, el.title, "copy:", "c", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-                is EditStd.Paste -> addStd(menu, el.title, "paste:", "v", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-                is EditStd.PasteAndMatchStyle -> addStd(menu, el.title, "pasteAsPlainText:", "V", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.onClick, target)
-                is EditStd.Delete -> addStd(menu, el.title, "delete:", "\u0008", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-                is EditStd.SelectAll -> addStd(menu, el.title, "selectAll:", "a", Modifiers.command, el.enabled, el.icon, el.onClick, target)
                 else -> { when (el) {
+                    is EditStd -> addEditStd(menu, el, target)
                     is CustomItem -> addCustom(menu, el, target)
                     is CheckboxItem -> addCheckbox(menu, el, target)
-                    is TextItem -> { val it = createMenuItem(el.title, null, ""); setEnabled(it, el.enabled); setImage(it, el.icon); addItemToMenu(menu, it) }
                     is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, getNsApp(), target) }
                     Separator -> addSeparator(menu)
                     else -> Unit
@@ -575,25 +798,44 @@ object MacCocoaMenu {
         return menu
     }
 
+    private fun addViewStd(menu: Pointer, el: ViewStd, target: Pointer) {
+        when (el) {
+            is ViewStd.ShowToolbar -> addStd(menu, el.title, "toggleToolbarShown:", "t", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.onClick, target)
+            is ViewStd.CustomizeToolbar -> addStd(menu, el.title, "runToolbarCustomizationPalette:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is ViewStd.ToggleFullScreen -> addStd(menu, el.title, "toggleFullScreen:", "f", Modifiers.combo(Modifiers.command, Modifiers.control), el.enabled, el.icon, el.onClick, target)
+            is ViewStd.ToggleSidebar -> addStd(menu, el.title, "toggleSidebar:", "s", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.onClick, target)
+            is ViewStd.ToggleTabBar -> addStd(menu, el.title, "toggleTabBar:", "T", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
+        }
+    }
+
     private fun buildViewMenu(title: String, elements: List<MenuElement>): Pointer {
         val menu = createMenu(title)
         val target = ensureActionTargetInstance()
         for (el in elements) {
             when (el) {
-                is ViewStd.ShowToolbar -> addStd(menu, el.title, "toggleToolbarShown:", "t", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.onClick, target)
-                is ViewStd.CustomizeToolbar -> addStd(menu, el.title, "runToolbarCustomizationPalette:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-                is ViewStd.ToggleFullScreen -> addStd(menu, el.title, "toggleFullScreen:", "f", Modifiers.combo(Modifiers.command, Modifiers.control), el.enabled, el.icon, el.onClick, target)
-                else -> { when (el) {
-                    is CustomItem -> addCustom(menu, el, target)
-                    is CheckboxItem -> addCheckbox(menu, el, target)
-                    is TextItem -> { val it = createMenuItem(el.title, null, ""); setEnabled(it, el.enabled); setImage(it, el.icon); addItemToMenu(menu, it) }
-                    is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, getNsApp(), target) }
-                    Separator -> addSeparator(menu)
-                    else -> Unit
-                } }
+                is ViewStd -> addViewStd(menu, el, target)
+                is CustomItem -> addCustom(menu, el, target)
+                is CheckboxItem -> addCheckbox(menu, el, target)
+                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, getNsApp(), target) }
+                Separator -> addSeparator(menu)
+                else -> Unit
             }
         }
         return menu
+    }
+
+    private fun addHelpStd(menu: Pointer, el: HelpItem, nsapp: Pointer, target: Pointer) {
+        when (el) {
+            is HelpItem.AppHelp -> {
+                val has = el.onClick != null
+                val it = createMenuItem(el.title, if (has) actionSelectorName else "showHelp:", "?")
+                setModifiers(it, Modifiers.combo(Modifiers.command, Modifiers.shift))
+                setEnabled(it, el.enabled); setImage(it, el.icon)
+                setTarget(it, if (has) target else nsapp)
+                addItemToMenu(menu, it)
+                if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
+            }
+        }
     }
 
     private fun buildHelpMenu(title: String, elements: List<MenuElement>): Pointer {
@@ -602,24 +844,42 @@ object MacCocoaMenu {
         val target = ensureActionTargetInstance()
         for (el in elements) {
             when (el) {
-                is HelpItem.AppHelp -> {
-                    val has = el.onClick != null
-                    val it = createMenuItem(el.title, if (has) actionSelectorName else "showHelp:", "?")
-                    setModifiers(it, Modifiers.combo(Modifiers.command, Modifiers.shift))
-                    setEnabled(it, el.enabled); setImage(it, el.icon)
-                    setTarget(it, if (has) target else nsapp)
-                    addItemToMenu(menu, it)
-                    if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
-                }
+                is HelpItem.AppHelp -> addHelpStd(menu, el, nsapp, target)
                 is CustomItem -> addCustom(menu, el, target)
                 is CheckboxItem -> addCheckbox(menu, el, target)
-                is TextItem -> { val it = createMenuItem(el.title, null, ""); setEnabled(it, el.enabled); setImage(it, el.icon); addItemToMenu(menu, it) }
                 is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, nsapp, target) }
                 Separator -> addSeparator(menu)
-                is SystemItem, is EditStd, is ViewStd, is WindowStd -> Unit
+                is SystemItem, is EditStd, is ViewStd, is WindowStd, is FileStd, is FormatStd -> Unit
             }
         }
         return menu
+    }
+
+    private fun addWindowStd(menu: Pointer, el: WindowStd, nsapp: Pointer, target: Pointer) {
+        when (el) {
+            is WindowStd.Close -> addStd(menu, el.title, "performClose:", "w", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is WindowStd.Minimize -> addStd(menu, el.title, "performMiniaturize:", "m", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is WindowStd.MinimizeAll -> {
+                val has = el.onClick != null
+                val it = createMenuItem(el.title, if (has) actionSelectorName else "miniaturizeAll:", "m")
+                setModifiers(it, Modifiers.combo(Modifiers.command, Modifiers.option))
+                setEnabled(it, el.enabled); setImage(it, el.icon)
+                setTarget(it, if (has) target else nsapp); addItemToMenu(menu, it)
+                if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
+            }
+            is WindowStd.Zoom -> addStd(menu, el.title, "performZoom:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is WindowStd.BringAllToFront -> {
+                val has = el.onClick != null
+                val it = createMenuItem(el.title, if (has) actionSelectorName else "arrangeInFront:", "")
+                setEnabled(it, el.enabled); setImage(it, el.icon)
+                setTarget(it, if (has) target else nsapp); addItemToMenu(menu, it)
+                if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
+            }
+            is WindowStd.ShowNextTab -> addStd(menu, el.title, "selectNextTab:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is WindowStd.ShowPreviousTab -> addStd(menu, el.title, "selectPreviousTab:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is WindowStd.MergeAllWindows -> addStd(menu, el.title, "mergeAllWindows:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is WindowStd.MoveTabToNewWindow -> addStd(menu, el.title, "moveTabToNewWindow:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+        }
     }
 
     private fun buildWindowMenu(title: String, elements: List<MenuElement>, suppressAutoWindowList: Boolean): Pointer {
@@ -627,41 +887,109 @@ object MacCocoaMenu {
         val menu = createMenu(title)
         val target = ensureActionTargetInstance()
 
-        if (!suppressAutoWindowList) msgSendPP(nsapp, "setWindowsMenu:", menu)
-
         for (el in elements) {
             when (el) {
-                is WindowStd.Close -> addStd(menu, el.title, "performClose:", "w", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-                is WindowStd.Minimize -> addStd(menu, el.title, "performMiniaturize:", "m", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-                is WindowStd.MinimizeAll -> {
-                    val has = el.onClick != null
-                    val it = createMenuItem(el.title, if (has) actionSelectorName else "miniaturizeAll:", "m")
-                    setModifiers(it, Modifiers.combo(Modifiers.command, Modifiers.option))
-                    setEnabled(it, el.enabled); setImage(it, el.icon)
-                    setTarget(it, if (has) target else nsapp); addItemToMenu(menu, it)
-                    if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
-                }
-                is WindowStd.Zoom -> addStd(menu, el.title, "performZoom:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-                is WindowStd.BringAllToFront -> {
-                    val has = el.onClick != null
-                    val it = createMenuItem(el.title, if (has) actionSelectorName else "arrangeInFront:", "")
-                    setEnabled(it, el.enabled); setImage(it, el.icon)
-                    setTarget(it, if (has) target else nsapp); addItemToMenu(menu, it)
-                    if (has) menuActions[Pointer.nativeValue(it)] = el.onClick
-                }
-                is WindowStd.ShowNextTab -> addStd(menu, el.title, "selectNextTab:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-                is WindowStd.ShowPreviousTab -> addStd(menu, el.title, "selectPreviousTab:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-                is WindowStd.MergeAllWindows -> addStd(menu, el.title, "mergeAllWindows:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-                is WindowStd.MoveTabToNewWindow -> addStd(menu, el.title, "moveTabToNewWindow:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+                is WindowStd -> addWindowStd(menu, el, nsapp, target)
+                is CustomItem -> addCustom(menu, el, target)
+                is CheckboxItem -> addCheckbox(menu, el, target)
+                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, nsapp, target) }
+                Separator -> addSeparator(menu)
+                else -> Unit
+            }
+        }
 
-                else -> { when (el) {
-                    is CustomItem -> addCustom(menu, el, target)
-                    is CheckboxItem -> addCheckbox(menu, el, target)
-                    is TextItem -> { val it = createMenuItem(el.title, null, ""); setEnabled(it, el.enabled); setImage(it, el.icon); addItemToMenu(menu, it) }
-                    is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, nsapp, target) }
-                    Separator -> addSeparator(menu)
-                    else -> Unit
-                } }
+        if (!suppressAutoWindowList) msgSendPP(nsapp, "setWindowsMenu:", menu)
+
+        return menu
+    }
+
+    private fun addFileStd(menu: Pointer, el: FileStd, target: Pointer) {
+        when (el) {
+            is FileStd.New -> addStd(menu, el.title, "newDocument:", "n", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FileStd.Open -> addStd(menu, el.title, "openDocument:", "o", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FileStd.OpenRecent -> {
+                val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
+                msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+            }
+            is FileStd.Close -> addStd(menu, el.title, "performClose:", "w", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FileStd.CloseAll -> {
+                val it = createMenuItem(el.title, el.onClick?.let { actionSelectorName } ?: "closeAllDocuments:", "w")
+                setModifiers(it, Modifiers.combo(Modifiers.command, Modifiers.option)); setEnabled(it, el.enabled); setImage(it, el.icon)
+                if (el.onClick != null) { setTarget(it, target); menuActions[Pointer.nativeValue(it)] = el.onClick }
+                addItemToMenu(menu, it)
+            }
+            is FileStd.Save -> addStd(menu, el.title, "saveDocument:", "s", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FileStd.SaveAs -> addStd(menu, el.title, "saveDocumentAs:", "S", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
+            is FileStd.Duplicate -> addStd(menu, el.title, "duplicateDocument:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FileStd.Rename -> addStd(menu, el.title, "renameDocument:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FileStd.MoveTo -> addStd(menu, el.title, "moveDocument:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FileStd.Revert -> addStd(menu, el.title, "revertDocument:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FileStd.PageSetup -> addStd(menu, el.title, "runPageLayout:", "P", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
+            is FileStd.Print -> addStd(menu, el.title, "printDocument:", "p", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FileStd.ClearRecent -> addStd(menu, el.title, "clearRecentDocuments:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+        }
+    }
+
+    private fun buildFileMenu(title: String, elements: List<MenuElement>): Pointer {
+        val menu = createMenu(title)
+        val nsapp = getNsApp()
+        val target = ensureActionTargetInstance()
+        for (el in elements) {
+            when (el) {
+                is FileStd -> addFileStd(menu, el, target)
+                is CustomItem -> addCustom(menu, el, target)
+                is CheckboxItem -> addCheckbox(menu, el, target)
+                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, nsapp, target) }
+                Separator -> addSeparator(menu)
+                else -> Unit
+            }
+        }
+        return menu
+    }
+
+    private fun addFormatStd(menu: Pointer, el: FormatStd, target: Pointer) {
+        when (el) {
+            is FormatStd.ShowFonts -> addStd(menu, el.title, "orderFrontFontPanel:", "t", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.ShowColors -> addStd(menu, el.title, "orderFrontColorPanel:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+
+            is FormatStd.Bold -> addStd(menu, el.title, "toggleBoldface:", "b", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.Italic -> addStd(menu, el.title, "toggleItalics:", "i", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.Underline -> addStd(menu, el.title, "toggleUnderline:", "u", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.Bigger -> addStd(menu, el.title, "makeTextBigger:", "=", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.Smaller -> addStd(menu, el.title, "makeTextSmaller:", "-", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+
+            is FormatStd.KerningStandard -> addStd(menu, el.title, "useStandardKerning:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.KerningNone -> addStd(menu, el.title, "turnOffKerning:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.KerningTighten -> addStd(menu, el.title, "tightenKerning:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.KerningLoosen -> addStd(menu, el.title, "loosenKerning:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+
+            is FormatStd.LigaturesNone -> addStd(menu, el.title, "turnOffLigatures:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.LigaturesStandard -> addStd(menu, el.title, "useStandardLigatures:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.LigaturesAll -> addStd(menu, el.title, "useAllLigatures:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+
+            is FormatStd.RaiseBaseline -> addStd(menu, el.title, "raiseBaseline:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.LowerBaseline -> addStd(menu, el.title, "lowerBaseline:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.Superscript -> addStd(menu, el.title, "superscript:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.Subscript -> addStd(menu, el.title, "subscript:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+
+            is FormatStd.AlignLeft -> addStd(menu, el.title, "alignLeft:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.AlignCenter -> addStd(menu, el.title, "alignCenter:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.AlignRight -> addStd(menu, el.title, "alignRight:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.AlignJustified -> addStd(menu, el.title, "alignJustified:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+        }
+    }
+
+    private fun buildFormatMenu(title: String, elements: List<MenuElement>): Pointer {
+        val menu = createMenu(title)
+        val target = ensureActionTargetInstance()
+        for (el in elements) {
+            when (el) {
+                is FormatStd -> addFormatStd(menu, el, target)
+                is CustomItem -> addCustom(menu, el, target)
+                is CheckboxItem -> addCheckbox(menu, el, target)
+                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, getNsApp(), target) }
+                Separator -> addSeparator(menu)
+                else -> Unit
             }
         }
         return menu
@@ -688,6 +1016,27 @@ object MacCocoaMenu {
         menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
     }
 
+    private const val FIND_TAG_SHOW = 1
+    private const val FIND_TAG_NEXT = 2
+    private const val FIND_TAG_PREV = 3
+    private const val FIND_TAG_REPLACE_ALL = 4
+    private const val FIND_TAG_REPLACE = 5
+    private const val FIND_TAG_REPLACE_AND_FIND = 6
+    private const val FIND_TAG_SET_FIND = 7
+
+    private fun addFind(menu: Pointer, title: String, tag: Int, key: String, mods: Long, enabled: Boolean, icon: MenuIcon?, onClick: (() -> Unit)?, target: Pointer) {
+        val has = onClick != null
+        val it = createMenuItem(title, if (has) actionSelectorName else "performFindPanelAction:", key)
+        if (mods != 0L) setModifiers(it, mods)
+        setEnabled(it, enabled); setImage(it, icon)
+        if (has) {
+            setTarget(it, target)
+            menuActions[Pointer.nativeValue(it)] = onClick
+        } else {
+            setTag(it, tag)
+        }
+        addItemToMenu(menu, it)
+    }
 
     fun rebuildMenuBar(menus: List<TopMenu>) {
         if (!System.getProperty("os.name").lowercase().contains("mac")) return
@@ -723,9 +1072,19 @@ object MacCocoaMenu {
                         val sub = buildGenericMenu(m.title, m.elements)
                         msgSendPP(item, "setSubmenu:", sub); addItemToMenu(menubar, item)
                     }
+                    is TopMenu.File -> {
+                        val item = createMenuItem(m.title, null, "")
+                        val sub = buildFileMenu(m.title, m.elements)
+                        msgSendPP(item, "setSubmenu:", sub); addItemToMenu(menubar, item)
+                    }
                     is TopMenu.Edit -> {
                         val item = createMenuItem(m.title, null, "")
                         val sub = buildEditMenu(m.title, m.elements)
+                        msgSendPP(item, "setSubmenu:", sub); addItemToMenu(menubar, item)
+                    }
+                    is TopMenu.Format -> {
+                        val item = createMenuItem(m.title, null, "")
+                        val sub = buildFormatMenu(m.title, m.elements)
                         msgSendPP(item, "setSubmenu:", sub); addItemToMenu(menubar, item)
                     }
                     is TopMenu.View -> {
