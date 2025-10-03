@@ -487,114 +487,6 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
         ) { elements += EditStd.StopSpeaking(title, enabled, icon, onClick) }
 
 
-        fun ShowToolbar(
-            title: String = getString(Res.string.show_toolbar),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += ViewStd.ShowToolbar(title, enabled, icon, onClick) }
-
-        fun CustomizeToolbar(
-            title: String = getString(Res.string.customize_toolbar),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += ViewStd.CustomizeToolbar(title, enabled, icon, onClick) }
-
-        fun ToggleFullScreen(
-            title: String = getString(Res.string.full_screen),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += ViewStd.ToggleFullScreen(title, enabled, icon, onClick) }
-
-        fun ToggleSidebar(
-            title: String = getString(Res.string.show_sidebar),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += ViewStd.ToggleSidebar(title, enabled, icon, onClick) }
-
-        fun ToggleTabBar(
-            title: String = getString(Res.string.show_tab_bar),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += ViewStd.ToggleTabBar(title, enabled, icon, onClick) }
-
-
-        fun Close(
-            title: String = getString(Res.string.close),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.Close(title, enabled, icon, onClick) }
-
-        fun Minimize(
-            title: String = getString(Res.string.minimize),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.Minimize(title, enabled, icon, onClick) }
-
-        fun MinimizeAll(
-            title: String = getString(Res.string.minimize_all),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.MinimizeAll(title, enabled, icon, onClick) }
-
-        fun Zoom(
-            title: String = getString(Res.string.zoom),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.Zoom(title, enabled, icon, onClick) }
-
-        fun BringAllToFront(
-            title: String = getString(Res.string.bring_all_to_front),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.BringAllToFront(title, enabled, icon, onClick) }
-
-        fun ShowNextTab(
-            title: String = getString(Res.string.show_next_tab),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.ShowNextTab(title, enabled, icon, onClick) }
-
-        fun ShowPreviousTab(
-            title: String = getString(Res.string.show_previous_tab),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.ShowPreviousTab(title, enabled, icon, onClick) }
-
-        fun MergeAllWindows(
-            title: String = getString(Res.string.merge_all_windows),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.MergeAllWindows(title, enabled, icon, onClick) }
-
-        fun MoveTabToNewWindow(
-            title: String = getString(Res.string.move_tab_to_new_window),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += WindowStd.MoveTabToNewWindow(title, enabled, icon, onClick) }
-
-
-        fun AppHelp(
-            title: String = getString(Res.string.app_help),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
-        ) { elements += HelpItem.AppHelp(title, enabled, icon, onClick) }
-
-
         fun ShowFonts(
             title: String = getString(Res.string.show_fonts),
             enabled: Boolean = true,
@@ -748,6 +640,114 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             icon: MenuIcon? = null,
             onClick: (() -> Unit)? = null
         ) { elements += FormatStd.AlignJustified(title, enabled, icon, onClick) }
+
+
+        fun ShowToolbar(
+            title: String = getString(Res.string.show_toolbar),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += ViewStd.ShowToolbar(title, enabled, icon, onClick) }
+
+        fun CustomizeToolbar(
+            title: String = getString(Res.string.customize_toolbar),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += ViewStd.CustomizeToolbar(title, enabled, icon, onClick) }
+
+        fun ToggleFullScreen(
+            title: String = getString(Res.string.full_screen),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += ViewStd.ToggleFullScreen(title, enabled, icon, onClick) }
+
+        fun ToggleSidebar(
+            title: String = getString(Res.string.show_sidebar),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += ViewStd.ToggleSidebar(title, enabled, icon, onClick) }
+
+        fun ToggleTabBar(
+            title: String = getString(Res.string.show_tab_bar),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += ViewStd.ToggleTabBar(title, enabled, icon, onClick) }
+
+
+        fun Close(
+            title: String = getString(Res.string.close),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.Close(title, enabled, icon, onClick) }
+
+        fun Minimize(
+            title: String = getString(Res.string.minimize),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.Minimize(title, enabled, icon, onClick) }
+
+        fun MinimizeAll(
+            title: String = getString(Res.string.minimize_all),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.MinimizeAll(title, enabled, icon, onClick) }
+
+        fun Zoom(
+            title: String = getString(Res.string.zoom),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.Zoom(title, enabled, icon, onClick) }
+
+        fun BringAllToFront(
+            title: String = getString(Res.string.bring_all_to_front),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.BringAllToFront(title, enabled, icon, onClick) }
+
+        fun ShowNextTab(
+            title: String = getString(Res.string.show_next_tab),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.ShowNextTab(title, enabled, icon, onClick) }
+
+        fun ShowPreviousTab(
+            title: String = getString(Res.string.show_previous_tab),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.ShowPreviousTab(title, enabled, icon, onClick) }
+
+        fun MergeAllWindows(
+            title: String = getString(Res.string.merge_all_windows),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.MergeAllWindows(title, enabled, icon, onClick) }
+
+        fun MoveTabToNewWindow(
+            title: String = getString(Res.string.move_tab_to_new_window),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += WindowStd.MoveTabToNewWindow(title, enabled, icon, onClick) }
+
+
+        fun AppHelp(
+            title: String = getString(Res.string.app_help),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)? = null
+        ) { elements += HelpItem.AppHelp(title, enabled, icon, onClick) }
 
 
         fun Item(
