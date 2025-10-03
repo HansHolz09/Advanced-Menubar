@@ -106,7 +106,7 @@ object MacCocoaMenu {
     sealed class FileStd : MenuElement {
         data class New(val title: String = "Neu", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
         data class Open(val title: String = "Öffnen …", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
-        data class OpenRecent(val title: String = "Zuletzt geöffnet", val enabled: Boolean = true, val icon: MenuIcon? = null): FileStd()
+        data class OpenRecent(val title: String = "Zuletzt geöffnet", val children: List<MenuElement> = emptyList(), val enabled: Boolean = true, val icon: MenuIcon? = null): FileStd()
         data class Close(val title: String = "Schließen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
         data class CloseAll(val title: String = "Alle schließen", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
         data class Save(val title: String = "Sichern", val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
@@ -629,7 +629,7 @@ object MacCocoaMenu {
                 }
                 is Separator -> addSeparator(menuPtr)
                 is SystemItem-> addSystemStd(menuPtr, child, nsapp, customTarget)
-                is FileStd   -> addFileStd(menuPtr, child, customTarget)
+                is FileStd   -> addFileStd(menuPtr, child, nsapp, customTarget)
                 is EditStd   -> addEditStd(menuPtr, child, customTarget)
                 is FormatStd -> addFormatStd(menuPtr, child, customTarget)
                 is ViewStd   -> addViewStd(menuPtr, child, customTarget)
@@ -903,13 +903,20 @@ object MacCocoaMenu {
         return menu
     }
 
-    private fun addFileStd(menu: Pointer, el: FileStd, target: Pointer) {
+    private fun addFileStd(menu: Pointer, el: FileStd, nsapp: Pointer, target: Pointer) {
         when (el) {
             is FileStd.New -> addStd(menu, el.title, "newDocument:", "n", Modifiers.command, el.enabled, el.icon, el.onClick, target)
             is FileStd.Open -> addStd(menu, el.title, "openDocument:", "o", Modifiers.command, el.enabled, el.icon, el.onClick, target)
             is FileStd.OpenRecent -> {
-                val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
-                msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+                val parent = createMenuItem(el.title, null, "")
+                val sub = createMenu(el.title)
+                setEnabled(parent, el.enabled); setImage(parent, el.icon)
+                if (el.children.isNotEmpty()) {
+                    populateSubmenu(sub, el.children, nsapp, target)
+                    addSeparator(sub)
+                }
+                msgSendPP(parent, "setSubmenu:", sub)
+                addItemToMenu(menu, parent)
             }
             is FileStd.Close -> addStd(menu, el.title, "performClose:", "w", Modifiers.command, el.enabled, el.icon, el.onClick, target)
             is FileStd.CloseAll -> {
@@ -936,7 +943,7 @@ object MacCocoaMenu {
         val target = ensureActionTargetInstance()
         for (el in elements) {
             when (el) {
-                is FileStd -> addFileStd(menu, el, target)
+                is FileStd -> addFileStd(menu, el, nsapp, target)
                 is CustomItem -> addCustom(menu, el, target)
                 is CheckboxItem -> addCheckbox(menu, el, target)
                 is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, nsapp, target) }

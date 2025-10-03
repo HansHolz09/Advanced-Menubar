@@ -10,8 +10,8 @@
     <string name="file">Ablage</string>
     <string name="file_new">Neu</string>
     <string name="file_open">Öffnen …</string>
-    <string name="file_open_recent">Zuletzt geöffnet</string>
-    <string name="file_clear_recent">Menü löschen</string>
+    <string name="file_open_recent">Benutzte Dokumente</string>
+    <string name="file_clear_recent">Einträge löschen</string>
     <string name="file_close">Schließen</string>
     <string name="file_close_all">Alle schließen</string>
     <string name="file_save">Sichern</string>

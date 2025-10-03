@@ -186,8 +186,13 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
         fun FileOpenRecent(
             title: String = getString(Res.string.file_open_recent),
             enabled: Boolean = true,
-            icon: MenuIcon? = null
-        ) { elements += FileStd.OpenRecent(title, enabled, icon) }
+            icon: MenuIcon? = null,
+            content: MacMenuScope.() -> Unit
+        ) {
+            val s = MacMenuScope(strings)
+            s.content()
+            elements += FileStd.OpenRecent(title, s.elements.toList(), enabled, icon)
+        }
 
         fun FileClearRecent(
             title: String = getString(Res.string.file_clear_recent),
