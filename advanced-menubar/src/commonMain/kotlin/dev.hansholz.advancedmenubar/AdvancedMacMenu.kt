@@ -393,6 +393,21 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
         ) { elements += EditStd.ReplaceAll(title, enabled, icon, onClick) }
 
 
+        fun SpellingAndGrammarMenu(
+            title: String = getString(Res.string.spelling_and_grammar),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            block: MacMenuScope.() -> Unit
+        ) = Menu(title, enabled, icon, block)
+
+        fun ToggleCorrectSpellingAutomatically(
+            title: String = getString(Res.string.toggle_correct_spelling_automatically),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)
+        ) { elements += EditStd.ToggleSpellingCorrection(title, enabled, icon, onClick) }
+
+
         fun SubstitutionsMenu(
             title: String = getString(Res.string.substitutions),
             enabled: Boolean = true,
@@ -427,13 +442,6 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
         ) { elements += EditStd.ToggleTextReplacement(title, enabled, icon, onClick) }
-
-        fun ToggleCorrectSpellingAutomatically(
-            title: String = getString(Res.string.toggle_correct_spelling_automatically),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.ToggleSpellingCorrection(title, enabled, icon, onClick) }
 
 
         fun TransformationsMenu(
@@ -500,6 +508,14 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             icon: MenuIcon? = null,
             onClick: (() -> Unit)? = null
         ) { elements += FormatStd.ShowColors(title, enabled, icon, onClick) }
+
+
+        fun FontMenu(
+            title: String = getString(Res.string.font),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            block: MacMenuScope.() -> Unit
+        ) = Menu(title, enabled, icon, block)
 
         fun Bold(
             title: String = getString(Res.string.bold),
@@ -585,6 +601,15 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             onClick: (() -> Unit)? = null
         ) { elements += FormatStd.LigaturesAll(title, enabled, icon, onClick) }
 
+
+        fun BaselineMenu(
+            title: String = getString(Res.string.baseline),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            block: MacMenuScope.() -> Unit
+        ) = Menu(title, enabled, icon, block)
+
+
         fun RaiseBaseline(
             title: String = getString(Res.string.raise_baseline),
             enabled: Boolean = true,
@@ -612,6 +637,14 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             icon: MenuIcon? = null,
             onClick: (() -> Unit)? = null
         ) { elements += FormatStd.Subscript(title, enabled, icon, onClick) }
+
+
+        fun TextMenu(
+            title: String = getString(Res.string.text),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            block: MacMenuScope.() -> Unit
+        ) = Menu(title, enabled, icon, block)
 
         fun AlignLeft(
             title: String = getString(Res.string.align_left),
