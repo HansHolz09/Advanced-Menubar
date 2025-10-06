@@ -80,11 +80,11 @@ object MacCocoaMenu {
         data class ReplaceAndFind(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
         data class ReplaceAll(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
 
-        data class ToggleSmartQuotes(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
-        data class ToggleSmartDashes(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
-        data class ToggleLinkDetection(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
-        data class ToggleTextReplacement(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
-        data class ToggleSpellingCorrection(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
+        data class ToggleSmartQuotes(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): EditStd()
+        data class ToggleSmartDashes(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): EditStd()
+        data class ToggleLinkDetection(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): EditStd()
+        data class ToggleTextReplacement(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): EditStd()
+        data class ToggleSpellingCorrection(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): EditStd()
 
         data class Uppercase(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
         data class Lowercase(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): EditStd()
@@ -98,9 +98,9 @@ object MacCocoaMenu {
         data class ShowFonts(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
         data class ShowColors(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
 
-        data class Bold(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
-        data class Italic(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
-        data class Underline(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class Bold(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): FormatStd()
+        data class Italic(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): FormatStd()
+        data class Underline(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): FormatStd()
         data class Bigger(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
         data class Smaller(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
 
@@ -118,18 +118,18 @@ object MacCocoaMenu {
         data class Superscript(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
         data class Subscript(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
 
-        data class AlignLeft(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
-        data class AlignCenter(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
-        data class AlignRight(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
-        data class AlignJustified(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
+        data class AlignLeft(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): FormatStd()
+        data class AlignCenter(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): FormatStd()
+        data class AlignRight(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): FormatStd()
+        data class AlignJustified(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): FormatStd()
     }
 
     sealed class ViewStd : MenuElement {
-        data class ShowToolbar(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : ViewStd()
+        data class ShowToolbar(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null) : ViewStd()
         data class CustomizeToolbar(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : ViewStd()
         data class ToggleFullScreen(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : ViewStd()
-        data class ToggleSidebar(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): ViewStd()
-        data class ToggleTabBar(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): ViewStd()
+        data class ToggleSidebar(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): ViewStd()
+        data class ToggleTabBar(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): ViewStd()
     }
 
     sealed class WindowStd : MenuElement {
@@ -787,11 +787,11 @@ object MacCocoaMenu {
             is EditStd.ReplaceAndFind -> addFind(menu, el.title, FIND_TAG_REPLACE_AND_FIND, "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is EditStd.ReplaceAll -> addFind(menu, el.title, FIND_TAG_REPLACE_ALL, "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
 
-            is EditStd.ToggleSmartQuotes -> addStd(menu, el.title, "toggleAutomaticQuoteSubstitution:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is EditStd.ToggleSmartDashes -> addStd(menu, el.title, "toggleAutomaticDashSubstitution:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is EditStd.ToggleLinkDetection -> addStd(menu, el.title, "toggleAutomaticLinkDetection:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is EditStd.ToggleTextReplacement -> addStd(menu, el.title, "toggleAutomaticTextReplacement:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is EditStd.ToggleSpellingCorrection -> addStd(menu, el.title, "toggleAutomaticSpellingCorrection:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is EditStd.ToggleSmartQuotes -> addStdToggle(menu, el.title, "toggleAutomaticQuoteSubstitution:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is EditStd.ToggleSmartDashes -> addStdToggle(menu, el.title, "toggleAutomaticDashSubstitution:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is EditStd.ToggleLinkDetection -> addStdToggle(menu, el.title, "toggleAutomaticLinkDetection:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is EditStd.ToggleTextReplacement -> addStdToggle(menu, el.title, "toggleAutomaticTextReplacement:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is EditStd.ToggleSpellingCorrection -> addStdToggle(menu, el.title, "toggleAutomaticSpellingCorrection:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
 
             is EditStd.Uppercase -> addStd(menu, el.title, "uppercaseWord:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is EditStd.Lowercase -> addStd(menu, el.title, "lowercaseWord:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
@@ -807,9 +807,9 @@ object MacCocoaMenu {
             is FormatStd.ShowFonts -> addStd(menu, el.title, "orderFrontFontPanel:", "t", Modifiers.command, el.enabled, el.icon, el.onClick, target)
             is FormatStd.ShowColors -> addStd(menu, el.title, "orderFrontColorPanel:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
 
-            is FormatStd.Bold -> addStd(menu, el.title, "toggleBoldface:", "b", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-            is FormatStd.Italic -> addStd(menu, el.title, "toggleItalics:", "i", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-            is FormatStd.Underline -> addStd(menu, el.title, "toggleUnderline:", "u", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.Bold -> addStdToggle(menu, el.title, "toggleBoldface:", "b", Modifiers.command, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is FormatStd.Italic -> addStdToggle(menu, el.title, "toggleItalics:", "i", Modifiers.command, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is FormatStd.Underline -> addStdToggle(menu, el.title, "toggleUnderline:", "u", Modifiers.command, el.enabled, el.icon, el.checked, el.onToggle, target)
             is FormatStd.Bigger -> addStd(menu, el.title, "makeTextBigger:", "=", Modifiers.command, el.enabled, el.icon, el.onClick, target)
             is FormatStd.Smaller -> addStd(menu, el.title, "makeTextSmaller:", "-", Modifiers.command, el.enabled, el.icon, el.onClick, target)
 
@@ -827,20 +827,20 @@ object MacCocoaMenu {
             is FormatStd.Superscript -> addStd(menu, el.title, "superscript:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is FormatStd.Subscript -> addStd(menu, el.title, "subscript:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
 
-            is FormatStd.AlignLeft -> addStd(menu, el.title, "alignLeft:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is FormatStd.AlignCenter -> addStd(menu, el.title, "alignCenter:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is FormatStd.AlignRight -> addStd(menu, el.title, "alignRight:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is FormatStd.AlignJustified -> addStd(menu, el.title, "alignJustified:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
+            is FormatStd.AlignLeft -> addStdToggle(menu, el.title, "alignLeft:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is FormatStd.AlignCenter -> addStdToggle(menu, el.title, "alignCenter:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is FormatStd.AlignRight -> addStdToggle(menu, el.title, "alignRight:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
+            is FormatStd.AlignJustified -> addStdToggle(menu, el.title, "alignJustified:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
         }
     }
 
     private fun addViewStd(menu: Pointer, el: ViewStd, target: Pointer) {
         when (el) {
-            is ViewStd.ShowToolbar -> addStd(menu, el.title, "toggleToolbarShown:", "t", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.onClick, target)
+            is ViewStd.ShowToolbar -> addStdToggle(menu, el.title, "toggleToolbarShown:", "t", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.checked, el.onToggle, target)
             is ViewStd.CustomizeToolbar -> addStd(menu, el.title, "runToolbarCustomizationPalette:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is ViewStd.ToggleFullScreen -> addStd(menu, el.title, "toggleFullScreen:", "f", Modifiers.combo(Modifiers.command, Modifiers.control), el.enabled, el.icon, el.onClick, target)
-            is ViewStd.ToggleSidebar -> addStd(menu, el.title, "toggleSidebar:", "s", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.onClick, target)
-            is ViewStd.ToggleTabBar -> addStd(menu, el.title, "toggleTabBar:", "T", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
+            is ViewStd.ToggleSidebar -> addStdToggle(menu, el.title, "toggleSidebar:", "s", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.checked, el.onToggle, target)
+            is ViewStd.ToggleTabBar -> addStdToggle(menu, el.title, "toggleTabBar:", "T", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.checked, el.onToggle, target)
         }
     }
 
@@ -1028,6 +1028,25 @@ object MacCocoaMenu {
         if (mods != 0L) setModifiers(it, mods)
         setEnabled(it, enabled); setImage(it, icon)
         if (has) { setTarget(it, target); menuActions[Pointer.nativeValue(it)] = onClick }
+        addItemToMenu(menu, it)
+    }
+    private fun addStdToggle(menu: Pointer, title: String, defaultSel: String, key: String, mods: Long, enabled: Boolean, icon: MenuIcon?, initial: Boolean?, onToggle: ((Boolean) -> Unit)?, target: Pointer) {
+        val has = onToggle != null
+        val it = createMenuItem(title, if (has) actionSelectorName else defaultSel, key)
+        if (mods != 0L) setModifiers(it, mods)
+        setEnabled(it, enabled); setImage(it, icon)
+        setState(it, initial ?: false)
+        if (has) {
+            setTarget(it, target)
+            val id = Pointer.nativeValue(it)
+            checkboxStates[id] = initial ?: false
+            menuActions[id] = {
+                val now = !(checkboxStates[id] ?: false)
+                checkboxStates[id] = now
+                setState(it, now)
+                onToggle.invoke(now)
+            }
+        }
         addItemToMenu(menu, it)
     }
     private fun addCustom(menu: Pointer, el: CustomItem, target: Pointer) {

@@ -402,10 +402,11 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
 
         fun ToggleCorrectSpellingAutomatically(
             title: String = getString(Res.string.toggle_correct_spelling_automatically),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.ToggleSpellingCorrection(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += EditStd.ToggleSpellingCorrection(title, enabled, icon, checked, onToggle) }
 
 
         fun SubstitutionsMenu(
@@ -417,31 +418,35 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
 
         fun ToggleSmartQuotes(
             title: String = getString(Res.string.toggle_smart_quotes),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.ToggleSmartQuotes(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += EditStd.ToggleSmartQuotes(title, enabled, icon, checked, onToggle) }
 
         fun ToggleSmartDashes(
             title: String = getString(Res.string.toggle_smart_dashes),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.ToggleSmartDashes(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += EditStd.ToggleSmartDashes(title, enabled, icon, checked, onToggle) }
 
         fun ToggleSmartLinks(
             title: String = getString(Res.string.toggle_smart_links),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.ToggleLinkDetection(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += EditStd.ToggleLinkDetection(title, enabled, icon, checked, onToggle) }
 
         fun ToggleTextReplacement(
             title: String = getString(Res.string.toggle_text_replacement),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.ToggleTextReplacement(title, enabled, icon, onClick) }
+            onToggle: ((Boolean) -> Unit)
+        ) { elements += EditStd.ToggleTextReplacement(title, enabled, icon, checked, onToggle) }
 
 
         fun TransformationsMenu(
@@ -519,24 +524,27 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
 
         fun Bold(
             title: String = getString(Res.string.bold),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += FormatStd.Bold(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += FormatStd.Bold(title, enabled, icon, checked, onToggle) }
 
         fun Italic(
             title: String = getString(Res.string.italic),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += FormatStd.Italic(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += FormatStd.Italic(title, enabled, icon, checked, onToggle) }
 
         fun Underline(
             title: String = getString(Res.string.underline),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += FormatStd.Underline(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += FormatStd.Underline(title, enabled, icon, checked, onToggle) }
 
         fun Bigger(
             title: String = getString(Res.string.bigger),
@@ -648,39 +656,44 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
 
         fun AlignLeft(
             title: String = getString(Res.string.align_left),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += FormatStd.AlignLeft(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += FormatStd.AlignLeft(title, enabled, icon, checked, onToggle) }
 
         fun AlignCenter(
             title: String = getString(Res.string.align_center),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += FormatStd.AlignCenter(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += FormatStd.AlignCenter(title, enabled, icon, checked, onToggle) }
 
         fun AlignRight(
             title: String = getString(Res.string.align_right),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += FormatStd.AlignRight(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += FormatStd.AlignRight(title, enabled, icon, checked, onToggle) }
 
         fun AlignJustified(
             title: String = getString(Res.string.align_justified),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += FormatStd.AlignJustified(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += FormatStd.AlignJustified(title, enabled, icon, checked, onToggle) }
 
 
         fun ShowToolbar(
             title: String = getString(Res.string.show_toolbar),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += ViewStd.ShowToolbar(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += ViewStd.ShowToolbar(title, enabled, icon, checked, onToggle) }
 
         fun CustomizeToolbar(
             title: String = getString(Res.string.customize_toolbar),
@@ -698,17 +711,19 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
 
         fun ToggleSidebar(
             title: String = getString(Res.string.show_sidebar),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += ViewStd.ToggleSidebar(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += ViewStd.ToggleSidebar(title, enabled, icon, checked, onToggle) }
 
         fun ToggleTabBar(
             title: String = getString(Res.string.show_tab_bar),
+            checked: Boolean = false,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)?
-        ) { elements += ViewStd.ToggleTabBar(title, enabled, icon, onClick) }
+            onToggle: (Boolean) -> Unit
+        ) { elements += ViewStd.ToggleTabBar(title, enabled, icon, checked, onToggle) }
 
 
         fun Close(
