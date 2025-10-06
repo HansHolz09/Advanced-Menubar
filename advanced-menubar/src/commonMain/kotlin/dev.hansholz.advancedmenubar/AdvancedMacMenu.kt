@@ -173,14 +173,14 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.file_new),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.New(title, enabled, icon, onClick) }
 
         fun FileOpen(
             title: String = getString(Res.string.file_open),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.Open(title, enabled, icon, onClick) }
 
         fun FileOpenRecent(
@@ -198,7 +198,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.file_clear_recent),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.ClearRecent(title, enabled, icon, onClick) }
 
         fun FileClose(
@@ -219,42 +219,42 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.file_save),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.Save(title, enabled, icon, onClick) }
 
         fun FileSaveAs(
             title: String = getString(Res.string.file_save_as),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.SaveAs(title, enabled, icon, onClick) }
 
         fun FileDuplicate(
             title: String = getString(Res.string.file_duplicate),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.Duplicate(title, enabled, icon, onClick) }
 
         fun FileRename(
             title: String = getString(Res.string.file_rename),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.Rename(title, enabled, icon, onClick) }
 
         fun FileMoveTo(
             title: String = getString(Res.string.file_move_to),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.MoveTo(title, enabled, icon, onClick) }
 
         fun FileRevert(
             title: String = getString(Res.string.file_revert),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.Revert(title, enabled, icon, onClick) }
 
         fun FilePageSetup(
@@ -268,7 +268,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.file_print),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?,
         ) { elements += FileStd.Print(title, enabled, icon, onClick) }
 
 
@@ -521,84 +521,84 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.bold),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.Bold(title, enabled, icon, onClick) }
 
         fun Italic(
             title: String = getString(Res.string.italic),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.Italic(title, enabled, icon, onClick) }
 
         fun Underline(
             title: String = getString(Res.string.underline),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.Underline(title, enabled, icon, onClick) }
 
         fun Bigger(
             title: String = getString(Res.string.bigger),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.Bigger(title, enabled, icon, onClick) }
 
         fun Smaller(
             title: String = getString(Res.string.smaller),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.Smaller(title, enabled, icon, onClick) }
 
         fun KerningStandard(
             title: String = getString(Res.string.kerning_standard),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.KerningStandard(title, enabled, icon, onClick) }
 
         fun KerningNone(
             title: String = getString(Res.string.kerning_none),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.KerningNone(title, enabled, icon, onClick) }
 
         fun KerningTighten(
             title: String = getString(Res.string.kerning_tighten),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.KerningTighten(title, enabled, icon, onClick) }
 
         fun KerningLoosen(
             title: String = getString(Res.string.kerning_loosen),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.KerningLoosen(title, enabled, icon, onClick) }
 
         fun LigaturesNone(
             title: String = getString(Res.string.ligatures_none),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.LigaturesNone(title, enabled, icon, onClick) }
 
         fun LigaturesStandard(
             title: String = getString(Res.string.ligatures_standard),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.LigaturesStandard(title, enabled, icon, onClick) }
 
         fun LigaturesAll(
             title: String = getString(Res.string.ligatures_all),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.LigaturesAll(title, enabled, icon, onClick) }
 
 
@@ -614,28 +614,28 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.raise_baseline),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.RaiseBaseline(title, enabled, icon, onClick) }
 
         fun LowerBaseline(
             title: String = getString(Res.string.lower_baseline),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.LowerBaseline(title, enabled, icon, onClick) }
 
         fun Superscript(
             title: String = getString(Res.string.superscript),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.Superscript(title, enabled, icon, onClick) }
 
         fun Subscript(
             title: String = getString(Res.string.subscript),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.Subscript(title, enabled, icon, onClick) }
 
 
@@ -650,28 +650,28 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.align_left),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.AlignLeft(title, enabled, icon, onClick) }
 
         fun AlignCenter(
             title: String = getString(Res.string.align_center),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.AlignCenter(title, enabled, icon, onClick) }
 
         fun AlignRight(
             title: String = getString(Res.string.align_right),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.AlignRight(title, enabled, icon, onClick) }
 
         fun AlignJustified(
             title: String = getString(Res.string.align_justified),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += FormatStd.AlignJustified(title, enabled, icon, onClick) }
 
 
@@ -679,14 +679,14 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.show_toolbar),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += ViewStd.ShowToolbar(title, enabled, icon, onClick) }
 
         fun CustomizeToolbar(
             title: String = getString(Res.string.customize_toolbar),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += ViewStd.CustomizeToolbar(title, enabled, icon, onClick) }
 
         fun ToggleFullScreen(
@@ -700,14 +700,14 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.show_sidebar),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += ViewStd.ToggleSidebar(title, enabled, icon, onClick) }
 
         fun ToggleTabBar(
             title: String = getString(Res.string.show_tab_bar),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += ViewStd.ToggleTabBar(title, enabled, icon, onClick) }
 
 
@@ -750,28 +750,28 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String = getString(Res.string.show_next_tab),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += WindowStd.ShowNextTab(title, enabled, icon, onClick) }
 
         fun ShowPreviousTab(
             title: String = getString(Res.string.show_previous_tab),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += WindowStd.ShowPreviousTab(title, enabled, icon, onClick) }
 
         fun MergeAllWindows(
             title: String = getString(Res.string.merge_all_windows),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += WindowStd.MergeAllWindows(title, enabled, icon, onClick) }
 
         fun MoveTabToNewWindow(
             title: String = getString(Res.string.move_tab_to_new_window),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
-            onClick: (() -> Unit)? = null
+            onClick: (() -> Unit)?
         ) { elements += WindowStd.MoveTabToNewWindow(title, enabled, icon, onClick) }
 
 

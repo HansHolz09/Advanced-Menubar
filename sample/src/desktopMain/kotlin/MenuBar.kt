@@ -100,8 +100,8 @@ fun MenuBar(
             }
         }
         MacViewMenu {
-            ShowToolbar(enabled = false)
-            CustomizeToolbar(enabled = false)
+            ShowToolbar(enabled = false) {}
+            CustomizeToolbar(enabled = false) {}
             Separator()
             ToggleFullScreen()
         }
