@@ -25,7 +25,6 @@ import dev.hansholz.advancedmenubar.MacCocoaMenu.FormatStd
 import dev.hansholz.advancedmenubar.MacCocoaMenu.HelpItem
 import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuElement
 import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuIcon
-import dev.hansholz.advancedmenubar.MacCocoaMenu.Modifiers
 import dev.hansholz.advancedmenubar.MacCocoaMenu.Separator
 import dev.hansholz.advancedmenubar.MacCocoaMenu.Submenu
 import dev.hansholz.advancedmenubar.MacCocoaMenu.SystemItem
@@ -800,22 +799,20 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
 
         fun Item(
             title: String,
-            key: String = "",
-            modifiers: Long = Modifiers.none,
+            shortcut: MenuShortcut? = null,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: () -> Unit
-        ) { elements += CustomItem(title, key, modifiers, enabled, icon, onClick) }
+        ) { elements += CustomItem(title, shortcut, enabled, icon, onClick) }
 
         fun Checkbox(
             title: String,
             checked: Boolean = false,
-            key: String = "",
-            modifiers: Long = Modifiers.none,
+            shortcut: MenuShortcut? = null,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onToggle: (Boolean) -> Unit
-        ) { elements += CheckboxItem(title, checked, key, modifiers, enabled, icon, onToggle) }
+        ) { elements += CheckboxItem(title, checked, shortcut, enabled, icon, onToggle) }
 
         fun Separator() { elements += Separator }
 

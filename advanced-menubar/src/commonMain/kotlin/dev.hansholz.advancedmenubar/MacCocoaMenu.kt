@@ -151,8 +151,7 @@ object MacCocoaMenu {
 
     data class CustomItem(
         val title: String,
-        val keyEquivalent: String = "",
-        val modifierMask: Long = Modifiers.none,
+        val shortcut: MenuShortcut? = null,
         val enabled: Boolean = true,
         val icon: MenuIcon? = null,
         val onClick: () -> Unit
@@ -160,8 +159,7 @@ object MacCocoaMenu {
     data class CheckboxItem(
         val title: String,
         val checked: Boolean = false,
-        val keyEquivalent: String = "",
-        val modifierMask: Long = Modifiers.none,
+        val shortcut: MenuShortcut? = null,
         val enabled: Boolean = true,
         val icon: MenuIcon? = null,
         val onToggle: (Boolean) -> Unit
@@ -419,13 +417,19 @@ object MacCocoaMenu {
 
             is HelpItem.AppHelp -> el.title
 
-            is CustomItem -> "${el.title}|${el.keyEquivalent}|${el.modifierMask}"
-            is CheckboxItem -> "${el.title}|${el.keyEquivalent}|${el.modifierMask}"
+            is CustomItem -> "${el.title}|${shortcutSig(el.shortcut)}"
+            is CheckboxItem -> "${el.title}|${shortcutSig(el.shortcut)}"
+
             is Submenu -> el.title
             Separator -> "-"
         }
         val children = if (el is Submenu) el.children.size else -1
         return "$k|$title|$children"
+    }
+
+    private fun shortcutSig(s: MenuShortcut?): String {
+        val p = s ?: return ""
+        return "k=${p.key};m=${p.meta};c=${p.ctrl};a=${p.alt};s=${p.shift}"
     }
 
     private fun topSignatureOf(t: TopMenu): String = when (t) {
@@ -590,6 +594,11 @@ object MacCocoaMenu {
     private fun setImage(item: Pointer?, icon: MenuIcon?) { if (!isNull(item) && icon != null) msgSendPP(item, "setImage:", nsImageFrom(icon)) }
     private fun setTarget(item: Pointer?, target: Pointer?) { if (!isNull(item) && !isNull(target)) msgSendPP(item, "setTarget:", target) }
     private fun setTag(item: Pointer?, tag: Int) { if (!isNull(item)) msgSendPL(item, "setTag:", tag.toLong()) }
+    private fun setShortcut(item: Pointer, acc: MenuShortcut?) {
+        val cocoa = acc?.toCocoa() ?: return
+        msgSendPP(item, "setKeyEquivalent:", nsString(cocoa.first))
+        if (cocoa.second != 0L) msgSendPL(item, "setKeyEquivalentModifierMask:", cocoa.second)
+    }
 
     private const val actionSelectorName = "invokeMenuItem:"
     private val actionSelector: Pointer get() = sel(actionSelectorName)
@@ -626,14 +635,16 @@ object MacCocoaMenu {
         for (child in children) {
             when (child) {
                 is CustomItem -> {
-                    val it = createMenuItem(child.title, actionSelectorName, child.keyEquivalent)
-                    setModifiers(it, child.modifierMask); setEnabled(it, child.enabled); setImage(it, child.icon)
+                    val it = createMenuItem(child.title, actionSelectorName, "")
+                    setEnabled(it, child.enabled); setImage(it, child.icon)
+                    setShortcut(it, child.shortcut)
                     setTarget(it, customTarget); addItemToMenu(menuPtr, it)
                     menuActions[Pointer.nativeValue(it)] = child.onClick
                 }
                 is CheckboxItem -> {
-                    val it = createMenuItem(child.title, actionSelectorName, child.keyEquivalent)
-                    setModifiers(it, child.modifierMask); setEnabled(it, child.enabled); setState(it, child.checked); setImage(it, child.icon)
+                    val it = createMenuItem(child.title, actionSelectorName, "")
+                    setEnabled(it, child.enabled); setState(it, child.checked); setImage(it, child.icon)
+                    setShortcut(it, child.shortcut)
                     setTarget(it, customTarget); addItemToMenu(menuPtr, it)
                     val key = Pointer.nativeValue(it)
                     checkboxStates[key] = child.checked
@@ -666,13 +677,16 @@ object MacCocoaMenu {
         for (el in elements) {
             when (el) {
                 is CustomItem -> {
-                    val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
-                    setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setImage(it, el.icon)
-                    setTarget(it, target); addItemToMenu(menu, it); menuActions[Pointer.nativeValue(it)] = el.onClick
+                    val it = createMenuItem(el.title, actionSelectorName, "")
+                    setEnabled(it, el.enabled); setImage(it, el.icon)
+                    setShortcut(it, el.shortcut)
+                    setTarget(it, target); addItemToMenu(menu, it)
+                    menuActions[Pointer.nativeValue(it)] = el.onClick
                 }
                 is CheckboxItem -> {
-                    val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
-                    setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
+                    val it = createMenuItem(el.title, actionSelectorName, "")
+                    setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
+                    setShortcut(it, el.shortcut)
                     setTarget(it, target); addItemToMenu(menu, it)
                     val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
                     menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
@@ -894,13 +908,16 @@ object MacCocoaMenu {
             when (el) {
                 is SystemItem -> addSystemStd(submenu, el, nsapp, customTarget)
                 is CustomItem -> {
-                    val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
-                    setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setImage(it, el.icon)
-                    setTarget(it, customTarget); addItemToMenu(submenu, it); menuActions[Pointer.nativeValue(it)] = el.onClick
+                    val it = createMenuItem(el.title, actionSelectorName, "")
+                    setEnabled(it, el.enabled); setImage(it, el.icon)
+                    setShortcut(it, el.shortcut)
+                    setTarget(it, customTarget); addItemToMenu(submenu, it)
+                    menuActions[Pointer.nativeValue(it)] = el.onClick
                 }
                 is CheckboxItem -> {
-                    val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
-                    setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
+                    val it = createMenuItem(el.title, actionSelectorName, "")
+                    setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
+                    setShortcut(it, el.shortcut)
                     setTarget(it, customTarget); addItemToMenu(submenu, it)
                     val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
                     menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
@@ -1050,13 +1067,16 @@ object MacCocoaMenu {
         addItemToMenu(menu, it)
     }
     private fun addCustom(menu: Pointer, el: CustomItem, target: Pointer) {
-        val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
-        setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setImage(it, el.icon)
-        setTarget(it, target); addItemToMenu(menu, it); menuActions[Pointer.nativeValue(it)] = el.onClick
+        val it = createMenuItem(el.title, actionSelectorName, "")
+        setEnabled(it, el.enabled); setImage(it, el.icon)
+        setShortcut(it, el.shortcut)
+        setTarget(it, target); addItemToMenu(menu, it)
+        menuActions[Pointer.nativeValue(it)] = el.onClick
     }
     private fun addCheckbox(menu: Pointer, el: CheckboxItem, target: Pointer) {
-        val it = createMenuItem(el.title, actionSelectorName, el.keyEquivalent)
-        setModifiers(it, el.modifierMask); setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
+        val it = createMenuItem(el.title, actionSelectorName, "")
+        setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
+        setShortcut(it, el.shortcut)
         setTarget(it, target); addItemToMenu(menu, it)
         val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
         menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
