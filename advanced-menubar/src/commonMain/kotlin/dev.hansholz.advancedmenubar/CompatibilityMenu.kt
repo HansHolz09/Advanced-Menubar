@@ -209,6 +209,18 @@ private fun ifVisible(visibility: MenuVisibility, block: () -> Unit) {
     }
 }
 
+fun compatibilityOnClick(
+    onMacClick: (() -> Unit)? = null,
+    onNonMacClick: (() -> Unit),
+): (() -> Unit)? =
+    if (hostOs.isMacOS && onMacClick != null) {
+        onMacClick
+    } else if (!hostOs.isMacOS) {
+        onNonMacClick
+    } else {
+        null
+    }
+
 @MenuDsl
 class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>) {
     internal val menus = mutableListOf<TopMenu>()
