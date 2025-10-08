@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import dev.hansholz.advancedmenubar.DefaultMacMenu
 import dev.hansholz.advancedmenubar.MenubarLanguage
 import kotlin.uuid.ExperimentalUuidApi
 
@@ -55,6 +56,8 @@ fun main() = application {
                 val clickedItems = remember { mutableStateListOf<String>() }
                 val customMenus = remember { mutableStateListOf<Int>() }
 
+                val showDefaultMenu = remember { mutableStateOf(false) }
+
                 val checkboxItem1 = remember { mutableStateOf(false) }
                 val checkboxItem2 = remember { mutableStateOf(true) }
                 val checkboxItem3 = remember { mutableStateOf(true) }
@@ -62,15 +65,23 @@ fun main() = application {
                 val textFieldState = rememberTextFieldState()
 
                 key(focusTrigger, language.value) {
-                    MenuBar(
-                        window = window,
-                        customMenus = customMenus,
-                        checkboxItem1 = checkboxItem1,
-                        checkboxItem2 = checkboxItem2,
-                        checkboxItem3 = checkboxItem3,
-                        textFieldState = textFieldState
-                    ) {
-                        clickedItems += it
+                    if (showDefaultMenu.value) {
+                        DefaultMacMenu(
+                            onAboutClick = { println("About Clicked") },
+                            onSettingsClick = { println("Settings Clicked") },
+                            onHelpClick = { println("Help Clicked") },
+                        )
+                    } else {
+                        MenuBar(
+                            window = window,
+                            customMenus = customMenus,
+                            checkboxItem1 = checkboxItem1,
+                            checkboxItem2 = checkboxItem2,
+                            checkboxItem3 = checkboxItem3,
+                            textFieldState = textFieldState
+                        ) {
+                            clickedItems += it
+                        }
                     }
                 }
 
@@ -78,6 +89,7 @@ fun main() = application {
                     language = language,
                     clickedItems = clickedItems,
                     customMenus = customMenus,
+                    showDefaultMenu = showDefaultMenu,
                     checkboxItem1 = checkboxItem1,
                     checkboxItem2 = checkboxItem2,
                     checkboxItem3 = checkboxItem3,

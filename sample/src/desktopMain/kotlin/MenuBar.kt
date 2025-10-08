@@ -7,17 +7,21 @@ import androidx.compose.foundation.text.input.selectAll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.awt.ComposeWindow
+import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.window.FrameWindowScope
 import composeadvancedmenubar.sample.generated.resources.*
-import dev.hansholz.advancedmenubar.AdvancedMacMenu
+import dev.hansholz.advancedmenubar.CompatibilityMenu
 import dev.hansholz.advancedmenubar.MacCocoaMenu
+import dev.hansholz.advancedmenubar.MenuShortcut
+import dev.hansholz.advancedmenubar.MenuVisibility
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MenuBar(
+fun FrameWindowScope.MenuBar(
     window: ComposeWindow,
     customMenus: List<Int>,
     checkboxItem1: MutableState<Boolean>,
@@ -34,7 +38,7 @@ fun MenuBar(
     }
     fun getString(stringResource: StringResource): String = strings.find { it.first == stringResource }?.second ?: "STRING NOT FOUND"
 
-    AdvancedMacMenu(window.title) {
+    CompatibilityMenu(window.title) {
         MacApplicationMenu {
             About { onClick("About") }
             Separator()
@@ -48,19 +52,24 @@ fun MenuBar(
             Separator()
             Quit()
         }
-        MacCustomMenu(getString(Res.string.file)) {
-            Menu(getString(Res.string.new)) {
-                Item(getString(Res.string.project)) { onClick("New Project") }
-                Item(getString(Res.string.file)) { onClick("New File") }
+        FileMenu {
+            FileNew { onClick("New File") }
+            FileOpen { onClick("Open File")}
+            FileOpenRecent {
+                Item("PDF_01", macIcon = MacCocoaMenu.MenuIcon.SFSymbol("doc.richtext")) { onClick("PDF_01") }
+                Item("Picture_02", macIcon = MacCocoaMenu.MenuIcon.SFSymbol("photo")) { onClick("Picture_02") }
+                Separator()
+                FileClearRecent { onClick("Clear Recent Files") }
             }
-            Item(getString(Res.string.open)) { onClick("Open") }
             Separator()
-            Menu(getString(Res.string.export)) {
-                Item(getString(Res.string.as_pdf), icon = MacCocoaMenu.MenuIcon.SFSymbol("doc.richtext")) { onClick("Export as PDF") }
-                Item(getString(Res.string.as_image), icon = MacCocoaMenu.MenuIcon.SFSymbol("photo")) { onClick("Export as Image") }
-            }
+            FileSave { onClick("Save File") }
+            FileSaveAs { onClick("Save File as") }
+            FileRename { onClick("Rename File") }
+            Separator()
+            FilePageSetup(visibility = MenuVisibility.MACOS_ONLY)
+            FilePrint { onClick("Print") }
         }
-        MacEditMenu {
+        EditMenu {
             Undo(enabled = textFieldState.undoState.canUndo) {
                 textFieldState.undoState.undo()
             }
@@ -99,14 +108,14 @@ fun MenuBar(
                 textFieldState.edit { selectAll() }
             }
         }
-        MacViewMenu {
+        ViewMenu(visibility = MenuVisibility.MACOS_ONLY) {
             ShowToolbar(enabled = false) {}
             CustomizeToolbar(enabled = false) {}
             Separator()
             ToggleFullScreen()
         }
         customMenus.forEach {
-            MacCustomMenu("${getString(Res.string.custom)} $it") {
+            CustomMenu("${getString(Res.string.custom)} $it") {
                 Item("${getString(Res.string.custom_item)} 1") { onClick("Custom Item 1 (from Custom $it)") }
                 Item("${getString(Res.string.custom_item)} 2") { onClick("Custom Item 2 (from Custom $it)") }
                 Separator()
@@ -119,7 +128,12 @@ fun MenuBar(
                 Item(getString(Res.string.disabled_item), enabled = false) {}
             }
         }
-        MacWindowMenu {
+        CustomMenu(getString(Res.string.options)) {
+            Checkbox("${getString(Res.string.checkbox_item)} 1", checkboxItem1.value) { checkboxItem1.value = it }
+            Checkbox("${getString(Res.string.checkbox_item)} 2", checkboxItem2.value) { checkboxItem2.value = it }
+            Checkbox("${getString(Res.string.checkbox_item)} 3", checkboxItem3.value) { checkboxItem3.value = it }
+        }
+        WindowMenu(visibility = MenuVisibility.MACOS_ONLY) {
             Separator()
             Close()
             Minimize()
@@ -127,12 +141,7 @@ fun MenuBar(
             Zoom()
             BringAllToFront()
         }
-        MacCustomMenu(getString(Res.string.options)) {
-            Checkbox("${getString(Res.string.checkbox_item)} 1", checkboxItem1.value) { checkboxItem1.value = it }
-            Checkbox("${getString(Res.string.checkbox_item)} 2", checkboxItem2.value) { checkboxItem2.value = it }
-            Checkbox("${getString(Res.string.checkbox_item)} 3", checkboxItem3.value) { checkboxItem3.value = it }
-        }
-        MacHelpMenu {
+        HelpMenu {
             AppHelp { onClick("Help") }
             Separator()
             Item(getString(Res.string.release_notes)) { onClick("Release Notes") }

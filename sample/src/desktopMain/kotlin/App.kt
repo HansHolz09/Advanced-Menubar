@@ -20,6 +20,7 @@ fun App(
     language: MutableState<MenubarLanguage?>,
     clickedItems: List<String>,
     customMenus: SnapshotStateList<Int>,
+    showDefaultMenu: MutableState<Boolean>,
     checkboxItem1: MutableState<Boolean>,
     checkboxItem2: MutableState<Boolean>,
     checkboxItem3: MutableState<Boolean>,
@@ -44,7 +45,8 @@ fun App(
                     Button(
                         onClick = {
                             customMenus += customMenus.size + 1
-                        }
+                        },
+                        enabled = !showDefaultMenu.value
                     ) {
                         Text("Add new Custom Menu")
                     }
@@ -53,16 +55,30 @@ fun App(
                         onClick = {
                             customMenus.removeLast()
                         },
-                        enabled = customMenus.isNotEmpty()
+                        enabled = customMenus.isNotEmpty() && !showDefaultMenu.value
                     ) {
                         Text("Remove last Custom Menu")
                     }
                 }
             }
             item {
+                Row(
+                    modifier = Modifier.padding(top = 15.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = showDefaultMenu.value,
+                        onCheckedChange = { showDefaultMenu.value = it }
+                    )
+                    Spacer(Modifier.width(10.dp))
+                    Text("Show default Menubar")
+                }
+            }
+            item {
                 OutlinedTextField(
                     state = textFieldState,
                     modifier = Modifier.padding(top = 15.dp),
+                    enabled = !showDefaultMenu.value,
                     label = { Text("Test the Edit-Menu here") }
                 )
             }
