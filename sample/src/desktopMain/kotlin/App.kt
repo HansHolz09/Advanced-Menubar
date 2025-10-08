@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.hansholz.advancedmenubar.MenubarLanguage
+import org.jetbrains.skiko.hostOs
 
 @Composable
 fun App(
@@ -68,7 +69,8 @@ fun App(
                 ) {
                     Checkbox(
                         checked = showDefaultMenu.value,
-                        onCheckedChange = { showDefaultMenu.value = it }
+                        onCheckedChange = { showDefaultMenu.value = it },
+                        enabled = hostOs.isMacOS
                     )
                     Spacer(Modifier.width(10.dp))
                     Text("Show default Menubar")

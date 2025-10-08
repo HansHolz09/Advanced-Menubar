@@ -6,6 +6,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import dev.hansholz.advancedmenubar.DefaultMacMenu
 import dev.hansholz.advancedmenubar.MenubarLanguage
+import org.jetbrains.skiko.hostOs
 import kotlin.uuid.ExperimentalUuidApi
 
 @OptIn(ExperimentalUuidApi::class)
@@ -56,7 +57,7 @@ fun main() = application {
                 val clickedItems = remember { mutableStateListOf<String>() }
                 val customMenus = remember { mutableStateListOf<Int>() }
 
-                val showDefaultMenu = remember { mutableStateOf(false) }
+                val showDefaultMenu = remember { mutableStateOf(!hostOs.isMacOS) }
 
                 val checkboxItem1 = remember { mutableStateOf(false) }
                 val checkboxItem2 = remember { mutableStateOf(true) }
