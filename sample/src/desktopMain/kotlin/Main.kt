@@ -45,19 +45,21 @@ fun main() = application {
                 }
 
                 var focusTrigger by remember { mutableStateOf(false) }
-                DisposableEffect(window) {
-                    val listener = object : java.awt.event.WindowFocusListener {
-                        override fun windowGainedFocus(e: java.awt.event.WindowEvent?) { focusTrigger = !focusTrigger }
-                        override fun windowLostFocus(e: java.awt.event.WindowEvent?) {}
+                if (hostOs.isMacOS) {
+                    DisposableEffect(window) {
+                        val listener = object : java.awt.event.WindowFocusListener {
+                            override fun windowGainedFocus(e: java.awt.event.WindowEvent?) { focusTrigger = !focusTrigger }
+                            override fun windowLostFocus(e: java.awt.event.WindowEvent?) {}
+                        }
+                        window.addWindowFocusListener(listener)
+                        onDispose { window.removeWindowFocusListener(listener) }
                     }
-                    window.addWindowFocusListener(listener)
-                    onDispose { window.removeWindowFocusListener(listener) }
                 }
 
                 val clickedItems = remember { mutableStateListOf<String>() }
                 val customMenus = remember { mutableStateListOf<Int>() }
 
-                val showDefaultMenu = remember { mutableStateOf(!hostOs.isMacOS) }
+                val showDefaultMenu = remember { mutableStateOf(false) }
 
                 val checkboxItem1 = remember { mutableStateOf(false) }
                 val checkboxItem2 = remember { mutableStateOf(true) }
