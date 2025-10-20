@@ -1,5 +1,7 @@
 # Advanced Menubar for Compose Desktop
 
+<img alt="Screenshot of Advanced-Menubar Sample" src="assets/screenshot.png" style="border-radius:3%"/>
+
 Advanced-Menubar is a Compose Desktop (JVM) library that replaces the default macOS menu bar integration with a declarative DSL. It provides native macOS menus, shortcut handling and fallbacks for Windows and Linux so your desktop apps can ship with a consistent menu experience.
 
 ## Features
