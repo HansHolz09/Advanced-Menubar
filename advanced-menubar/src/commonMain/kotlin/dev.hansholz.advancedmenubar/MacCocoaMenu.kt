@@ -1,6 +1,11 @@
 package dev.hansholz.advancedmenubar
 
-import com.sun.jna.*
+import com.sun.jna.Callback
+import com.sun.jna.Library
+import com.sun.jna.Memory
+import com.sun.jna.Native
+import com.sun.jna.NativeLibrary
+import com.sun.jna.Pointer
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.ConcurrentHashMap
 
@@ -23,12 +28,18 @@ object MacCocoaMenu {
     private fun sel(name: String): Pointer = objc.sel_registerName(name)
 
     interface Dispatch : Library {
-        fun dispatch_get_main_queue(): Pointer
-        fun dispatch_sync_f(queue: Pointer, context: Pointer, work: DispatchFunction)
+        fun dispatch_sync_f(queue: Pointer?, context: Pointer?, work: DispatchFunction)
     }
-    interface DispatchFunction : Callback { fun invoke(context: Pointer) }
+    interface DispatchFunction : Callback { fun invoke(context: Pointer?) }
     private val dispatch: Dispatch? by lazy {
-        try { Native.load("dispatch", Dispatch::class.java) } catch (_: Throwable) { null }
+        listOf("dispatch", "System").firstNotNullOfOrNull { lib ->
+            try { Native.load(lib, Dispatch::class.java) } catch (_: Throwable) { null }
+        }
+    }
+    private val dispatchLib: NativeLibrary? by lazy {
+        listOf("dispatch", "System").firstNotNullOfOrNull { lib ->
+            try { NativeLibrary.getInstance(lib) } catch (_: Throwable) { null }
+        }
     }
 
     sealed interface MenuElement
@@ -518,13 +529,20 @@ object MacCocoaMenu {
     private fun msgSendPPL(recv: Pointer?, cmd: String, a: Pointer?, l: Long): Pointer =
         try { objc.objc_msgSend(nn(recv), selPtr(cmd), nn(a), l) } catch (_: Throwable) { Pointer.NULL }
 
+    private fun dispatchMainQueue(): Pointer {
+        val lib = dispatchLib ?: error("could not load libdispatch/libSystem")
+        val names = listOf("_dispatch_main_q", "__dispatch_main_q")
+        for (n in names) {
+            try { return lib.getGlobalVariableAddress(n) } catch (_: UnsatisfiedLinkError) {}
+        }
+        error("Main queue symbol not found (neither _dispatch_main_q nor __dispatch_main_q)")
+    }
+
     private fun runOnMain(block: () -> Unit) {
-        val d = dispatch
-        if (d != null) {
-            d.dispatch_sync_f(d.dispatch_get_main_queue(), Pointer.NULL, object : DispatchFunction {
-                override fun invoke(context: Pointer) = block()
-            })
-        } else block()
+        val mainQ = dispatchMainQueue()
+        dispatch!!.dispatch_sync_f(mainQ, null, object : DispatchFunction {
+            override fun invoke(context: Pointer?) = block()
+        })
     }
 
     private fun getNsApp(): Pointer {
