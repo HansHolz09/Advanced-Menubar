@@ -1187,7 +1187,6 @@ object MacCocoaMenu {
                         val sub = buildGenericMenu(m.title, m.elements)
                         msgSendPP(item, "setSubmenu:", sub); addItemToMenu(menubar, item)
                     }
-                    else -> {}
                 }
             }
 

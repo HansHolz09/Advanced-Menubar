@@ -1,11 +1,17 @@
 [versions]
-compose-plugin = "1.10.0-alpha01"
-kotlin = "2.2.20"
-mavenPublishVanniktech = "0.34.0"
-jna = "5.17.0"
+compose-plugin = "1.10.1"
+kotlin = "2.3.10"
+material3 = "1.10.0-alpha05"
+mavenPublishVanniktech = "0.36.0"
+jna = "5.18.1"
 
 [libraries]
 jna-core = { module = "net.java.dev.jna:jna", version.ref = "jna" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose-plugin" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose-plugin" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-plugin" }
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose-plugin" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
 
 [plugins]
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

@@ -11,10 +11,10 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // Compose
-            implementation(compose.runtime)
-            implementation(compose.ui)
-            implementation(compose.foundation)
-            implementation(compose.components.resources)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.components.resources)
 
             // JNA Platform
             implementation(libs.jna.core)
