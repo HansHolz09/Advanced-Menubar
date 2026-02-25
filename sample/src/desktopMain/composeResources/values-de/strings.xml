@@ -1,14 +1,12 @@
 <resources>
-    <string name="file">Datei</string>
-    <string name="new">Neu</string>
-    <string name="project">Projekt</string>
-    <string name="open">Öffnen</string>
-    <string name="export">Exportieren</string>
-    <string name="as_pdf">Als PDF</string>
-    <string name="as_image">Als Bild</string>
+    <string name="check_for_updates">Nach Updates suchen</string>
+    <string name="available_version">Verfügbare Version</string>
+    <string name="new_update_available">Neues Update verfügbar</string>
+    <string name="section">Sektion</string>
     <string name="custom">Benutzerdefiniert</string>
     <string name="custom_item">Benutzerdefiniertes Element</string>
     <string name="custom_submenu">Benutzerdefiniertes Untermenü</string>
+    <string name="file">Datei</string>
     <string name="disabled_item">Deaktiviertes Element</string>
     <string name="options">Optionen</string>
     <string name="checkbox_item">Kontrollkasten-Element</string>

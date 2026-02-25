@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">About %1$s</string>
     <string name="settings">Settings…</string>
@@ -6,7 +7,6 @@
     <string name="hide_others">Hide Others</string>
     <string name="show_all">Show All</string>
     <string name="quit">Quit %1$s</string>
-
     <string name="file">File</string>
     <string name="file_new">New</string>
     <string name="file_open">Open…</string>
@@ -19,28 +19,26 @@
     <string name="file_duplicate">Duplicate</string>
     <string name="file_rename">Rename…</string>
     <string name="file_move_to">Move To…</string>
-    <string name="file_revert">Revert</string>
     <string name="file_page_setup">Page Setup…</string>
     <string name="file_print">Print…</string>
-
     <string name="edit">Edit</string>
-    <string name="undo">Undo</string>
-    <string name="redo">Redo</string>
-    <string name="cut">Cut</string>
-    <string name="copy">Copy</string>
-    <string name="paste">Paste</string>
+    <string name="edit_undo">Undo</string>
+    <string name="edit_redo">Redo</string>
+    <string name="edit_cut">Cut</string>
+    <string name="edit_copy">Copy</string>
+    <string name="edit_paste">Paste</string>
     <string name="paste_and_match_style">Paste and Match Style</string>
-    <string name="delete">Delete</string>
-    <string name="select_all">Select All</string>
+    <string name="edit_delete">Delete</string>
+    <string name="edit_select_all">Select All</string>
     <string name="find">Find</string>
     <string name="find_dots">Find…</string>
     <string name="find_next">Find Next</string>
     <string name="find_previous">Find Previous</string>
     <string name="use_selection_for_find">Use Selection for Find</string>
     <string name="jump_to_selection">Jump to Selection</string>
-    <string name="replace">Replace…</string>
-    <string name="replace_and_find">Replace and Find</string>
-    <string name="replace_all">Replace All</string>
+    <string name="replace">Find and Replace…</string>
+    <string name="replace_and_find">Find and Replace…</string>
+    <string name="replace_all">Find and Replace…</string>
     <string name="spelling_and_grammar">Spelling and Grammar</string>
     <string name="toggle_correct_spelling_automatically">Correct Spelling Automatically</string>
     <string name="substitutions">Substitutions</string>
@@ -55,52 +53,48 @@
     <string name="speech">Speech</string>
     <string name="start_speaking">Start Speaking</string>
     <string name="stop_speaking">Stop Speaking</string>
-
     <string name="format">Format</string>
     <string name="font">Font</string>
-    <string name="show_fonts">Show Fonts…</string>
-    <string name="show_colors">Show Colors…</string>
+    <string name="show_fonts">Show Fonts</string>
+    <string name="show_colors">Show Colors</string>
     <string name="bold">Bold</string>
     <string name="italic">Italic</string>
     <string name="underline">Underline</string>
-    <string name="bigger">Bigger</string>
+    <string name="bigger">Larger</string>
     <string name="smaller">Smaller</string>
-    <string name="kerning_standard">Use Standard Kerning</string>
-    <string name="kerning_none">Turn Off Kerning</string>
-    <string name="kerning_tighten">Tighten Kerning</string>
-    <string name="kerning_loosen">Loosen Kerning</string>
-    <string name="ligatures_none">Turn Off Ligatures</string>
-    <string name="ligatures_standard">Use Standard Ligatures</string>
-    <string name="ligatures_all">Use All Ligatures</string>
+    <string name="kerning_standard">Use Default</string>
+    <string name="kerning_none">Use None</string>
+    <string name="kerning_tighten">Tighten</string>
+    <string name="kerning_loosen">Loosen</string>
+    <string name="ligatures_none">Use None</string>
+    <string name="ligatures_standard">Use Default</string>
+    <string name="ligatures_all">Use All</string>
     <string name="baseline">Baseline</string>
-    <string name="raise_baseline">Raise Baseline</string>
-    <string name="lower_baseline">Lower Baseline</string>
+    <string name="raise_baseline">Raise</string>
+    <string name="lower_baseline">Lower</string>
     <string name="superscript">Superscript</string>
     <string name="subscript">Subscript</string>
     <string name="text">Text</string>
     <string name="align_left">Align Left</string>
-    <string name="align_center">Align Center</string>
+    <string name="align_center">Center</string>
     <string name="align_right">Align Right</string>
-    <string name="align_justified">Justified</string>
-
+    <string name="align_justified">Justify</string>
     <string name="view">View</string>
     <string name="show_toolbar">Show Toolbar</string>
     <string name="customize_toolbar">Customize Toolbar…</string>
     <string name="full_screen">Enter Full Screen</string>
     <string name="show_sidebar">Show Sidebar</string>
     <string name="show_tab_bar">Show Tab Bar</string>
-
     <string name="window">Window</string>
-    <string name="close">Close Window</string>
-    <string name="minimize">Minimize</string>
-    <string name="minimize_all">Minimize All</string>
-    <string name="zoom">Zoom</string>
+    <string name="window_close">Close Window</string>
+    <string name="window_minimize">Minimize</string>
+    <string name="window_minimize_all">Minimize All</string>
+    <string name="window_zoom">Zoom</string>
     <string name="bring_all_to_front">Bring All to Front</string>
     <string name="show_next_tab">Show Next Tab</string>
     <string name="show_previous_tab">Show Previous Tab</string>
     <string name="merge_all_windows">Merge All Windows</string>
     <string name="move_tab_to_new_window">Move Tab to New Window</string>
-
     <string name="help">Help</string>
     <string name="app_help">%1$s Help</string>
 </resources>

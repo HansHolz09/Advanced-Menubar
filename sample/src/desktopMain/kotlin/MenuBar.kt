@@ -11,9 +11,25 @@ import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.window.FrameWindowScope
-import composeadvancedmenubar.sample.generated.resources.*
+import composeadvancedmenubar.sample.generated.resources.Res
+import composeadvancedmenubar.sample.generated.resources.allStringResources
+import composeadvancedmenubar.sample.generated.resources.available_version
+import composeadvancedmenubar.sample.generated.resources.check_for_updates
+import composeadvancedmenubar.sample.generated.resources.checkbox_item
+import composeadvancedmenubar.sample.generated.resources.community_forum
+import composeadvancedmenubar.sample.generated.resources.custom
+import composeadvancedmenubar.sample.generated.resources.custom_item
+import composeadvancedmenubar.sample.generated.resources.custom_submenu
+import composeadvancedmenubar.sample.generated.resources.disabled_item
+import composeadvancedmenubar.sample.generated.resources.file
+import composeadvancedmenubar.sample.generated.resources.new_update_available
+import composeadvancedmenubar.sample.generated.resources.options
+import composeadvancedmenubar.sample.generated.resources.release_notes
+import composeadvancedmenubar.sample.generated.resources.resources
+import composeadvancedmenubar.sample.generated.resources.section
+import composeadvancedmenubar.sample.generated.resources.website
 import dev.hansholz.advancedmenubar.CompatibilityMenu
-import dev.hansholz.advancedmenubar.MacCocoaMenu
+import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuIcon.SFSymbol
 import dev.hansholz.advancedmenubar.MenuShortcut
 import dev.hansholz.advancedmenubar.MenuVisibility
 import org.jetbrains.compose.resources.StringResource
@@ -42,6 +58,16 @@ fun FrameWindowScope.MenuBar(
         MacApplicationMenu {
             About { onClick("About") }
             Separator()
+            Item(
+                title = getString(Res.string.check_for_updates),
+                macIcon = SFSymbol("arrow.down.app"),
+                macSubtitle = "${getString(Res.string.available_version)}: 1.0.0",
+                macTooltip = "Changelog:\n- First big new Feature\n- Fixed a big security issue\n- Many little bugfixes and stability improvements",
+                macBadge = getString(Res.string.new_update_available)
+            ) {
+                onClick("Check for Updates")
+            }
+            Separator()
             Settings { onClick("Settings") }
             Separator()
             Services()
@@ -56,8 +82,8 @@ fun FrameWindowScope.MenuBar(
             FileNew { onClick("New File") }
             FileOpen { onClick("Open File")}
             FileOpenRecent {
-                Item("PDF_01", macIcon = MacCocoaMenu.MenuIcon.SFSymbol("doc.richtext")) { onClick("PDF_01") }
-                Item("Picture_02", macIcon = MacCocoaMenu.MenuIcon.SFSymbol("photo")) { onClick("Picture_02") }
+                Item("PDF_01", macIcon = SFSymbol("doc.richtext")) { onClick("PDF_01") }
+                Item("Picture_02", macIcon = SFSymbol("photo")) { onClick("Picture_02") }
                 Separator()
                 FileClearRecent { onClick("Clear Recent Files") }
             }
@@ -116,16 +142,18 @@ fun FrameWindowScope.MenuBar(
         }
         customMenus.forEach {
             CustomMenu("${getString(Res.string.custom)} $it") {
-                Item("${getString(Res.string.custom_item)} 1") { onClick("Custom Item 1 (from Custom $it)") }
-                Item("${getString(Res.string.custom_item)} 2") { onClick("Custom Item 2 (from Custom $it)") }
-                Separator()
-                Menu(getString(Res.string.custom_submenu)) {
-                    Menu("${getString(Res.string.file)} 2") {
-                        Item(getString(Res.string.disabled_item), enabled = false) {}
-                    }
+                Section("${getString(Res.string.section)} 1") {
+                    Item("${getString(Res.string.custom_item)} 1") { onClick("Custom Item 1 (from Custom $it)") }
+                    Item("${getString(Res.string.custom_item)} 2") { onClick("Custom Item 2 (from Custom $it)") }
                 }
-                Separator()
-                Item(getString(Res.string.disabled_item), enabled = false) {}
+                Section("${getString(Res.string.section)} 2") {
+                    Menu(getString(Res.string.custom_submenu)) {
+                        Menu("${getString(Res.string.file)} 2") {
+                            Item(getString(Res.string.disabled_item), enabled = false) {}
+                        }
+                    }
+                    Item(getString(Res.string.disabled_item), enabled = false) {}
+                }
             }
         }
         CustomMenu(getString(Res.string.options)) {

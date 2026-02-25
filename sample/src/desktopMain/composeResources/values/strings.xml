@@ -1,14 +1,12 @@
 <resources>
-    <string name="file">File</string>
-    <string name="new">New</string>
-    <string name="project">Project</string>
-    <string name="open">Open</string>
-    <string name="export">Export</string>
-    <string name="as_pdf">As PDF</string>
-    <string name="as_image">As Image</string>
+    <string name="check_for_updates">Check for Updates</string>
+    <string name="available_version">Available Version</string>
+    <string name="new_update_available">New Update Available</string>
+    <string name="section">Section</string>
     <string name="custom">Custom</string>
     <string name="custom_item">Custom Item</string>
     <string name="custom_submenu">Custom Submenu</string>
+    <string name="file">File</string>
     <string name="disabled_item">Disabled Item</string>
     <string name="options">Options</string>
     <string name="checkbox_item">Checkbox Item</string>

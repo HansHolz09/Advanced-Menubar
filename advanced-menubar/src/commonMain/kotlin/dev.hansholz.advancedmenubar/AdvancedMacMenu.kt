@@ -16,7 +16,105 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import composeadvancedmenubar.advanced_menubar.generated.resources.*
+import composeadvancedmenubar.advanced_menubar.generated.resources.Res
+import composeadvancedmenubar.advanced_menubar.generated.resources.about
+import composeadvancedmenubar.advanced_menubar.generated.resources.align_center
+import composeadvancedmenubar.advanced_menubar.generated.resources.align_justified
+import composeadvancedmenubar.advanced_menubar.generated.resources.align_left
+import composeadvancedmenubar.advanced_menubar.generated.resources.align_right
+import composeadvancedmenubar.advanced_menubar.generated.resources.allStringResources
+import composeadvancedmenubar.advanced_menubar.generated.resources.app_help
+import composeadvancedmenubar.advanced_menubar.generated.resources.baseline
+import composeadvancedmenubar.advanced_menubar.generated.resources.bigger
+import composeadvancedmenubar.advanced_menubar.generated.resources.bold
+import composeadvancedmenubar.advanced_menubar.generated.resources.bring_all_to_front
+import composeadvancedmenubar.advanced_menubar.generated.resources.capitalize
+import composeadvancedmenubar.advanced_menubar.generated.resources.customize_toolbar
+import composeadvancedmenubar.advanced_menubar.generated.resources.edit
+import composeadvancedmenubar.advanced_menubar.generated.resources.edit_copy
+import composeadvancedmenubar.advanced_menubar.generated.resources.edit_cut
+import composeadvancedmenubar.advanced_menubar.generated.resources.edit_delete
+import composeadvancedmenubar.advanced_menubar.generated.resources.edit_paste
+import composeadvancedmenubar.advanced_menubar.generated.resources.edit_redo
+import composeadvancedmenubar.advanced_menubar.generated.resources.edit_select_all
+import composeadvancedmenubar.advanced_menubar.generated.resources.edit_undo
+import composeadvancedmenubar.advanced_menubar.generated.resources.file
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_clear_recent
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_close
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_close_all
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_duplicate
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_move_to
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_new
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_open
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_open_recent
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_page_setup
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_print
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_rename
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_save
+import composeadvancedmenubar.advanced_menubar.generated.resources.file_save_as
+import composeadvancedmenubar.advanced_menubar.generated.resources.find
+import composeadvancedmenubar.advanced_menubar.generated.resources.find_dots
+import composeadvancedmenubar.advanced_menubar.generated.resources.find_next
+import composeadvancedmenubar.advanced_menubar.generated.resources.find_previous
+import composeadvancedmenubar.advanced_menubar.generated.resources.font
+import composeadvancedmenubar.advanced_menubar.generated.resources.format
+import composeadvancedmenubar.advanced_menubar.generated.resources.full_screen
+import composeadvancedmenubar.advanced_menubar.generated.resources.help
+import composeadvancedmenubar.advanced_menubar.generated.resources.hide
+import composeadvancedmenubar.advanced_menubar.generated.resources.hide_others
+import composeadvancedmenubar.advanced_menubar.generated.resources.italic
+import composeadvancedmenubar.advanced_menubar.generated.resources.jump_to_selection
+import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_loosen
+import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_none
+import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_standard
+import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_tighten
+import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_all
+import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_none
+import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_standard
+import composeadvancedmenubar.advanced_menubar.generated.resources.lower_baseline
+import composeadvancedmenubar.advanced_menubar.generated.resources.make_lower_case
+import composeadvancedmenubar.advanced_menubar.generated.resources.make_upper_case
+import composeadvancedmenubar.advanced_menubar.generated.resources.merge_all_windows
+import composeadvancedmenubar.advanced_menubar.generated.resources.move_tab_to_new_window
+import composeadvancedmenubar.advanced_menubar.generated.resources.paste_and_match_style
+import composeadvancedmenubar.advanced_menubar.generated.resources.quit
+import composeadvancedmenubar.advanced_menubar.generated.resources.raise_baseline
+import composeadvancedmenubar.advanced_menubar.generated.resources.replace
+import composeadvancedmenubar.advanced_menubar.generated.resources.replace_all
+import composeadvancedmenubar.advanced_menubar.generated.resources.replace_and_find
+import composeadvancedmenubar.advanced_menubar.generated.resources.services
+import composeadvancedmenubar.advanced_menubar.generated.resources.settings
+import composeadvancedmenubar.advanced_menubar.generated.resources.show_all
+import composeadvancedmenubar.advanced_menubar.generated.resources.show_colors
+import composeadvancedmenubar.advanced_menubar.generated.resources.show_fonts
+import composeadvancedmenubar.advanced_menubar.generated.resources.show_next_tab
+import composeadvancedmenubar.advanced_menubar.generated.resources.show_previous_tab
+import composeadvancedmenubar.advanced_menubar.generated.resources.show_sidebar
+import composeadvancedmenubar.advanced_menubar.generated.resources.show_tab_bar
+import composeadvancedmenubar.advanced_menubar.generated.resources.show_toolbar
+import composeadvancedmenubar.advanced_menubar.generated.resources.smaller
+import composeadvancedmenubar.advanced_menubar.generated.resources.speech
+import composeadvancedmenubar.advanced_menubar.generated.resources.spelling_and_grammar
+import composeadvancedmenubar.advanced_menubar.generated.resources.start_speaking
+import composeadvancedmenubar.advanced_menubar.generated.resources.stop_speaking
+import composeadvancedmenubar.advanced_menubar.generated.resources.subscript
+import composeadvancedmenubar.advanced_menubar.generated.resources.substitutions
+import composeadvancedmenubar.advanced_menubar.generated.resources.superscript
+import composeadvancedmenubar.advanced_menubar.generated.resources.text
+import composeadvancedmenubar.advanced_menubar.generated.resources.toggle_correct_spelling_automatically
+import composeadvancedmenubar.advanced_menubar.generated.resources.toggle_smart_dashes
+import composeadvancedmenubar.advanced_menubar.generated.resources.toggle_smart_links
+import composeadvancedmenubar.advanced_menubar.generated.resources.toggle_smart_quotes
+import composeadvancedmenubar.advanced_menubar.generated.resources.toggle_text_replacement
+import composeadvancedmenubar.advanced_menubar.generated.resources.transformations
+import composeadvancedmenubar.advanced_menubar.generated.resources.underline
+import composeadvancedmenubar.advanced_menubar.generated.resources.use_selection_for_find
+import composeadvancedmenubar.advanced_menubar.generated.resources.view
+import composeadvancedmenubar.advanced_menubar.generated.resources.window
+import composeadvancedmenubar.advanced_menubar.generated.resources.window_close
+import composeadvancedmenubar.advanced_menubar.generated.resources.window_minimize
+import composeadvancedmenubar.advanced_menubar.generated.resources.window_minimize_all
+import composeadvancedmenubar.advanced_menubar.generated.resources.window_zoom
 import dev.hansholz.advancedmenubar.MacCocoaMenu.CheckboxItem
 import dev.hansholz.advancedmenubar.MacCocoaMenu.CustomItem
 import dev.hansholz.advancedmenubar.MacCocoaMenu.EditStd
@@ -249,13 +347,6 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             onClick: (() -> Unit)?,
         ) { elements += FileStd.MoveTo(title, enabled, icon, onClick) }
 
-        fun FileRevert(
-            title: String = getString(Res.string.file_revert),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)?,
-        ) { elements += FileStd.Revert(title, enabled, icon, onClick) }
-
         fun FilePageSetup(
             title: String = getString(Res.string.file_page_setup),
             enabled: Boolean = true,
@@ -272,35 +363,35 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
 
 
         fun Undo(
-            title: String = getString(Res.string.undo),
+            title: String = getString(Res.string.edit_undo),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
         ) { elements += EditStd.Undo(title, enabled, icon, onClick) }
 
         fun Redo(
-            title: String = getString(Res.string.redo),
+            title: String = getString(Res.string.edit_redo),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
         ) { elements += EditStd.Redo(title, enabled, icon, onClick) }
 
         fun Cut(
-            title: String = getString(Res.string.cut),
+            title: String = getString(Res.string.edit_cut),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
         ) { elements += EditStd.Cut(title, enabled, icon, onClick) }
 
         fun Copy(
-            title: String = getString(Res.string.copy),
+            title: String = getString(Res.string.edit_copy),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
         ) { elements += EditStd.Copy(title, enabled, icon, onClick) }
 
         fun Paste(
-            title: String = getString(Res.string.paste),
+            title: String = getString(Res.string.edit_paste),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
@@ -314,14 +405,14 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
         ) { elements += EditStd.PasteAndMatchStyle(title, enabled, icon, onClick) }
 
         fun Delete(
-            title: String = getString(Res.string.delete),
+            title: String = getString(Res.string.edit_delete),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
         ) { elements += EditStd.Delete(title, enabled, icon, onClick) }
 
         fun SelectAll(
-            title: String = getString(Res.string.select_all),
+            title: String = getString(Res.string.edit_select_all),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
@@ -333,7 +424,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             block: MacMenuScope.() -> Unit
-        ) = Menu(title, enabled, icon, block)
+        ) = Menu(title, enabled, icon, null, null, block)
 
         fun Find(
             title: String = getString(Res.string.find_dots),
@@ -397,7 +488,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             block: MacMenuScope.() -> Unit
-        ) = Menu(title, enabled, icon, block)
+        ) = Menu(title, enabled, icon, null, null, block)
 
         fun ToggleCorrectSpellingAutomatically(
             title: String = getString(Res.string.toggle_correct_spelling_automatically),
@@ -413,7 +504,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             block: MacMenuScope.() -> Unit
-        ) = Menu(title, enabled, icon, block)
+        ) = Menu(title, enabled, icon, null, null, block)
 
         fun ToggleSmartQuotes(
             title: String = getString(Res.string.toggle_smart_quotes),
@@ -453,7 +544,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             block: MacMenuScope.() -> Unit
-        ) = Menu(title, enabled, icon, block)
+        ) = Menu(title, enabled, icon, null, null, block)
 
         fun MakeUpperCase(
             title: String = getString(Res.string.make_upper_case),
@@ -482,7 +573,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             block: MacMenuScope.() -> Unit
-        ) = Menu(title, enabled, icon, block)
+        ) = Menu(title, enabled, icon, null, null, block)
 
         fun StartSpeaking(
             title: String = getString(Res.string.start_speaking),
@@ -519,7 +610,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             block: MacMenuScope.() -> Unit
-        ) = Menu(title, enabled, icon, block)
+        ) = Menu(title, enabled, icon, null, null, block)
 
         fun Bold(
             title: String = getString(Res.string.bold),
@@ -614,7 +705,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             block: MacMenuScope.() -> Unit
-        ) = Menu(title, enabled, icon, block)
+        ) = Menu(title, enabled, icon, null, null, block)
 
 
         fun RaiseBaseline(
@@ -651,7 +742,7 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             block: MacMenuScope.() -> Unit
-        ) = Menu(title, enabled, icon, block)
+        ) = Menu(title, enabled, icon, null, null, block)
 
         fun AlignLeft(
             title: String = getString(Res.string.align_left),
@@ -726,28 +817,28 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
 
 
         fun Close(
-            title: String = getString(Res.string.close),
+            title: String = getString(Res.string.window_close),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)? = null
         ) { elements += WindowStd.Close(title, enabled, icon, onClick) }
 
         fun Minimize(
-            title: String = getString(Res.string.minimize),
+            title: String = getString(Res.string.window_minimize),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)? = null
         ) { elements += WindowStd.Minimize(title, enabled, icon, onClick) }
 
         fun MinimizeAll(
-            title: String = getString(Res.string.minimize_all),
+            title: String = getString(Res.string.window_minimize_all),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)? = null
         ) { elements += WindowStd.MinimizeAll(title, enabled, icon, onClick) }
 
         fun Zoom(
-            title: String = getString(Res.string.zoom),
+            title: String = getString(Res.string.window_zoom),
             enabled: Boolean = true,
             icon: MenuIcon? = null,
             onClick: (() -> Unit)? = null
@@ -802,8 +893,11 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             shortcut: MenuShortcut? = null,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
+            subtitle: String? = null,
+            tooltip: String? = null,
+            badge: String? = null,
             onClick: () -> Unit
-        ) { elements += CustomItem(title, shortcut, enabled, icon, onClick) }
+        ) { elements += CustomItem(title, shortcut, enabled, icon, subtitle, tooltip, badge, onClick) }
 
         fun Checkbox(
             title: String,
@@ -811,8 +905,11 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             shortcut: MenuShortcut? = null,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
+            subtitle: String? = null,
+            tooltip: String? = null,
+            badge: String? = null,
             onToggle: (Boolean) -> Unit
-        ) { elements += CheckboxItem(title, checked, shortcut, enabled, icon, onToggle) }
+        ) { elements += CheckboxItem(title, checked, shortcut, enabled, icon, subtitle, tooltip, badge, onToggle) }
 
         fun Separator() { elements += Separator }
 
@@ -820,11 +917,23 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             title: String,
             enabled: Boolean = true,
             icon: MenuIcon? = null,
+            subtitle: String? = null,
+            badge: String? = null,
             block: MacMenuScope.() -> Unit
         ) {
             val s = MacMenuScope(strings)
             s.block()
-            elements += Submenu(title, s.elements.toList(), enabled, icon)
+            elements += Submenu(title, s.elements.toList(), enabled, icon, subtitle, badge)
+        }
+
+        fun MacMenuScope.Section(
+            title: String,
+            content: MacMenuScope.() -> Unit
+        ) {
+            Separator()
+            Item(title, enabled = false) {}
+            content()
+            Separator()
         }
     }
 

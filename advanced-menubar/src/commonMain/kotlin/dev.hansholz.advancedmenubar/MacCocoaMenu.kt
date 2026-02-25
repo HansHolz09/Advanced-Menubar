@@ -66,7 +66,6 @@ object MacCocoaMenu {
         data class Duplicate(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
         data class Rename(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
         data class MoveTo(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
-        data class Revert(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
         data class PageSetup(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
         data class Print(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
         data class ClearRecent(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FileStd()
@@ -165,6 +164,9 @@ object MacCocoaMenu {
         val shortcut: MenuShortcut? = null,
         val enabled: Boolean = true,
         val icon: MenuIcon? = null,
+        val subtitle: String? = null,
+        val tooltip: String? = null,
+        val badge: String? = null,
         val onClick: () -> Unit
     ) : MenuElement
     data class CheckboxItem(
@@ -173,9 +175,20 @@ object MacCocoaMenu {
         val shortcut: MenuShortcut? = null,
         val enabled: Boolean = true,
         val icon: MenuIcon? = null,
+        val subtitle: String? = null,
+        val tooltip: String? = null,
+        val badge: String? = null,
         val onToggle: (Boolean) -> Unit
     ) : MenuElement
-    data class Submenu(val title: String, val children: List<MenuElement>, val enabled: Boolean = true, val icon: MenuIcon? = null) : MenuElement
+    data class Submenu(
+        val title: String,
+        val children: List<MenuElement>,
+        val enabled: Boolean = true,
+        val icon: MenuIcon? = null,
+        val subtitle: String? = null,
+        val badge: String? = null,
+    ) : MenuElement
+    data class SectionHeader(val title: String) : MenuElement
 
     sealed class TopMenu {
         data class Application(val elements: List<MenuElement>) : TopMenu()
@@ -255,7 +268,6 @@ object MacCocoaMenu {
         is FileStd.Duplicate -> el.enabled
         is FileStd.Rename -> el.enabled
         is FileStd.MoveTo -> el.enabled
-        is FileStd.Revert -> el.enabled
         is FileStd.PageSetup -> el.enabled
         is FileStd.Print -> el.enabled
         is FileStd.ClearRecent -> el.enabled
@@ -336,111 +348,9 @@ object MacCocoaMenu {
 
     private fun signatureOf(el: MenuElement): String {
         val k = el::class.java.simpleName
-        val title = when (el) {
-            is SystemItem.About -> el.title
-            is SystemItem.Settings -> el.title
-            is SystemItem.Services -> el.title
-            is SystemItem.Hide -> el.title
-            is SystemItem.HideOthers -> el.title
-            is SystemItem.ShowAll -> el.title
-            is SystemItem.Quit -> el.title
-
-            is FileStd.New -> el.title
-            is FileStd.Open -> el.title
-            is FileStd.OpenRecent -> el.title
-            is FileStd.Close -> el.title
-            is FileStd.CloseAll -> el.title
-            is FileStd.Save -> el.title
-            is FileStd.SaveAs -> el.title
-            is FileStd.Duplicate -> el.title
-            is FileStd.Rename -> el.title
-            is FileStd.MoveTo -> el.title
-            is FileStd.Revert -> el.title
-            is FileStd.PageSetup -> el.title
-            is FileStd.Print -> el.title
-            is FileStd.ClearRecent -> el.title
-
-            is EditStd.Undo -> el.title
-            is EditStd.Redo -> el.title
-            is EditStd.Cut -> el.title
-            is EditStd.Copy -> el.title
-            is EditStd.Paste -> el.title
-            is EditStd.PasteAndMatchStyle -> el.title
-            is EditStd.Delete -> el.title
-            is EditStd.SelectAll -> el.title
-            is EditStd.Find -> el.title
-            is EditStd.FindNext -> el.title
-            is EditStd.FindPrevious -> el.title
-            is EditStd.UseSelectionForFind -> el.title
-            is EditStd.JumpToSelection -> el.title
-            is EditStd.Replace -> el.title
-            is EditStd.ReplaceAndFind -> el.title
-            is EditStd.ReplaceAll -> el.title
-            is EditStd.ToggleSmartQuotes -> el.title
-            is EditStd.ToggleSmartDashes -> el.title
-            is EditStd.ToggleLinkDetection -> el.title
-            is EditStd.ToggleTextReplacement -> el.title
-            is EditStd.ToggleSpellingCorrection -> el.title
-            is EditStd.Uppercase -> el.title
-            is EditStd.Lowercase -> el.title
-            is EditStd.Capitalize -> el.title
-            is EditStd.StartSpeaking -> el.title
-            is EditStd.StopSpeaking -> el.title
-
-            is FormatStd.ShowFonts -> el.title
-            is FormatStd.ShowColors -> el.title
-            is FormatStd.Bold -> el.title
-            is FormatStd.Italic -> el.title
-            is FormatStd.Underline -> el.title
-            is FormatStd.Bigger -> el.title
-            is FormatStd.Smaller -> el.title
-            is FormatStd.KerningStandard -> el.title
-            is FormatStd.KerningNone -> el.title
-            is FormatStd.KerningTighten -> el.title
-            is FormatStd.KerningLoosen -> el.title
-            is FormatStd.LigaturesNone -> el.title
-            is FormatStd.LigaturesStandard -> el.title
-            is FormatStd.LigaturesAll -> el.title
-            is FormatStd.RaiseBaseline -> el.title
-            is FormatStd.LowerBaseline -> el.title
-            is FormatStd.Superscript -> el.title
-            is FormatStd.Subscript -> el.title
-            is FormatStd.AlignLeft -> el.title
-            is FormatStd.AlignCenter -> el.title
-            is FormatStd.AlignRight -> el.title
-            is FormatStd.AlignJustified -> el.title
-
-            is ViewStd.ShowToolbar -> el.title
-            is ViewStd.CustomizeToolbar -> el.title
-            is ViewStd.ToggleFullScreen -> el.title
-            is ViewStd.ToggleSidebar -> el.title
-            is ViewStd.ToggleTabBar -> el.title
-
-            is WindowStd.Close -> el.title
-            is WindowStd.Minimize -> el.title
-            is WindowStd.MinimizeAll -> el.title
-            is WindowStd.Zoom -> el.title
-            is WindowStd.BringAllToFront -> el.title
-            is WindowStd.ShowNextTab -> el.title
-            is WindowStd.ShowPreviousTab -> el.title
-            is WindowStd.MergeAllWindows -> el.title
-            is WindowStd.MoveTabToNewWindow -> el.title
-
-            is HelpItem.AppHelp -> el.title
-
-            is CustomItem -> "${el.title}|${shortcutSig(el.shortcut)}"
-            is CheckboxItem -> "${el.title}|${shortcutSig(el.shortcut)}"
-
-            is Submenu -> el.title
-            Separator -> "-"
-        }
+        val hash = el.hashCode()
         val children = if (el is Submenu) el.children.size else -1
-        return "$k|$title|$children"
-    }
-
-    private fun shortcutSig(s: MenuShortcut?): String {
-        val p = s ?: return ""
-        return "k=${p.key};m=${p.meta};c=${p.ctrl};a=${p.alt};s=${p.shift}"
+        return "$k|$hash|$children"
     }
 
     private fun topSignatureOf(t: TopMenu): String = when (t) {
@@ -567,7 +477,7 @@ object MacCocoaMenu {
         return msgSendPPL(alloc, "initWithBytes:length:", mem, bytes.size.toLong())
     }
 
-    private fun nsImageFrom(icon: MenuIcon): Pointer {
+    private fun nsImageFrom(icon: MenuIcon): Pointer? {
         val NSImage = objc.objc_getClass("NSImage")
         val img = when (icon) {
             is MenuIcon.SFSymbol -> msgSendPPP(NSImage, "imageWithSystemSymbolName:accessibilityDescription:", nsString(icon.name), nsString(""))
@@ -575,8 +485,19 @@ object MacCocoaMenu {
             is MenuIcon.File -> msgSendPP(msgSendP(NSImage, "alloc"), "initWithContentsOfFile:", nsString(icon.path))
         }
         val template = when (icon) { is MenuIcon.SFSymbol -> icon.template; is MenuIcon.Png -> icon.template; is MenuIcon.File -> icon.template }
-        if (!isNull(img)) msgSendPL(img, "setTemplate:", if (template) 1 else 0)
+        if (!isNull(img)) {
+            msgSendPL(img, "setTemplate:", if (template) 1 else 0)
+        } else if (icon is MenuIcon.SFSymbol) {
+            System.err.println("\"${icon.name}\" is no valid SF-Symbol")
+            return null
+        }
         return img
+    }
+
+    private fun nsMenuItemBadge(text: String): Pointer {
+        val NSMenuItemBadge = objc.objc_getClass("NSMenuItemBadge")
+        val alloc = msgSendP(NSMenuItemBadge, "alloc")
+        return msgSendPP(alloc, "initWithString:", nsString(text))
     }
 
     private fun createMenu(title: String): Pointer {
@@ -601,6 +522,19 @@ object MacCocoaMenu {
         msgSendPP(menu, "addItem:", item)
     }
 
+    private fun createSectionHeaderItem(title: String): Pointer {
+        val NSMenuItem = objc.objc_getClass("NSMenuItem")
+        val item = try {
+            objc.objc_msgSend(NSMenuItem, sel("sectionHeaderWithTitle:"), nsString(title))
+        } catch (_: Throwable) {
+            Pointer.NULL
+        }
+        if (!isNull(item)) return item
+        val fallback = createMenuItem(title, null, "")
+        setEnabled(fallback, false)
+        return fallback
+    }
+
     private fun addSeparator(menu: Pointer) {
         val NSMenuItem = objc.objc_getClass("NSMenuItem")
         addItemToMenu(menu, msgSendP(NSMenuItem, "separatorItem"))
@@ -609,8 +543,11 @@ object MacCocoaMenu {
     private fun setModifiers(item: Pointer?, mask: Long) { if (!isNull(item) && mask != 0L) msgSendPL(item, "setKeyEquivalentModifierMask:", mask) }
     private fun setEnabled(item: Pointer?, enabled: Boolean) { if (!isNull(item)) msgSendPL(item, "setEnabled:", if (enabled) 1 else 0) }
     private fun setState(item: Pointer?, checked: Boolean) { if (!isNull(item)) msgSendPL(item, "setState:", if (checked) 1 else 0) }
-    private fun setImage(item: Pointer?, icon: MenuIcon?) { if (!isNull(item) && icon != null) msgSendPP(item, "setImage:", nsImageFrom(icon)) }
+    private fun setImage(item: Pointer?, icon: MenuIcon?) { if (!isNull(item) && icon != null && nsImageFrom(icon) != null) msgSendPP(item, "setImage:", nsImageFrom(icon)) }
     private fun setTarget(item: Pointer?, target: Pointer?) { if (!isNull(item) && !isNull(target)) msgSendPP(item, "setTarget:", target) }
+    private fun setTooltip(item: Pointer?, tooltip: String?) { if (!isNull(item) && tooltip != null) msgSendPP(item, "setToolTip:", nsString(tooltip)) }
+    private fun setSubtitle(item: Pointer?, subtitle: String?) { if (!isNull(item) && subtitle != null) msgSendPP(item, "setSubtitle:", nsString(subtitle)) }
+    private fun setBadge(item: Pointer?, badge: String?) { if (!isNull(item) && badge != null) msgSendPP(item, "setBadge:", nsMenuItemBadge(badge)) }
     private fun setTag(item: Pointer?, tag: Int) { if (!isNull(item)) msgSendPL(item, "setTag:", tag.toLong()) }
     private fun setShortcut(item: Pointer, acc: MenuShortcut?) {
         val cocoa = acc?.toCocoa() ?: return
@@ -656,6 +593,9 @@ object MacCocoaMenu {
                     val it = createMenuItem(child.title, actionSelectorName, "")
                     setEnabled(it, child.enabled); setImage(it, child.icon)
                     setShortcut(it, child.shortcut)
+                    setSubtitle(it, child.subtitle)
+                    setTooltip(it, child.tooltip)
+                    setBadge(it, child.badge)
                     setTarget(it, customTarget); addItemToMenu(menuPtr, it)
                     menuActions[Pointer.nativeValue(it)] = child.onClick
                 }
@@ -663,6 +603,9 @@ object MacCocoaMenu {
                     val it = createMenuItem(child.title, actionSelectorName, "")
                     setEnabled(it, child.enabled); setState(it, child.checked); setImage(it, child.icon)
                     setShortcut(it, child.shortcut)
+                    setSubtitle(it, child.subtitle)
+                    setTooltip(it, child.tooltip)
+                    setBadge(it, child.badge)
                     setTarget(it, customTarget); addItemToMenu(menuPtr, it)
                     val key = Pointer.nativeValue(it)
                     checkboxStates[key] = child.checked
@@ -673,8 +616,13 @@ object MacCocoaMenu {
                 is Submenu -> {
                     val parent = createMenuItem(child.title, null, ""); val sub = createMenu(child.title)
                     setEnabled(parent, child.enabled); setImage(parent, child.icon)
+                    setSubtitle(parent, child.subtitle); setBadge(parent, child.badge)
                     msgSendPP(parent, "setSubmenu:", sub); addItemToMenu(menuPtr, parent)
                     populateSubmenu(sub, child.children, nsapp, customTarget)
+                }
+                is SectionHeader -> {
+                    val it = createSectionHeaderItem(child.title)
+                    addItemToMenu(menuPtr, it)
                 }
                 is Separator -> addSeparator(menuPtr)
                 is SystemItem-> addSystemStd(menuPtr, child, nsapp, customTarget)
@@ -698,6 +646,9 @@ object MacCocoaMenu {
                     val it = createMenuItem(el.title, actionSelectorName, "")
                     setEnabled(it, el.enabled); setImage(it, el.icon)
                     setShortcut(it, el.shortcut)
+                    setSubtitle(it, el.subtitle)
+                    setTooltip(it, el.tooltip)
+                    setBadge(it, el.badge)
                     setTarget(it, target); addItemToMenu(menu, it)
                     menuActions[Pointer.nativeValue(it)] = el.onClick
                 }
@@ -705,14 +656,23 @@ object MacCocoaMenu {
                     val it = createMenuItem(el.title, actionSelectorName, "")
                     setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
                     setShortcut(it, el.shortcut)
+                    setSubtitle(it, el.subtitle)
+                    setTooltip(it, el.tooltip)
+                    setBadge(it, el.badge)
                     setTarget(it, target); addItemToMenu(menu, it)
                     val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
                     menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
                 }
                 is Submenu -> {
                     val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
-                    setEnabled(it, el.enabled); setImage(it, el.icon); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+                    setEnabled(it, el.enabled); setImage(it, el.icon)
+                    setSubtitle(it, el.subtitle); setBadge(it, el.badge)
+                    msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
                     populateSubmenu(sub, el.children, nsapp = nsapp, customTarget = target)
+                }
+                is SectionHeader -> {
+                    val it = createSectionHeaderItem(el.title)
+                    addItemToMenu(menu, it)
                 }
                 Separator -> addSeparator(menu)
                 is EditStd, is ViewStd, is WindowStd, is HelpItem, is SystemItem, is FileStd, is FormatStd -> {}
@@ -792,7 +752,6 @@ object MacCocoaMenu {
             is FileStd.Duplicate -> addStd(menu, el.title, "duplicateDocument:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is FileStd.Rename -> addStd(menu, el.title, "renameDocument:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is FileStd.MoveTo -> addStd(menu, el.title, "moveDocument:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is FileStd.Revert -> addStd(menu, el.title, "revertDocument:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is FileStd.PageSetup -> addStd(menu, el.title, "runPageLayout:", "P", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
             is FileStd.Print -> addStd(menu, el.title, "printDocument:", "p", Modifiers.command, el.enabled, el.icon, el.onClick, target)
             is FileStd.ClearRecent -> addStd(menu, el.title, "clearRecentDocuments:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
@@ -929,6 +888,9 @@ object MacCocoaMenu {
                     val it = createMenuItem(el.title, actionSelectorName, "")
                     setEnabled(it, el.enabled); setImage(it, el.icon)
                     setShortcut(it, el.shortcut)
+                    setSubtitle(it, el.subtitle)
+                    setTooltip(it, el.tooltip)
+                    setBadge(it, el.badge)
                     setTarget(it, customTarget); addItemToMenu(submenu, it)
                     menuActions[Pointer.nativeValue(it)] = el.onClick
                 }
@@ -936,14 +898,23 @@ object MacCocoaMenu {
                     val it = createMenuItem(el.title, actionSelectorName, "")
                     setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
                     setShortcut(it, el.shortcut)
+                    setSubtitle(it, el.subtitle)
+                    setTooltip(it, el.tooltip)
+                    setBadge(it, el.badge)
                     setTarget(it, customTarget); addItemToMenu(submenu, it)
                     val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
                     menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }
                 }
                 is Submenu -> {
                     val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
-                    setEnabled(it, el.enabled); setImage(it, el.icon); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(submenu, it)
+                    setEnabled(it, el.enabled); setImage(it, el.icon)
+                    setSubtitle(it, el.subtitle); setBadge(it, el.badge)
+                    msgSendPP(it, "setSubmenu:", sub); addItemToMenu(submenu, it)
                     populateSubmenu(sub, el.children, nsapp, customTarget)
+                }
+                is SectionHeader -> {
+                    val it = createSectionHeaderItem(el.title)
+                    addItemToMenu(submenu, it)
                 }
                 Separator -> addSeparator(submenu)
                 else -> Unit
@@ -961,7 +932,16 @@ object MacCocoaMenu {
                 is FileStd -> addFileStd(menu, el, nsapp, target)
                 is CustomItem -> addCustom(menu, el, target)
                 is CheckboxItem -> addCheckbox(menu, el, target)
-                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, nsapp, target) }
+                is Submenu -> {
+                    val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
+                    setSubtitle(it, el.subtitle); setBadge(it, el.badge)
+                    msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+                    populateSubmenu(sub, el.children, nsapp, target)
+                }
+                is SectionHeader -> {
+                    val it = createSectionHeaderItem(el.title)
+                    addItemToMenu(menu, it)
+                }
                 Separator -> addSeparator(menu)
                 else -> Unit
             }
@@ -978,7 +958,16 @@ object MacCocoaMenu {
                     is EditStd -> addEditStd(menu, el, target)
                     is CustomItem -> addCustom(menu, el, target)
                     is CheckboxItem -> addCheckbox(menu, el, target)
-                    is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, getNsApp(), target) }
+                    is Submenu -> {
+                        val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
+                        setSubtitle(it, el.subtitle); setBadge(it, el.badge)
+                        msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+                        populateSubmenu(sub, el.children, getNsApp(), target)
+                    }
+                    is SectionHeader -> {
+                        val it = createSectionHeaderItem(el.title)
+                        addItemToMenu(menu, it)
+                    }
                     Separator -> addSeparator(menu)
                     else -> Unit
                 } }
@@ -995,7 +984,16 @@ object MacCocoaMenu {
                 is FormatStd -> addFormatStd(menu, el, target)
                 is CustomItem -> addCustom(menu, el, target)
                 is CheckboxItem -> addCheckbox(menu, el, target)
-                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, getNsApp(), target) }
+                is Submenu -> {
+                    val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
+                    setSubtitle(it, el.subtitle); setBadge(it, el.badge)
+                    msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+                    populateSubmenu(sub, el.children, getNsApp(), target)
+                }
+                is SectionHeader -> {
+                    val it = createSectionHeaderItem(el.title)
+                    addItemToMenu(menu, it)
+                }
                 Separator -> addSeparator(menu)
                 else -> Unit
             }
@@ -1011,7 +1009,16 @@ object MacCocoaMenu {
                 is ViewStd -> addViewStd(menu, el, target)
                 is CustomItem -> addCustom(menu, el, target)
                 is CheckboxItem -> addCheckbox(menu, el, target)
-                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, getNsApp(), target) }
+                is Submenu -> {
+                    val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
+                    setSubtitle(it, el.subtitle); setBadge(it, el.badge)
+                    msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+                    populateSubmenu(sub, el.children, getNsApp(), target)
+                }
+                is SectionHeader -> {
+                    val it = createSectionHeaderItem(el.title)
+                    addItemToMenu(menu, it)
+                }
                 Separator -> addSeparator(menu)
                 else -> Unit
             }
@@ -1029,7 +1036,16 @@ object MacCocoaMenu {
                 is WindowStd -> addWindowStd(menu, el, nsapp, target)
                 is CustomItem -> addCustom(menu, el, target)
                 is CheckboxItem -> addCheckbox(menu, el, target)
-                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, nsapp, target) }
+                is Submenu -> {
+                    val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
+                    setSubtitle(it, el.subtitle); setBadge(it, el.badge)
+                    msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+                    populateSubmenu(sub, el.children, nsapp, target)
+                }
+                is SectionHeader -> {
+                    val it = createSectionHeaderItem(el.title)
+                    addItemToMenu(menu, it)
+                }
                 Separator -> addSeparator(menu)
                 else -> Unit
             }
@@ -1049,7 +1065,16 @@ object MacCocoaMenu {
                 is HelpItem.AppHelp -> addHelpStd(menu, el, nsapp, target)
                 is CustomItem -> addCustom(menu, el, target)
                 is CheckboxItem -> addCheckbox(menu, el, target)
-                is Submenu -> { val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title); msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it); populateSubmenu(sub, el.children, nsapp, target) }
+                is Submenu -> {
+                    val it = createMenuItem(el.title, null, ""); val sub = createMenu(el.title)
+                    setSubtitle(it, el.subtitle); setBadge(it, el.badge)
+                    msgSendPP(it, "setSubmenu:", sub); addItemToMenu(menu, it)
+                    populateSubmenu(sub, el.children, nsapp, target)
+                }
+                is SectionHeader -> {
+                    val it = createSectionHeaderItem(el.title)
+                    addItemToMenu(menu, it)
+                }
                 Separator -> addSeparator(menu)
                 is SystemItem, is EditStd, is ViewStd, is WindowStd, is FileStd, is FormatStd -> Unit
             }
@@ -1088,6 +1113,9 @@ object MacCocoaMenu {
         val it = createMenuItem(el.title, actionSelectorName, "")
         setEnabled(it, el.enabled); setImage(it, el.icon)
         setShortcut(it, el.shortcut)
+        setSubtitle(it, el.subtitle)
+        setTooltip(it, el.tooltip)
+        setBadge(it, el.badge)
         setTarget(it, target); addItemToMenu(menu, it)
         menuActions[Pointer.nativeValue(it)] = el.onClick
     }
@@ -1095,6 +1123,9 @@ object MacCocoaMenu {
         val it = createMenuItem(el.title, actionSelectorName, "")
         setEnabled(it, el.enabled); setState(it, el.checked); setImage(it, el.icon)
         setShortcut(it, el.shortcut)
+        setSubtitle(it, el.subtitle)
+        setTooltip(it, el.tooltip)
+        setBadge(it, el.badge)
         setTarget(it, target); addItemToMenu(menu, it)
         val key = Pointer.nativeValue(it); checkboxStates[key] = el.checked
         menuActions[key] = { val now = !(checkboxStates[key] ?: false); checkboxStates[key] = now; setState(it, now); el.onToggle(now) }

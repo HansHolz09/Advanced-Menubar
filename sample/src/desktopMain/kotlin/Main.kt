@@ -1,7 +1,18 @@
 
 import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.runtime.*
-import androidx.compose.ui.input.key.*
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.isCtrlPressed
+import androidx.compose.ui.input.key.isMetaPressed
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import dev.hansholz.advancedmenubar.DefaultMacMenu
@@ -57,7 +68,7 @@ fun main() = application {
                 }
 
                 val clickedItems = remember { mutableStateListOf<String>() }
-                val customMenus = remember { mutableStateListOf<Int>() }
+                val customMenus = remember { mutableStateListOf(1) }
 
                 val showDefaultMenu = remember { mutableStateOf(false) }
 
@@ -70,9 +81,9 @@ fun main() = application {
                 key(focusTrigger, language.value) {
                     if (showDefaultMenu.value) {
                         DefaultMacMenu(
-                            onAboutClick = { println("About Clicked") },
-                            onSettingsClick = { println("Settings Clicked") },
-                            onHelpClick = { println("Help Clicked") },
+                            onAboutClick = { clickedItems += "About" },
+                            onSettingsClick = { clickedItems += "Settings" },
+                            onHelpClick = { clickedItems += "Help" },
                         )
                     } else {
                         MenuBar(
