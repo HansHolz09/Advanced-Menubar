@@ -82,7 +82,7 @@
     <string name="view">Prikaz</string>
     <string name="show_toolbar">Prikaži alatnu traku</string>
     <string name="customize_toolbar">Podesi alatnu traku…</string>
-    <string name="full_screen">Prikaz preko cijelog zaslona</string>
+    <string name="full_screen">Prikaži preko cijelog zaslona</string>
     <string name="show_sidebar">Prikaži rubni stupac</string>
     <string name="show_tab_bar">Prikaži traku s karticama</string>
     <string name="window">Prozor</string>

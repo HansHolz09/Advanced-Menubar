@@ -649,9 +649,8 @@ private func makeMetaEntry(key: String, title: String, item: NSMenuItem, path: [
 
     if let image = item.image {
         let description = image.description
-        sfCandidate = description
         if let range = description.range(of: #"symbol = ([a-zA-Z0-0\.]+)"#, options: .regularExpression) {
-            // sfCandidate = description[range].replacingOccurrences(of: "symbol = ", with: "")
+            sfCandidate = description[range].replacingOccurrences(of: "symbol = ", with: "")
         }
     }
 
