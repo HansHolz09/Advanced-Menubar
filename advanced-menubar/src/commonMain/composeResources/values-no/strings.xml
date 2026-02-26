@@ -81,10 +81,14 @@
     <string name="align_justified">Rette marger</string>
     <string name="view">Vis</string>
     <string name="show_toolbar">Vis verktøylinje</string>
+    <string name="hide_toolbar">Skjul verktøylinje</string>
     <string name="customize_toolbar">Tilpass verktøylinje…</string>
-    <string name="full_screen">Gå til fullskjermmodus</string>
+    <string name="enter_full_screen">Gå til fullskjermmodus</string>
+    <string name="exit_full_screen">Avslutt fullskjermmodus</string>
     <string name="show_sidebar">Vis sidepanel</string>
+    <string name="hide_sidebar">Skjul sidepanel</string>
     <string name="show_tab_bar">Vis fanelinje</string>
+    <string name="hide_tab_bar">Skjul fanelinje</string>
     <string name="window">Vindu</string>
     <string name="window_close">Lukk vindu</string>
     <string name="window_minimize">Minimer</string>

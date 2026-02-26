@@ -81,10 +81,14 @@
     <string name="align_justified">좌우 정렬</string>
     <string name="view">보기</string>
     <string name="show_toolbar">도구 막대 보기</string>
+    <string name="hide_toolbar">도구 막대 가리기</string>
     <string name="customize_toolbar">도구 막대 사용자화…</string>
-    <string name="full_screen">전체 화면 시작</string>
+    <string name="enter_full_screen">전체 화면 시작</string>
+    <string name="exit_full_screen">전체 화면 종료</string>
     <string name="show_sidebar">사이드바 보기</string>
+    <string name="hide_sidebar">사이드바 가리기</string>
     <string name="show_tab_bar">탭 막대 보기</string>
+    <string name="hide_tab_bar">탭 막대 가리기</string>
     <string name="window">윈도우</string>
     <string name="window_close">윈도우 닫기</string>
     <string name="window_minimize">최소화</string>

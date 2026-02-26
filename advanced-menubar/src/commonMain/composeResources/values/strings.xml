@@ -81,10 +81,14 @@
     <string name="align_justified">Justify</string>
     <string name="view">View</string>
     <string name="show_toolbar">Show Toolbar</string>
+    <string name="hide_toolbar">Hide Toolbar</string>
     <string name="customize_toolbar">Customize Toolbar…</string>
-    <string name="full_screen">Enter Full Screen</string>
+    <string name="enter_full_screen">Enter Full Screen</string>
+    <string name="exit_full_screen">Exit Full Screen</string>
     <string name="show_sidebar">Show Sidebar</string>
+    <string name="hide_sidebar">Hide Sidebar</string>
     <string name="show_tab_bar">Show Tab Bar</string>
+    <string name="hide_tab_bar">Hide Tab Bar</string>
     <string name="window">Window</string>
     <string name="window_close">Close Window</string>
     <string name="window_minimize">Minimize</string>

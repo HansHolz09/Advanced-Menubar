@@ -81,10 +81,14 @@
     <string name="align_justified">Вирівняти за шириною</string>
     <string name="view">Перегляд</string>
     <string name="show_toolbar">Показати панель інструментів</string>
+    <string name="hide_toolbar">Сховати панель інструментів</string>
     <string name="customize_toolbar">Настроїти панель інструментів…</string>
-    <string name="full_screen">Увійти до повноекранного режиму</string>
+    <string name="enter_full_screen">Увійти до повноекранного режиму</string>
+    <string name="exit_full_screen">Вийти з повноекранного режиму</string>
     <string name="show_sidebar">Показати бічну панель</string>
+    <string name="hide_sidebar">Сховати бічну панель</string>
     <string name="show_tab_bar">Показати панель вкладок</string>
+    <string name="hide_tab_bar">Сховати панель вкладок</string>
     <string name="window">Вікно</string>
     <string name="window_close">Закрити вікно</string>
     <string name="window_minimize">Згорнути</string>

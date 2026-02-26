@@ -81,10 +81,14 @@
     <string name="align_justified">Lige margener</string>
     <string name="view">Oversigt</string>
     <string name="show_toolbar">Vis værktøjslinje</string>
+    <string name="hide_toolbar">Skjul værktøjslinje</string>
     <string name="customize_toolbar">Indstil værktøjslinje…</string>
-    <string name="full_screen">Start fuld skærm</string>
+    <string name="enter_full_screen">Start fuld skærm</string>
+    <string name="exit_full_screen">Afslut fuld skærm</string>
     <string name="show_sidebar">Vis indholdsoversigt</string>
+    <string name="hide_sidebar">Skjul indholdsoversigt</string>
     <string name="show_tab_bar">Vis fanelinje</string>
+    <string name="hide_tab_bar">Skjul fanelinje</string>
     <string name="window">Vindue</string>
     <string name="window_close">Luk vindue</string>
     <string name="window_minimize">Minimer</string>

@@ -81,10 +81,14 @@
     <string name="align_justified">Justificar</string>
     <string name="view">Visualización</string>
     <string name="show_toolbar">Mostrar barra de herramientas</string>
+    <string name="hide_toolbar">Ocultar barra de herramientas</string>
     <string name="customize_toolbar">Personalizar barra de herramientas…</string>
-    <string name="full_screen">Usar pantalla completa</string>
+    <string name="enter_full_screen">Usar pantalla completa</string>
+    <string name="exit_full_screen">Salir de pantalla completa</string>
     <string name="show_sidebar">Mostrar barra lateral</string>
+    <string name="hide_sidebar">Ocultar barra lateral</string>
     <string name="show_tab_bar">Mostrar barra de pestañas</string>
+    <string name="hide_tab_bar">Ocultar barra de pestañas</string>
     <string name="window">Ventana</string>
     <string name="window_close">Cerrar ventana</string>
     <string name="window_minimize">Minimizar</string>

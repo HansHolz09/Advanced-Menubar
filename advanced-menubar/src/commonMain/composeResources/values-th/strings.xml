@@ -81,10 +81,14 @@
     <string name="align_justified">จัดเต็มแนว</string>
     <string name="view">มุมมอง</string>
     <string name="show_toolbar">แสดงแถบเครื่องมือ</string>
+    <string name="hide_toolbar">ซ่อนแถบเครื่องมือ</string>
     <string name="customize_toolbar">กำหนดแถบเครื่องมือเอง…</string>
-    <string name="full_screen">เข้าสู่โหมดเต็มหน้าจอ</string>
+    <string name="enter_full_screen">เข้าสู่โหมดเต็มหน้าจอ</string>
+    <string name="exit_full_screen">ออกจากโหมดเต็มหน้าจอ</string>
     <string name="show_sidebar">แสดงแถบด้านข้าง</string>
+    <string name="hide_sidebar">ซ่อนแถบด้านข้าง</string>
     <string name="show_tab_bar">แสดงรายการแถบ</string>
+    <string name="hide_tab_bar">ซ่อนรายการแถบ</string>
     <string name="window">หน้าต่าง</string>
     <string name="window_close">ปิดหน้าต่าง</string>
     <string name="window_minimize">ย่อ</string>

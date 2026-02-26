@@ -376,12 +376,36 @@ private struct ValuesAndMeta {
 private func buildValuesAndMeta(keys: [String], scopes: MenuScopes, appNameInMenuBar: String) -> ValuesAndMeta {
     var values: [String: String] = [:]
     var meta: [String: MenuDumpMetaEntry] = [:]
+    
+    let prefs = preferredLocalizationsFromAppleLanguages()
+    let L = SystemMenuTitleLocalizer()
 
     func put(_ key: String, _ item: NSMenuItem?, path: [String]) {
         guard let item else { return }
         let normalized = normalizeAppNamePlaceholder(key: key, rawTitle: item.title, appNameInMenuBar: appNameInMenuBar)
         values[key] = normalized
         meta[key] = makeMetaEntry(key: key, title: normalized, item: item, path: path)
+    }
+    
+    func putTitleOnly(_ key: String, _ title: String, path: [String]) {
+        let normalized = normalizeAppNamePlaceholder(key: key, rawTitle: title, appNameInMenuBar: appNameInMenuBar)
+        values[key] = normalized
+        meta[key] = MenuDumpMetaEntry(
+            key: key,
+            title: normalized,
+            action: nil,
+            tag: 0,
+            keyEquivalent: "",
+            modifierMaskRaw: 0,
+            hasSubmenu: false,
+            sfSymbolNameCandidate: nil,
+            menuPath: path
+        )
+    }
+
+    func putSeededTitleOnly(_ key: String, englishTitle: String, path: [String]) {
+        let localized = L.localize(englishTitle, preferredLocalizations: prefs)
+        putTitleOnly(key, localized, path: path)
     }
 
     // Top-level titles
@@ -554,10 +578,14 @@ private func buildValuesAndMeta(keys: [String], scopes: MenuScopes, appNameInMen
 
     // View
     put("show_toolbar", findFirst(scopes.viewMenu, action: "toggleToolbarShown:"), path: ["View"])
+    putSeededTitleOnly("hide_toolbar", englishTitle: "Hide Toolbar", path: ["View"])
     put("customize_toolbar", findFirst(scopes.viewMenu, action: "runToolbarCustomizationPalette:"), path: ["View"])
-    put("full_screen", findFirstAny(scopes.viewMenu, actions: ["toggleFullScreen:"]), path: ["View"])
+    put("enter_full_screen", findFirstAny(scopes.viewMenu, actions: ["toggleFullScreen:"]), path: ["View"])
+    putSeededTitleOnly("exit_full_screen", englishTitle: "Exit Full Screen", path: ["View"])
     put("show_sidebar", findFirstAny(scopes.viewMenu, actions: ["toggleSidebar:", "toggleSourceList:"]), path: ["View"])
+    putSeededTitleOnly("hide_sidebar", englishTitle: "Hide Sidebar", path: ["View"])
     put("show_tab_bar", findFirstAny(scopes.viewMenu, actions: ["toggleTabBar:", "toggleTabBarShown:"]), path: ["View"])
+    putSeededTitleOnly("hide_tab_bar", englishTitle: "Hide Tab Bar", path: ["View"])
 
     // Window
     put("window_close", findFirst(scopes.windowMenu, action: "performClose:"), path: ["Window"])
@@ -760,7 +788,7 @@ private func defaultKeys() -> [String] {
         "ligatures","ligatures_none","ligatures_standard","ligatures_all",
         "baseline","baseline_standard","raise_baseline","lower_baseline","superscript","subscript",
         "text","align_left","align_center","align_right","align_justified",
-        "view","show_toolbar","customize_toolbar","full_screen","show_sidebar","show_tab_bar",
+        "view","show_toolbar","hide_toolbar","customize_toolbar","enter_full_screen","exit_full_screen","show_sidebar","hide_sidebar","show_tab_bar","hide_tab_bar",
         "window","window_close","window_minimize","window_minimize_all","window_zoom","bring_all_to_front","show_next_tab","show_previous_tab","merge_all_windows","move_tab_to_new_window",
         "help","app_help"
     ]

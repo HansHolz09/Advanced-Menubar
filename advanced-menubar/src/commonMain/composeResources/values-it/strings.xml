@@ -81,10 +81,14 @@
     <string name="align_justified">Giustifica</string>
     <string name="view">Vista</string>
     <string name="show_toolbar">Mostra la barra strumenti</string>
+    <string name="hide_toolbar">Nascondi la barra strumenti</string>
     <string name="customize_toolbar">Personalizza la barra strumenti…</string>
-    <string name="full_screen">Attiva modalità a tutto schermo</string>
+    <string name="enter_full_screen">Attiva modalità a tutto schermo</string>
+    <string name="exit_full_screen">Disattiva modalità a tutto schermo</string>
     <string name="show_sidebar">Mostra barra laterale</string>
+    <string name="hide_sidebar">Nascondi barra laterale</string>
     <string name="show_tab_bar">Mostra la barra dei pannelli</string>
+    <string name="hide_tab_bar">Nascondi la barra dei pannelli</string>
     <string name="window">Finestra</string>
     <string name="window_close">Chiudi finestra</string>
     <string name="window_minimize">Contrai</string>

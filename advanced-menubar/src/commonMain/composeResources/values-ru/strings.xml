@@ -81,10 +81,14 @@
     <string name="align_justified">Выровнять по ширине</string>
     <string name="view">Вид</string>
     <string name="show_toolbar">Показать панель инструментов</string>
+    <string name="hide_toolbar">Скрыть панель инструментов</string>
     <string name="customize_toolbar">Настроить панель инструментов…</string>
-    <string name="full_screen">Перейти в полноэкранный режим</string>
+    <string name="enter_full_screen">Перейти в полноэкранный режим</string>
+    <string name="exit_full_screen">Выйти из полноэкранного режима</string>
     <string name="show_sidebar">Показать боковое меню</string>
+    <string name="hide_sidebar">Скрыть боковое меню</string>
     <string name="show_tab_bar">Показать панель вкладок</string>
+    <string name="hide_tab_bar">Скрыть панель вкладок</string>
     <string name="window">Окно</string>
     <string name="window_close">Закрыть окно</string>
     <string name="window_minimize">Убрать в Dock</string>

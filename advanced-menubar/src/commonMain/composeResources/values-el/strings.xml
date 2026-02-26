@@ -81,10 +81,14 @@
     <string name="align_justified">Πλήρης στοίχιση</string>
     <string name="view">Προβολή</string>
     <string name="show_toolbar">Εμφάνιση γραμμής εργαλείων</string>
+    <string name="hide_toolbar">Απόκρυψη γραμμής εργαλείων</string>
     <string name="customize_toolbar">Προσαρμογή γραμμής εργαλείων…</string>
-    <string name="full_screen">Είσοδος σε πλήρη οθόνη</string>
+    <string name="enter_full_screen">Είσοδος σε πλήρη οθόνη</string>
+    <string name="exit_full_screen">Έξοδος από πλήρη οθόνη</string>
     <string name="show_sidebar">Εμφάνιση πλαϊνής στήλης</string>
+    <string name="hide_sidebar">Απόκρυψη πλαϊνής στήλης</string>
     <string name="show_tab_bar">Εμφάνιση γραμμής καρτελών</string>
+    <string name="hide_tab_bar">Απόκρυψη γραμμής καρτελών</string>
     <string name="window">Παράθυρο</string>
     <string name="window_close">Κλείσιμο παραθύρου</string>
     <string name="window_minimize">Ελαχιστοποίηση</string>

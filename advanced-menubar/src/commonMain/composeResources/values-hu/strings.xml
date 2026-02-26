@@ -81,10 +81,14 @@
     <string name="align_justified">Sorkizárás</string>
     <string name="view">Nézet</string>
     <string name="show_toolbar">Eszközsor megjelenítése</string>
+    <string name="hide_toolbar">Eszközsor elrejtése</string>
     <string name="customize_toolbar">Eszközsor testreszabása…</string>
-    <string name="full_screen">Váltás teljes képernyőre</string>
+    <string name="enter_full_screen">Váltás teljes képernyőre</string>
+    <string name="exit_full_screen">Kilépés a teljes képernyős módból</string>
     <string name="show_sidebar">Oldalsáv megjelenítése</string>
+    <string name="hide_sidebar">Oldalsáv elrejtése</string>
     <string name="show_tab_bar">Lapsor megjelenítése</string>
+    <string name="hide_tab_bar">Lapsor elrejtése</string>
     <string name="window">Ablak</string>
     <string name="window_close">Ablak bezárása</string>
     <string name="window_minimize">Kis méret</string>

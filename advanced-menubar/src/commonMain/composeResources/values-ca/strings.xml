@@ -81,10 +81,14 @@
     <string name="align_justified">Justifica</string>
     <string name="view">Mostra</string>
     <string name="show_toolbar">Mostra la barra d’eines</string>
+    <string name="hide_toolbar">Oculta la barra d’eines</string>
     <string name="customize_toolbar">Personalitza la barra d’eines…</string>
-    <string name="full_screen">Passa a pantalla completa</string>
+    <string name="enter_full_screen">Passa a pantalla completa</string>
+    <string name="exit_full_screen">Surt de la pantalla completa</string>
     <string name="show_sidebar">Mostra la barra lateral</string>
+    <string name="hide_sidebar">Oculta la barra lateral</string>
     <string name="show_tab_bar">Mostra la barra de pestanyes</string>
+    <string name="hide_tab_bar">Oculta la barra de pestanyes</string>
     <string name="window">Finestra</string>
     <string name="window_close">Tanca la finestra</string>
     <string name="window_minimize">Minimitza</string>

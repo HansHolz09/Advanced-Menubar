@@ -127,13 +127,13 @@ fun FrameWindowScope.FullMacMenuBar() {
         }
 
         MacViewMenu {
-            ShowToolbar {}
+            ShowToolbar(false) {}
             CustomizeToolbar {}
             Separator()
-            ToggleSidebar {}
-            ToggleTabBar {}
+            ToggleSidebar(false) {}
+            ToggleTabBar(false) {}
             Separator()
-            ToggleFullScreen()
+            ToggleFullScreen(false)
         }
 
         MacWindowMenu {

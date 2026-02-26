@@ -81,10 +81,14 @@
     <string name="align_justified">ضبط كلي</string>
     <string name="view">عرض</string>
     <string name="show_toolbar">إظهار شريط الأدوات</string>
+    <string name="hide_toolbar">إخفاء شريط الأدوات</string>
     <string name="customize_toolbar">تخصيص شريط الأدوات…</string>
-    <string name="full_screen">الدخول إلى وضع ملء الشاشة</string>
+    <string name="enter_full_screen">الدخول إلى وضع ملء الشاشة</string>
+    <string name="exit_full_screen">إنهاء وضع ملء الشاشة</string>
     <string name="show_sidebar">إظهار الشريط الجانبي</string>
+    <string name="hide_sidebar">إخفاء الشريط الجانبي</string>
     <string name="show_tab_bar">إظهار شريط علامات التبويب</string>
+    <string name="hide_tab_bar">إخفاء شريط علامات التبويب</string>
     <string name="window">نافذة</string>
     <string name="window_close">إغلاق النافذة</string>
     <string name="window_minimize">تصغير</string>

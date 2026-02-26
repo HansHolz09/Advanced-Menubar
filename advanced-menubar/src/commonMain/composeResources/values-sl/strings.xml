@@ -81,10 +81,14 @@
     <string name="align_justified">Obojestranska poravnava</string>
     <string name="view">Prikaz</string>
     <string name="show_toolbar">Prikaži orodno vrstico</string>
+    <string name="hide_toolbar">Skrij orodno vrstico</string>
     <string name="customize_toolbar">Prilagodi orodno vrstico …</string>
-    <string name="full_screen">Preklopi v celozaslonski način</string>
+    <string name="enter_full_screen">Preklopi v celozaslonski način</string>
+    <string name="exit_full_screen">Zapri celozaslonski način</string>
     <string name="show_sidebar">Prikaži stransko vrstico</string>
+    <string name="hide_sidebar">Skrij stransko vrstico</string>
     <string name="show_tab_bar">Prikaži vrstico z zavihki</string>
+    <string name="hide_tab_bar">Skrij vrstico z zavihki</string>
     <string name="window">Okno</string>
     <string name="window_close">Zapri okno</string>
     <string name="window_minimize">Minimiraj</string>

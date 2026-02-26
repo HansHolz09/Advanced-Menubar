@@ -19,7 +19,7 @@
     <string name="file_rename">Redenumiți…</string>
     <string name="file_move_to">Mutați în…</string>
     <string name="file_page_setup">Configurare pagină…</string>
-    <string name="file_print">Tipăriți…</string>
+    <string name="file_print">Tipărire…</string>
     <string name="edit">Editare</string>
     <string name="edit_undo">Infirmați</string>
     <string name="edit_redo">Refaceți</string>
@@ -81,10 +81,14 @@
     <string name="align_justified">Aliniat justificat</string>
     <string name="view">Vizualizare</string>
     <string name="show_toolbar">Afișați bara de instrumente</string>
+    <string name="hide_toolbar">Ascundeți bara de instrumente</string>
     <string name="customize_toolbar">Personalizare bară de instrumente…</string>
-    <string name="full_screen">Afișați pe tot ecranul</string>
+    <string name="enter_full_screen">Afișați pe tot ecranul</string>
+    <string name="exit_full_screen">Opriți afișarea pe tot ecranul</string>
     <string name="show_sidebar">Afișați bara laterală</string>
+    <string name="hide_sidebar">Ascundeți bara laterală</string>
     <string name="show_tab_bar">Afișați bara filelor</string>
+    <string name="hide_tab_bar">Ascundeți bara filelor</string>
     <string name="window">Fereastră</string>
     <string name="window_close">Închideți fereastra</string>
     <string name="window_minimize">Minimizați</string>

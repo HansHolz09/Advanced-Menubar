@@ -81,10 +81,14 @@
     <string name="align_justified">Wyjustuj</string>
     <string name="view">Widok</string>
     <string name="show_toolbar">Pokaż pasek narzędzi</string>
+    <string name="hide_toolbar">Ukryj pasek narzędzi</string>
     <string name="customize_toolbar">Dostosuj pasek narzędzi…</string>
-    <string name="full_screen">Tryb pełnoekranowy</string>
+    <string name="enter_full_screen">Tryb pełnoekranowy</string>
+    <string name="exit_full_screen">Opuść tryb pełnoekranowy</string>
     <string name="show_sidebar">Pokaż pasek boczny</string>
+    <string name="hide_sidebar">Ukryj pasek boczny</string>
     <string name="show_tab_bar">Pokaż pasek z kartami</string>
+    <string name="hide_tab_bar">Ukryj pasek z kartami</string>
     <string name="window">Okno</string>
     <string name="window_close">Zamknij okno</string>
     <string name="window_minimize">Minimalizuj okno</string>

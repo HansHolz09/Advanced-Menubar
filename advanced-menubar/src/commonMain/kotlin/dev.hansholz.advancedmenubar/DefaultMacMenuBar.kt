@@ -55,6 +55,7 @@ fun FrameWindowScope.DefaultMacMenuBar(
         if (viewMenu) {
             MacViewMenu {
                 ToggleFullScreen(
+                    state = isFullscreen,
                     icon = if (majorVersion >= 26) {
                         if (isFullscreen) {
                             SFSymbol("arrow.down.right.and.arrow.up.left.rectangle")

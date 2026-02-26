@@ -81,10 +81,14 @@
     <string name="align_justified">İki Yana Yasla</string>
     <string name="view">Görüntü</string>
     <string name="show_toolbar">Araç Çubuğunu Göster</string>
+    <string name="hide_toolbar">Araç Çubuğunu Gizle</string>
     <string name="customize_toolbar">Araç Çubuğunu Özelleştir…</string>
-    <string name="full_screen">Tam Ekrana Geç</string>
+    <string name="enter_full_screen">Tam Ekrana Geç</string>
+    <string name="exit_full_screen">Tam Ekrandan Çık</string>
     <string name="show_sidebar">Kenar Çubuğunu Göster</string>
+    <string name="hide_sidebar">Kenar Çubuğunu Gizle</string>
     <string name="show_tab_bar">Sekme Çubuğunu Göster</string>
+    <string name="hide_tab_bar">Sekme Çubuğunu Gizle</string>
     <string name="window">Pencere</string>
     <string name="window_close">Pencereyi Kapat</string>
     <string name="window_minimize">Simge Durumuna Küçült</string>

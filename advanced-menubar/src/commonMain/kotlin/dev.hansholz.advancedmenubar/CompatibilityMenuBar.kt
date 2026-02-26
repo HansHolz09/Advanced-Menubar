@@ -28,6 +28,8 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.edit_paste
 import composeadvancedmenubar.advanced_menubar.generated.resources.edit_redo
 import composeadvancedmenubar.advanced_menubar.generated.resources.edit_select_all
 import composeadvancedmenubar.advanced_menubar.generated.resources.edit_undo
+import composeadvancedmenubar.advanced_menubar.generated.resources.enter_full_screen
+import composeadvancedmenubar.advanced_menubar.generated.resources.exit_full_screen
 import composeadvancedmenubar.advanced_menubar.generated.resources.file
 import composeadvancedmenubar.advanced_menubar.generated.resources.file_clear_recent
 import composeadvancedmenubar.advanced_menubar.generated.resources.file_close
@@ -49,10 +51,12 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.find_next
 import composeadvancedmenubar.advanced_menubar.generated.resources.find_previous
 import composeadvancedmenubar.advanced_menubar.generated.resources.font
 import composeadvancedmenubar.advanced_menubar.generated.resources.format
-import composeadvancedmenubar.advanced_menubar.generated.resources.full_screen
 import composeadvancedmenubar.advanced_menubar.generated.resources.help
 import composeadvancedmenubar.advanced_menubar.generated.resources.hide
 import composeadvancedmenubar.advanced_menubar.generated.resources.hide_others
+import composeadvancedmenubar.advanced_menubar.generated.resources.hide_sidebar
+import composeadvancedmenubar.advanced_menubar.generated.resources.hide_tab_bar
+import composeadvancedmenubar.advanced_menubar.generated.resources.hide_toolbar
 import composeadvancedmenubar.advanced_menubar.generated.resources.italic
 import composeadvancedmenubar.advanced_menubar.generated.resources.jump_to_selection
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning
@@ -997,7 +1001,8 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
 
 
         fun ShowToolbar(
-            title: String = getString(Res.string.show_toolbar),
+            state: Boolean,
+            title: String = getString(if (state) Res.string.hide_toolbar else Res.string.show_toolbar),
             checked: Boolean = false,
             visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
             enabled: Boolean = true,
@@ -1014,7 +1019,8 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
         ) = ifVisible(visibility) { elements += ViewStd.CustomizeToolbar(title, enabled, macIcon, onClick) }
 
         fun ToggleFullScreen(
-            title: String = getString(Res.string.full_screen),
+            state: Boolean,
+            title: String = getString(if (state) Res.string.exit_full_screen else Res.string.enter_full_screen),
             visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
             enabled: Boolean = true,
             macIcon: MenuIcon? = null,
@@ -1022,7 +1028,8 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
         ) = ifVisible(visibility) { elements += ViewStd.ToggleFullScreen(title, enabled, macIcon, onClick) }
 
         fun ToggleSidebar(
-            title: String = getString(Res.string.show_sidebar),
+            state: Boolean,
+            title: String = getString(if (state) Res.string.hide_sidebar else Res.string.show_sidebar),
             checked: Boolean = false,
             visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
             enabled: Boolean = true,
@@ -1031,7 +1038,8 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
         ) = ifVisible(visibility) { elements += ViewStd.ToggleSidebar(title, enabled, macIcon, checked, onToggle) }
 
         fun ToggleTabBar(
-            title: String = getString(Res.string.show_tab_bar),
+            state: Boolean,
+            title: String = getString(if (state) Res.string.hide_tab_bar else Res.string.show_tab_bar),
             checked: Boolean = false,
             visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
             enabled: Boolean = true,

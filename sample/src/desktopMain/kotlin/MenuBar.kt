@@ -6,9 +6,14 @@ import androidx.compose.foundation.text.input.insert
 import androidx.compose.foundation.text.input.selectAll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.window.FrameWindowScope
+import androidx.compose.ui.window.WindowPlacement
 import composeadvancedmenubar.sample.generated.resources.Res
 import composeadvancedmenubar.sample.generated.resources.allStringResources
 import composeadvancedmenubar.sample.generated.resources.available_version
@@ -31,6 +36,8 @@ import dev.hansholz.advancedmenubar.MenuIcon.SFSymbol
 import dev.hansholz.advancedmenubar.MenuVisibility
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import java.awt.event.ComponentAdapter
+import java.awt.event.ComponentEvent
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -49,6 +56,13 @@ fun FrameWindowScope.MenuBar(
         it.value to stringResource(it.value)
     }
     fun getString(stringResource: StringResource): String = strings.find { it.first == stringResource }?.second ?: "STRING NOT FOUND"
+
+    var isFullscreen by remember { mutableStateOf(false) }
+    window.addComponentListener(object : ComponentAdapter() {
+        override fun componentResized(e: ComponentEvent?) {
+            isFullscreen = window.placement == WindowPlacement.Fullscreen
+        }
+    })
 
     CompatibilityMenuBar {
         MacApplicationMenu {
@@ -131,10 +145,10 @@ fun FrameWindowScope.MenuBar(
             }
         }
         ViewMenu(visibility = MenuVisibility.MACOS_ONLY) {
-            ShowToolbar(enabled = false) {}
+            ShowToolbar(false, enabled = false) {}
             CustomizeToolbar(enabled = false) {}
             Separator()
-            ToggleFullScreen()
+            ToggleFullScreen(isFullscreen)
         }
         customMenus.forEach {
             CustomMenu("${getString(Res.string.custom)} $it") {

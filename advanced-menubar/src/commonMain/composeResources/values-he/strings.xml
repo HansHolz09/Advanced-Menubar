@@ -26,7 +26,7 @@
     <string name="edit_cut">גזירה</string>
     <string name="edit_copy">העתקה</string>
     <string name="edit_paste">הדבקה</string>
-    <string name="paste_and_match_style">‏הדבקה והתאמה לסגנון</string>
+    <string name="paste_and_match_style">הדבקה והתאמה לסגנון</string>
     <string name="edit_delete">מחיקה</string>
     <string name="edit_select_all">בחירת הכול</string>
     <string name="find">חיפוש</string>
@@ -81,10 +81,14 @@
     <string name="align_justified">יישור לשני הצדדים</string>
     <string name="view">תצוגה</string>
     <string name="show_toolbar">הצגת סרגל הכלים</string>
+    <string name="hide_toolbar">הסתרת סרגל הכלים</string>
     <string name="customize_toolbar">‏התאמה אישית של סרגל הכלים…</string>
-    <string name="full_screen">מעבר למסך מלא</string>
+    <string name="enter_full_screen">מעבר למסך מלא</string>
+    <string name="exit_full_screen">יציאה ממסך מלא</string>
     <string name="show_sidebar">הצגת סרגל הצד</string>
+    <string name="hide_sidebar">הסתרת סרגל הצד</string>
     <string name="show_tab_bar">הצגת שורת הכרטיסיות</string>
+    <string name="hide_tab_bar">הסתרת שורת הכרטיסיות</string>
     <string name="window">חלון</string>
     <string name="window_close">סגירת החלון</string>
     <string name="window_minimize">מזעור</string>

@@ -81,10 +81,14 @@
     <string name="align_justified">Vul uit</string>
     <string name="view">Weergave</string>
     <string name="show_toolbar">Toon knoppenbalk</string>
+    <string name="hide_toolbar">Verberg knoppenbalk</string>
     <string name="customize_toolbar">Pas knoppenbalk aan…</string>
-    <string name="full_screen">Schakel schermvullende weergave in</string>
+    <string name="enter_full_screen">Schakel schermvullende weergave in</string>
+    <string name="exit_full_screen">Schakel schermvullende weergave uit</string>
     <string name="show_sidebar">Toon navigatiekolom</string>
+    <string name="hide_sidebar">Verberg navigatiekolom</string>
     <string name="show_tab_bar">Toon tabbladbalk</string>
+    <string name="hide_tab_bar">Verberg tabbladbalk</string>
     <string name="window">Venster</string>
     <string name="window_close">Sluit venster</string>
     <string name="window_minimize">Minimaliseer</string>

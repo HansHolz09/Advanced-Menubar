@@ -81,10 +81,14 @@
     <string name="align_justified">两端对齐</string>
     <string name="view">显示</string>
     <string name="show_toolbar">显示工具栏</string>
+    <string name="hide_toolbar">隐藏工具栏</string>
     <string name="customize_toolbar">自定义工具栏…</string>
-    <string name="full_screen">进入全屏幕</string>
+    <string name="enter_full_screen">进入全屏幕</string>
+    <string name="exit_full_screen">退出全屏幕</string>
     <string name="show_sidebar">显示边栏</string>
+    <string name="hide_sidebar">隐藏边栏</string>
     <string name="show_tab_bar">显示标签页栏</string>
+    <string name="hide_tab_bar">隐藏标签页栏</string>
     <string name="window">窗口</string>
     <string name="window_close">关闭窗口</string>
     <string name="window_minimize">最小化</string>

@@ -81,10 +81,14 @@
     <string name="align_justified">Justificar</string>
     <string name="view">Visualizar</string>
     <string name="show_toolbar">Mostrar Barra de Ferramentas</string>
+    <string name="hide_toolbar">Ocultar Barra de Ferramentas</string>
     <string name="customize_toolbar">Personalizar Barra de Ferramentas…</string>
-    <string name="full_screen">Entrar em Tela Cheia</string>
+    <string name="enter_full_screen">Entrar em Tela Cheia</string>
+    <string name="exit_full_screen">Sair da Tela Cheia</string>
     <string name="show_sidebar">Mostrar Barra Lateral</string>
+    <string name="hide_sidebar">Ocultar Barra Lateral</string>
     <string name="show_tab_bar">Mostrar Barra de Abas</string>
+    <string name="hide_tab_bar">Ocultar Barra de Abas</string>
     <string name="window">Janela</string>
     <string name="window_close">Fechar Janela</string>
     <string name="window_minimize">Minimizar</string>

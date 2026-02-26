@@ -81,10 +81,14 @@
     <string name="align_justified">Justifier</string>
     <string name="view">Présentation</string>
     <string name="show_toolbar">Afficher la barre d’outils</string>
+    <string name="hide_toolbar">Masquer la barre d’outils</string>
     <string name="customize_toolbar">Personnaliser la barre d’outils…</string>
-    <string name="full_screen">Activer le mode plein écran</string>
+    <string name="enter_full_screen">Activer le mode plein écran</string>
+    <string name="exit_full_screen">Quitter le mode plein écran</string>
     <string name="show_sidebar">Afficher la barre latérale</string>
+    <string name="hide_sidebar">Masquer la barre latérale</string>
     <string name="show_tab_bar">Afficher la barre d’onglets</string>
+    <string name="hide_tab_bar">Masquer la barre d’onglets</string>
     <string name="window">Fenêtre</string>
     <string name="window_close">Fermer la fenêtre</string>
     <string name="window_minimize">Minimiser</string>

@@ -81,10 +81,14 @@
     <string name="align_justified">Zarovnať do bloku</string>
     <string name="view">Zobraziť</string>
     <string name="show_toolbar">Zobraziť panel s nástrojmi</string>
+    <string name="hide_toolbar">Skryť panel s nástrojmi</string>
     <string name="customize_toolbar">Prispôsobiť panel s nástrojmi…</string>
-    <string name="full_screen">Zobraziť na celej obrazovke</string>
+    <string name="enter_full_screen">Zobraziť na celej obrazovke</string>
+    <string name="exit_full_screen">Vypnúť zobrazenie na celej obrazovke</string>
     <string name="show_sidebar">Zobraziť postranný panel</string>
+    <string name="hide_sidebar">Skryť postranný panel</string>
     <string name="show_tab_bar">Zobraziť lištu s tabmi</string>
+    <string name="hide_tab_bar">Skryť lištu s tabmi</string>
     <string name="window">Okno</string>
     <string name="window_close">Zatvoriť okno</string>
     <string name="window_minimize">Minimalizovať</string>

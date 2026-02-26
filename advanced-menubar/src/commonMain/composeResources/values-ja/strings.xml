@@ -81,10 +81,14 @@
     <string name="align_justified">両端揃え</string>
     <string name="view">表示</string>
     <string name="show_toolbar">ツールバーを表示</string>
+    <string name="hide_toolbar">ツールバーを非表示</string>
     <string name="customize_toolbar">ツールバーをカスタマイズ…</string>
-    <string name="full_screen">フルスクリーンにする</string>
+    <string name="enter_full_screen">フルスクリーンにする</string>
+    <string name="exit_full_screen">フルスクリーンを解除</string>
     <string name="show_sidebar">サイドバーを表示</string>
+    <string name="hide_sidebar">サイドバーを非表示</string>
     <string name="show_tab_bar">タブバーを表示</string>
+    <string name="hide_tab_bar">タブバーを非表示</string>
     <string name="window">ウインドウ</string>
     <string name="window_close">ウインドウを閉じる</string>
     <string name="window_minimize">しまう</string>

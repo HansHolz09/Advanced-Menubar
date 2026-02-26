@@ -81,10 +81,14 @@
     <string name="align_justified">Marginaljustera</string>
     <string name="view">Innehåll</string>
     <string name="show_toolbar">Visa verktygsfältet</string>
+    <string name="hide_toolbar">Göm verktygsfältet</string>
     <string name="customize_toolbar">Anpassa verktygsfältet…</string>
-    <string name="full_screen">Helskärmsläge</string>
+    <string name="enter_full_screen">Helskärmsläge</string>
+    <string name="exit_full_screen">Lämna helskärmsläge</string>
     <string name="show_sidebar">Visa sidofältet</string>
+    <string name="hide_sidebar">Göm sidofältet</string>
     <string name="show_tab_bar">Visa flikfältet</string>
+    <string name="hide_tab_bar">Göm flikfältet</string>
     <string name="window">Fönster</string>
     <string name="window_close">Stäng fönster</string>
     <string name="window_minimize">Minimera</string>

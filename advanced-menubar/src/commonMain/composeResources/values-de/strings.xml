@@ -81,10 +81,14 @@
     <string name="align_justified">Blocksatz</string>
     <string name="view">Darstellung</string>
     <string name="show_toolbar">Symbolleiste einblenden</string>
+    <string name="hide_toolbar">Symbolleiste ausblenden</string>
     <string name="customize_toolbar">Symbolleiste anpassen …</string>
-    <string name="full_screen">Vollbildmodus</string>
+    <string name="enter_full_screen">Vollbildmodus</string>
+    <string name="exit_full_screen">Vollbildmodus aus</string>
     <string name="show_sidebar">Seitenleiste einblenden</string>
+    <string name="hide_sidebar">Seitenleiste ausblenden</string>
     <string name="show_tab_bar">Tableiste einblenden</string>
+    <string name="hide_tab_bar">Tableiste ausblenden</string>
     <string name="window">Fenster</string>
     <string name="window_close">Fenster schließen</string>
     <string name="window_minimize">Im Dock ablegen</string>
