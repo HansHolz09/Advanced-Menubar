@@ -10,13 +10,13 @@ TEMPLATE_HEADER = """// AUTO-GENERATED. DO NOT EDIT.
 
 package dev.hansholz.advancedmenubar
 
-enum class MenubarLanguage(val tag: String) {"""
+enum class MenuBarLanguage(val tag: String) {"""
 TEMPLATE_FOOTER = """}"""
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--res-root", type=Path, default=Path("advanced-menubar/src/commonMain/composeResources"))
-    ap.add_argument("--out", type=Path, required=True, help="Path to MenubarLanguage.kt")
+    ap.add_argument("--out", type=Path, required=True, help="Path to MenuBarLanguage.kt")
     args = ap.parse_args()
 
     res_root = args.res_root.resolve()

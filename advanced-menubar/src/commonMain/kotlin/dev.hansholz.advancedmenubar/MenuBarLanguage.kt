@@ -3,7 +3,7 @@
 
 package dev.hansholz.advancedmenubar
 
-enum class MenubarLanguage(val tag: String) {
+enum class MenuBarLanguage(val tag: String) {
     AR("ar"),
     CA("ca"),
     CS("cs"),

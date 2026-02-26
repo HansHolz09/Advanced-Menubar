@@ -37,13 +37,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import dev.hansholz.advancedmenubar.MenubarLanguage
+import dev.hansholz.advancedmenubar.MenuBarLanguage
 import org.jetbrains.skiko.hostOs
 import java.util.*
 
 @Composable
 fun App(
-    language: MutableState<MenubarLanguage?>,
+    language: MutableState<MenuBarLanguage?>,
     clickedItems: List<String>,
     customMenus: SnapshotStateList<Int>,
     selectedMenu: MutableState<Int>,
@@ -134,7 +134,7 @@ fun App(
                         expanded = expanded,
                         onDismissRequest = { expanded = false }
                     ) {
-                        MenubarLanguage.entries.forEach { entry ->
+                        MenuBarLanguage.entries.forEach { entry ->
                             DropdownMenuItem(
                                 text = { Text("${Locale(entry.tag).displayName} (${entry.tag})") },
                                 onClick = {

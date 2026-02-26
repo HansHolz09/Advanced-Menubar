@@ -16,13 +16,13 @@ import androidx.compose.ui.input.key.type
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import dev.hansholz.advancedmenubar.DefaultMacMenuBar
-import dev.hansholz.advancedmenubar.MenubarLanguage
+import dev.hansholz.advancedmenubar.MenuBarLanguage
 import org.jetbrains.skiko.hostOs
 import kotlin.uuid.ExperimentalUuidApi
 
 @OptIn(ExperimentalUuidApi::class)
 fun main() = application {
-    val language = remember { mutableStateOf<MenubarLanguage?>(null) }
+    val language = remember { mutableStateOf<MenuBarLanguage?>(null) }
 
     val windows = remember { mutableStateListOf("Sample" to true) }
     windows.forEachIndexed { index, (title, visible) ->
