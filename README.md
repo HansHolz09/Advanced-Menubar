@@ -1,4 +1,4 @@
-# Advanced Menubar for Compose Desktop
+# Advanced MenuBar for Compose Desktop
 
 <img alt="Screenshot of Advanced-MenuBar Sample" src="assets/screenshot.png" style="border-radius:3%"/>
 
@@ -15,7 +15,7 @@ Advanced-MenuBar is a Compose Desktop (JVM) library that replaces the default ma
 
 ## Getting started
 
-Compose Advanced-Menubar is published to Maven Central:
+Compose Advanced-MenuBar is published to Maven Central:
 
 ```kotlin
 repositories {
