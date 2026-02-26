@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">حول ⁨%1$s⁩</string>
     <string name="settings">الإعدادات…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">تحديد الكل</string>
     <string name="find">بحث</string>
     <string name="find_dots">بحث…</string>
+    <string name="find_and_replace">بحث واستبدال…</string>
     <string name="find_next">بحث عن التالي</string>
     <string name="find_previous">بحث عن السابق</string>
     <string name="use_selection_for_find">استخدام التحديد للبحث</string>
     <string name="jump_to_selection">انتقال سريع إلى التحديد</string>
-    <string name="replace">بحث واستبدال…</string>
-    <string name="replace_and_find">بحث واستبدال…</string>
-    <string name="replace_all">بحث واستبدال…</string>
     <string name="spelling_and_grammar">التدقيق الإملائي والنحوي</string>
     <string name="toggle_correct_spelling_automatically">تصحيح الأخطاء الإملائية تلقائيًا</string>
     <string name="substitutions">بدائل</string>
@@ -62,14 +59,17 @@
     <string name="underline">تسطير</string>
     <string name="bigger">أكبر</string>
     <string name="smaller">أصغر</string>
+    <string name="kerning">تقنين الأحرف</string>
     <string name="kerning_standard">استخدام الإعداد الافتراضي</string>
     <string name="kerning_none">عدم استخدام أي عناصر</string>
     <string name="kerning_tighten">تضييق</string>
     <string name="kerning_loosen">توسيع</string>
+    <string name="ligatures">حرف متصل</string>
     <string name="ligatures_none">عدم استخدام أي عناصر</string>
     <string name="ligatures_standard">استخدام الإعداد الافتراضي</string>
     <string name="ligatures_all">استخدام الكل</string>
     <string name="baseline">الخط الأساسي</string>
+    <string name="baseline_standard">استخدام الإعداد الافتراضي</string>
     <string name="raise_baseline">رفع</string>
     <string name="lower_baseline">خفض</string>
     <string name="superscript">خط مرتفع</string>

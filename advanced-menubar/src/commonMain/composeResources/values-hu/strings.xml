@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">A(z) %1$s névjegye</string>
     <string name="settings">Beállítások…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Összes kijelölése</string>
     <string name="find">Keresés</string>
     <string name="find_dots">Keresés…</string>
+    <string name="find_and_replace">Keresés és csere…</string>
     <string name="find_next">Következő keresése</string>
     <string name="find_previous">Előző keresése</string>
     <string name="use_selection_for_find">A kijelölés használata kereséshez</string>
     <string name="jump_to_selection">Ugrás a kijelölésre</string>
-    <string name="replace">Keresés és csere…</string>
-    <string name="replace_and_find">Keresés és csere…</string>
-    <string name="replace_all">Keresés és csere…</string>
     <string name="spelling_and_grammar">Helyesírás és nyelvtan</string>
     <string name="toggle_correct_spelling_automatically">Helyesírás automatikus javítása</string>
     <string name="substitutions">Helyettesítések</string>
@@ -62,14 +59,17 @@
     <string name="underline">Aláhúzás</string>
     <string name="bigger">Nagyobb</string>
     <string name="smaller">Kisebb</string>
+    <string name="kerning">Alámetszés</string>
     <string name="kerning_standard">Alapértelmezett használata</string>
     <string name="kerning_none">Egyik sem</string>
     <string name="kerning_tighten">Szűkítés</string>
     <string name="kerning_loosen">Tágítás</string>
+    <string name="ligatures">Ligatúra</string>
     <string name="ligatures_none">Egyik sem</string>
     <string name="ligatures_standard">Alapértelmezett használata</string>
     <string name="ligatures_all">Összes használata</string>
     <string name="baseline">Alapvonal</string>
+    <string name="baseline_standard">Alapértelmezett használata</string>
     <string name="raise_baseline">Emelés</string>
     <string name="lower_baseline">Süllyesztés</string>
     <string name="superscript">Felső index</string>

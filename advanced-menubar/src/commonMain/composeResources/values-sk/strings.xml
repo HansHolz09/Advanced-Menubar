@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">O aplikácii %1$s</string>
     <string name="settings">Nastavenia…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Vybrať všetko</string>
     <string name="find">Nájsť</string>
     <string name="find_dots">Nájsť…</string>
+    <string name="find_and_replace">Nájsť a nahradiť…</string>
     <string name="find_next">Nájsť ďalšie</string>
     <string name="find_previous">Nájsť predošlé</string>
     <string name="use_selection_for_find">Použiť výber pri hľadaní</string>
     <string name="jump_to_selection">Prejsť na výber</string>
-    <string name="replace">Nájsť a nahradiť…</string>
-    <string name="replace_and_find">Nájsť a nahradiť…</string>
-    <string name="replace_all">Nájsť a nahradiť…</string>
     <string name="spelling_and_grammar">Pravopis a gramatika</string>
     <string name="toggle_correct_spelling_automatically">Automaticky opravovať pravopis</string>
     <string name="substitutions">Zámeny</string>
@@ -62,14 +59,17 @@
     <string name="underline">Podčiarknuť</string>
     <string name="bigger">Väčšie</string>
     <string name="smaller">Zmenšiť</string>
+    <string name="kerning">Medziznakové medzery</string>
     <string name="kerning_standard">Použiť predvolené</string>
     <string name="kerning_none">Nepoužiť žiadne</string>
     <string name="kerning_tighten">Zmenšiť</string>
     <string name="kerning_loosen">Zväčšiť</string>
+    <string name="ligatures">Ligatúry</string>
     <string name="ligatures_none">Nepoužiť žiadne</string>
     <string name="ligatures_standard">Použiť predvolené</string>
     <string name="ligatures_all">Použiť všetky</string>
     <string name="baseline">Základová čiara</string>
+    <string name="baseline_standard">Použiť predvolené</string>
     <string name="raise_baseline">Zvýšiť</string>
     <string name="lower_baseline">Znížiť</string>
     <string name="superscript">Horný index</string>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Over %1$s</string>
     <string name="settings">Instellingen…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Selecteer alle</string>
     <string name="find">Zoek</string>
     <string name="find_dots">Zoek…</string>
+    <string name="find_and_replace">Zoek en vervang…</string>
     <string name="find_next">Zoek volgende</string>
     <string name="find_previous">Zoek vorige</string>
     <string name="use_selection_for_find">Gebruik selectie voor zoekopdracht</string>
     <string name="jump_to_selection">Ga naar selectie</string>
-    <string name="replace">Zoek en vervang…</string>
-    <string name="replace_and_find">Zoek en vervang…</string>
-    <string name="replace_all">Zoek en vervang…</string>
     <string name="spelling_and_grammar">Spelling en grammatica</string>
     <string name="toggle_correct_spelling_automatically">Corrigeer spelling automatisch</string>
     <string name="substitutions">Vervanging</string>
@@ -62,14 +59,17 @@
     <string name="underline">Onderstreept</string>
     <string name="bigger">Groter</string>
     <string name="smaller">Kleiner</string>
+    <string name="kerning">Spatiëring</string>
     <string name="kerning_standard">Standaard</string>
     <string name="kerning_none">Geen</string>
     <string name="kerning_tighten">Versmald</string>
     <string name="kerning_loosen">Uitgerekt</string>
+    <string name="ligatures">Ligatuur</string>
     <string name="ligatures_none">Geen</string>
     <string name="ligatures_standard">Standaard</string>
     <string name="ligatures_all">Alle</string>
     <string name="baseline">Basislijn</string>
+    <string name="baseline_standard">Standaard</string>
     <string name="raise_baseline">Omhoog</string>
     <string name="lower_baseline">Omlaag</string>
     <string name="superscript">Superscript</string>

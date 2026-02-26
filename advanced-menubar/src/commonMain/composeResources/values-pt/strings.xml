@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Sobre o App %1$s</string>
     <string name="settings">Ajustes…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Selecionar Tudo</string>
     <string name="find">Buscar</string>
     <string name="find_dots">Buscar…</string>
+    <string name="find_and_replace">Buscar e Substituir…</string>
     <string name="find_next">Buscar Seguinte</string>
     <string name="find_previous">Buscar Anterior</string>
     <string name="use_selection_for_find">Usar Seleção para Buscar</string>
     <string name="jump_to_selection">Saltar para Seleção</string>
-    <string name="replace">Buscar e Substituir…</string>
-    <string name="replace_and_find">Buscar e Substituir…</string>
-    <string name="replace_all">Buscar e Substituir…</string>
     <string name="spelling_and_grammar">Ortografia e Gramática</string>
     <string name="toggle_correct_spelling_automatically">Corrigir Ortografia Automaticamente</string>
     <string name="substitutions">Substituições</string>
@@ -62,14 +59,17 @@
     <string name="underline">Sublinhado</string>
     <string name="bigger">Maior</string>
     <string name="smaller">Menor</string>
+    <string name="kerning">Espacejamento</string>
     <string name="kerning_standard">Usar Padrão</string>
     <string name="kerning_none">Não Usar Nenhum</string>
     <string name="kerning_tighten">Diminuir</string>
     <string name="kerning_loosen">Aumentar</string>
+    <string name="ligatures">Ligadura</string>
     <string name="ligatures_none">Não Usar Nenhum</string>
     <string name="ligatures_standard">Usar Padrão</string>
     <string name="ligatures_all">Usar Todas</string>
     <string name="baseline">Linha Base</string>
+    <string name="baseline_standard">Usar Padrão</string>
     <string name="raise_baseline">Elevar</string>
     <string name="lower_baseline">Mais baixa</string>
     <string name="superscript">Sobrescrito</string>

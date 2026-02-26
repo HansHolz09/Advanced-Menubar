@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">O aplikaci %1$s</string>
     <string name="settings">Nastavení…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Vybrat vše</string>
     <string name="find">Hledání</string>
     <string name="find_dots">Hledat…</string>
+    <string name="find_and_replace">Hledat a nahradit…</string>
     <string name="find_next">Hledat další</string>
     <string name="find_previous">Hledat předchozí</string>
     <string name="use_selection_for_find">Hledat výběr</string>
     <string name="jump_to_selection">Zobrazit výběr</string>
-    <string name="replace">Hledat a nahradit…</string>
-    <string name="replace_and_find">Hledat a nahradit…</string>
-    <string name="replace_all">Hledat a nahradit…</string>
     <string name="spelling_and_grammar">Pravopis a gramatika</string>
     <string name="toggle_correct_spelling_automatically">Automaticky opravovat pravopis</string>
     <string name="substitutions">Záměny</string>
@@ -62,14 +59,17 @@
     <string name="underline">Podtržené</string>
     <string name="bigger">Zvětšit</string>
     <string name="smaller">Zmenšit</string>
+    <string name="kerning">Vyrovnání</string>
     <string name="kerning_standard">Výchozí</string>
     <string name="kerning_none">Žádné</string>
     <string name="kerning_tighten">Těsnější</string>
     <string name="kerning_loosen">Volnější</string>
+    <string name="ligatures">Ligatury</string>
     <string name="ligatures_none">Žádné</string>
     <string name="ligatures_standard">Výchozí</string>
     <string name="ligatures_all">Vše</string>
     <string name="baseline">Účaří</string>
+    <string name="baseline_standard">Výchozí</string>
     <string name="raise_baseline">Zvýšit</string>
     <string name="lower_baseline">Snížit</string>
     <string name="superscript">Horní index</string>

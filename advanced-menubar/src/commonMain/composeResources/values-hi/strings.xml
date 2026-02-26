@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">%1$s परिचय</string>
     <string name="settings">सेटिंग…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">सभी चुनें</string>
     <string name="find">ढूँढें</string>
     <string name="find_dots">ढूँढें…</string>
+    <string name="find_and_replace">ढूँढें और बदलें…</string>
     <string name="find_next">अगला ढूँढें</string>
     <string name="find_previous">पिछला ढूँढें</string>
     <string name="use_selection_for_find">ढूँढने के लिए चयन का उपयोग करें</string>
     <string name="jump_to_selection">चयन पर जाएँ</string>
-    <string name="replace">ढूँढें और बदलें…</string>
-    <string name="replace_and_find">ढूँढें और बदलें…</string>
-    <string name="replace_all">ढूँढें और बदलें…</string>
     <string name="spelling_and_grammar">वर्तनी और व्याकरण</string>
     <string name="toggle_correct_spelling_automatically">वर्तनी को ऑटोमैटिकली सुधारें</string>
     <string name="substitutions">सब्स्टिट्यूशन</string>
@@ -62,14 +59,17 @@
     <string name="underline">रेखांकित करें</string>
     <string name="bigger">अधिक बड़ा</string>
     <string name="smaller">और छोटा</string>
+    <string name="kerning">कर्न</string>
     <string name="kerning_standard">डिफ़ॉल्ट का उपयोग करें</string>
     <string name="kerning_none">किसी का भी उपयोग न करें</string>
     <string name="kerning_tighten">कसें</string>
     <string name="kerning_loosen">ढीला करें</string>
+    <string name="ligatures">संयुक्ताक्षर</string>
     <string name="ligatures_none">किसी का भी उपयोग न करें</string>
     <string name="ligatures_standard">डिफ़ॉल्ट का उपयोग करें</string>
     <string name="ligatures_all">सभी का उपयोग करें</string>
     <string name="baseline">बेसलाइन</string>
+    <string name="baseline_standard">डिफ़ॉल्ट का उपयोग करें</string>
     <string name="raise_baseline">उठाएँ</string>
     <string name="lower_baseline">नीचे करें</string>
     <string name="superscript">सुपरस्क्रिप्ट</string>

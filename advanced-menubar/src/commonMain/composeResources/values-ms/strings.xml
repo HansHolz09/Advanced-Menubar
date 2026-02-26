@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Perihal %1$s</string>
     <string name="settings">Seting…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Pilih Semua</string>
     <string name="find">Cari</string>
     <string name="find_dots">Cari…</string>
+    <string name="find_and_replace">Cari dan Ganti…</string>
     <string name="find_next">Cari Seterusnya</string>
     <string name="find_previous">Cari Sebelumnya</string>
     <string name="use_selection_for_find">Guna Pilihan untuk Mencari</string>
     <string name="jump_to_selection">Lompat ke Pilihan</string>
-    <string name="replace">Cari dan Ganti…</string>
-    <string name="replace_and_find">Cari dan Ganti…</string>
-    <string name="replace_all">Cari dan Ganti…</string>
     <string name="spelling_and_grammar">Ejaan dan Tatabahasa</string>
     <string name="toggle_correct_spelling_automatically">Betulkan Ejaan Secara Automatik</string>
     <string name="substitutions">Penggantian</string>
@@ -62,14 +59,17 @@
     <string name="underline">Garis Bawah</string>
     <string name="bigger">Lebih Besar</string>
     <string name="smaller">Lebih Kecil</string>
+    <string name="kerning">Kern</string>
     <string name="kerning_standard">Gunakan Lalai</string>
     <string name="kerning_none">Jangan Guna</string>
     <string name="kerning_tighten">Ketatkan</string>
     <string name="kerning_loosen">Longgarkan</string>
+    <string name="ligatures">Ligatur</string>
     <string name="ligatures_none">Jangan Guna</string>
     <string name="ligatures_standard">Gunakan Lalai</string>
     <string name="ligatures_all">Gunakan Semua</string>
     <string name="baseline">Garis Asas</string>
+    <string name="baseline_standard">Gunakan Lalai</string>
     <string name="raise_baseline">Naikkan</string>
     <string name="lower_baseline">Lebih Rendah</string>
     <string name="superscript">Superskrip</string>

@@ -12,7 +12,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.Button
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,6 +21,9 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -44,7 +46,7 @@ fun App(
     language: MutableState<MenubarLanguage?>,
     clickedItems: List<String>,
     customMenus: SnapshotStateList<Int>,
-    showDefaultMenu: MutableState<Boolean>,
+    selectedMenu: MutableState<Int>,
     checkboxItem1: MutableState<Boolean>,
     checkboxItem2: MutableState<Boolean>,
     checkboxItem3: MutableState<Boolean>,
@@ -70,7 +72,7 @@ fun App(
                         onClick = {
                             customMenus += customMenus.size + 1
                         },
-                        enabled = !showDefaultMenu.value
+                        enabled = selectedMenu.value == 0
                     ) {
                         Text("Add new Custom Menu")
                     }
@@ -79,31 +81,34 @@ fun App(
                         onClick = {
                             customMenus.removeLast()
                         },
-                        enabled = customMenus.isNotEmpty() && !showDefaultMenu.value
+                        enabled = customMenus.isNotEmpty() && selectedMenu.value == 0
                     ) {
                         Text("Remove last Custom Menu")
                     }
                 }
             }
             item {
-                Row(
-                    modifier = Modifier.padding(top = 15.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Checkbox(
-                        checked = showDefaultMenu.value,
-                        onCheckedChange = { showDefaultMenu.value = it },
-                        enabled = hostOs.isMacOS
-                    )
-                    Spacer(Modifier.width(10.dp))
-                    Text("Show default Menubar")
+                val options = listOf("CompatibilityMenuBar", "DefaultMacMenuBar", "FullMacMenuBar")
+                SingleChoiceSegmentedButtonRow(Modifier.padding(top = 15.dp)) {
+                    options.forEachIndexed { index, label ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(
+                                index = index,
+                                count = options.size
+                            ),
+                            onClick = { selectedMenu.value = index },
+                            selected = index == selectedMenu.value,
+                            label = { Text(label) },
+                            enabled = hostOs.isMacOS,
+                        )
+                    }
                 }
             }
             item {
                 OutlinedTextField(
                     state = textFieldState,
                     modifier = Modifier.padding(top = 15.dp),
-                    enabled = !showDefaultMenu.value,
+                    enabled = selectedMenu.value == 0,
                     label = { Text("Test the Edit-Menu here") }
                 )
             }

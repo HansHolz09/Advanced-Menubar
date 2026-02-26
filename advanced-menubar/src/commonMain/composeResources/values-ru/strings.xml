@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">О приложении «%1$s»</string>
     <string name="settings">Настройки…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Выбрать все</string>
     <string name="find">Поиск</string>
     <string name="find_dots">Найти…</string>
+    <string name="find_and_replace">Найти и заменить…</string>
     <string name="find_next">Найти следующее</string>
     <string name="find_previous">Найти предыдущее</string>
     <string name="use_selection_for_find">Найти выбранное</string>
     <string name="jump_to_selection">Перейти к выбранному</string>
-    <string name="replace">Найти и заменить…</string>
-    <string name="replace_and_find">Найти и заменить…</string>
-    <string name="replace_all">Найти и заменить…</string>
     <string name="spelling_and_grammar">Правописание и грамматика</string>
     <string name="toggle_correct_spelling_automatically">Автоматически исправлять ошибки</string>
     <string name="substitutions">Замены</string>
@@ -62,14 +59,17 @@
     <string name="underline">Подчеркнутый</string>
     <string name="bigger">Больше</string>
     <string name="smaller">Уменьшить</string>
+    <string name="kerning">Кернинг</string>
     <string name="kerning_standard">По умолчанию</string>
     <string name="kerning_none">Не использовать</string>
     <string name="kerning_tighten">Уплотнить</string>
     <string name="kerning_loosen">Разредить</string>
+    <string name="ligatures">Лигатуры</string>
     <string name="ligatures_none">Не использовать</string>
     <string name="ligatures_standard">По умолчанию</string>
     <string name="ligatures_all">Использовать все</string>
     <string name="baseline">Базовая линия</string>
+    <string name="baseline_standard">По умолчанию</string>
     <string name="raise_baseline">Поднять</string>
     <string name="lower_baseline">Опустить</string>
     <string name="superscript">Надстрочная</string>

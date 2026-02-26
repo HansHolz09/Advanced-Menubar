@@ -3,19 +3,6 @@ package dev.hansholz.advancedmenubar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Canvas
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.drawscope.CanvasDrawScope
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.graphics.toPixelMap
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.dp
 import composeadvancedmenubar.advanced_menubar.generated.resources.Res
 import composeadvancedmenubar.advanced_menubar.generated.resources.about
 import composeadvancedmenubar.advanced_menubar.generated.resources.align_center
@@ -25,6 +12,7 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.align_right
 import composeadvancedmenubar.advanced_menubar.generated.resources.allStringResources
 import composeadvancedmenubar.advanced_menubar.generated.resources.app_help
 import composeadvancedmenubar.advanced_menubar.generated.resources.baseline
+import composeadvancedmenubar.advanced_menubar.generated.resources.baseline_standard
 import composeadvancedmenubar.advanced_menubar.generated.resources.bigger
 import composeadvancedmenubar.advanced_menubar.generated.resources.bold
 import composeadvancedmenubar.advanced_menubar.generated.resources.bring_all_to_front
@@ -53,6 +41,7 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.file_rename
 import composeadvancedmenubar.advanced_menubar.generated.resources.file_save
 import composeadvancedmenubar.advanced_menubar.generated.resources.file_save_as
 import composeadvancedmenubar.advanced_menubar.generated.resources.find
+import composeadvancedmenubar.advanced_menubar.generated.resources.find_and_replace
 import composeadvancedmenubar.advanced_menubar.generated.resources.find_dots
 import composeadvancedmenubar.advanced_menubar.generated.resources.find_next
 import composeadvancedmenubar.advanced_menubar.generated.resources.find_previous
@@ -64,10 +53,12 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.hide
 import composeadvancedmenubar.advanced_menubar.generated.resources.hide_others
 import composeadvancedmenubar.advanced_menubar.generated.resources.italic
 import composeadvancedmenubar.advanced_menubar.generated.resources.jump_to_selection
+import composeadvancedmenubar.advanced_menubar.generated.resources.kerning
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_loosen
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_none
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_standard
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_tighten
+import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures
 import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_all
 import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_none
 import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_standard
@@ -79,9 +70,6 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.move_tab_to_n
 import composeadvancedmenubar.advanced_menubar.generated.resources.paste_and_match_style
 import composeadvancedmenubar.advanced_menubar.generated.resources.quit
 import composeadvancedmenubar.advanced_menubar.generated.resources.raise_baseline
-import composeadvancedmenubar.advanced_menubar.generated.resources.replace
-import composeadvancedmenubar.advanced_menubar.generated.resources.replace_all
-import composeadvancedmenubar.advanced_menubar.generated.resources.replace_and_find
 import composeadvancedmenubar.advanced_menubar.generated.resources.services
 import composeadvancedmenubar.advanced_menubar.generated.resources.settings
 import composeadvancedmenubar.advanced_menubar.generated.resources.show_all
@@ -115,60 +103,28 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.window_close
 import composeadvancedmenubar.advanced_menubar.generated.resources.window_minimize
 import composeadvancedmenubar.advanced_menubar.generated.resources.window_minimize_all
 import composeadvancedmenubar.advanced_menubar.generated.resources.window_zoom
-import dev.hansholz.advancedmenubar.MacCocoaMenu.CheckboxItem
-import dev.hansholz.advancedmenubar.MacCocoaMenu.CustomItem
-import dev.hansholz.advancedmenubar.MacCocoaMenu.EditStd
-import dev.hansholz.advancedmenubar.MacCocoaMenu.FileStd
-import dev.hansholz.advancedmenubar.MacCocoaMenu.FormatStd
-import dev.hansholz.advancedmenubar.MacCocoaMenu.HelpItem
-import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuElement
-import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuIcon
-import dev.hansholz.advancedmenubar.MacCocoaMenu.Separator
-import dev.hansholz.advancedmenubar.MacCocoaMenu.Submenu
-import dev.hansholz.advancedmenubar.MacCocoaMenu.SystemItem
-import dev.hansholz.advancedmenubar.MacCocoaMenu.TopMenu
-import dev.hansholz.advancedmenubar.MacCocoaMenu.ViewStd
-import dev.hansholz.advancedmenubar.MacCocoaMenu.WindowStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.CheckboxItem
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.CustomItem
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.EditStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.FileStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.FormatStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.HelpItem
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.MenuElement
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.Separator
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.Submenu
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.SystemItem
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.TopMenu
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.ViewStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.WindowStd
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
-import java.awt.image.BufferedImage
-import java.io.ByteArrayOutputStream
-import javax.imageio.ImageIO
 import javax.swing.SwingUtilities
 
 @DslMarker
 annotation class MenuDsl
 
 @Composable
-fun rememberMenuIconFrom(
-    imageVector: ImageVector,
-    sizeDp: Dp = 16.dp,
-    template: Boolean = true
-): MenuIcon {
-    val density = LocalDensity.current
-    val px = with(density) { sizeDp.roundToPx().coerceAtLeast(1) }
-    val painter = rememberVectorPainter(imageVector)
-    val bytes = remember(imageVector, px, density) {
-        val ib = ImageBitmap(px, px)
-        val canvas = Canvas(ib)
-        val drawScope = CanvasDrawScope()
-        drawScope.draw(
-            density = Density(density.density, density.fontScale),
-            layoutDirection = LayoutDirection.Ltr,
-            canvas = canvas,
-            size = Size(px.toFloat(), px.toFloat())
-        ) { with(painter) { draw(Size(px.toFloat(), px.toFloat())) } }
-
-        val pm = ib.toPixelMap()
-        val awt = BufferedImage(px, px, BufferedImage.TYPE_INT_ARGB)
-        for (y in 0 until px) for (x in 0 until px) awt.setRGB(x, y, pm[x, y].toArgb())
-        val baos = ByteArrayOutputStream(); ImageIO.write(awt, "png", baos); baos.toByteArray()
-    }
-    return MenuIcon.Png(bytes, template)
-}
-
-@Composable
-fun AdvancedMacMenu(appName: String, content: AdvancedMacMenuScope.() -> Unit) {
+fun AdvancedMacMenuBar(appName: String, content: AdvancedMacMenuScope.() -> Unit) {
     val strings = Res.allStringResources.map {
         it.value to stringResource(it.value, appName)
     }
@@ -180,7 +136,7 @@ fun AdvancedMacMenu(appName: String, content: AdvancedMacMenuScope.() -> Unit) {
     val model = remember(scope.menus.toList()) { scope.menus.toList() }
     LaunchedEffect(model) {
         SwingUtilities.invokeLater {
-            MacCocoaMenu.rebuildMenuBar(model)
+            MacCocoaMenuBar.rebuildMenuBar(model)
         }
     }
 }
@@ -433,6 +389,13 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             onClick: (() -> Unit)
         ) { elements += EditStd.Find(title, enabled, icon, onClick) }
 
+        fun FindAndReplace(
+            title: String = getString(Res.string.find_and_replace),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)
+        ) { elements += EditStd.FindAndReplace(title, enabled, icon, onClick) }
+
         fun FindNext(
             title: String = getString(Res.string.find_next),
             enabled: Boolean = true,
@@ -460,27 +423,6 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             icon: MenuIcon? = null,
             onClick: (() -> Unit)
         ) { elements += EditStd.JumpToSelection(title, enabled, icon, onClick) }
-
-        fun Replace(
-            title: String = getString(Res.string.replace),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.Replace(title, enabled, icon, onClick) }
-
-        fun ReplaceAndFind(
-            title: String = getString(Res.string.replace_and_find),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.ReplaceAndFind(title, enabled, icon, onClick) }
-
-        fun ReplaceAll(
-            title: String = getString(Res.string.replace_all),
-            enabled: Boolean = true,
-            icon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) { elements += EditStd.ReplaceAll(title, enabled, icon, onClick) }
 
 
         fun SpellingAndGrammarMenu(
@@ -650,6 +592,14 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             onClick: (() -> Unit)?
         ) { elements += FormatStd.Smaller(title, enabled, icon, onClick) }
 
+
+        fun KerningMenu(
+            title: String = getString(Res.string.kerning),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            block: MacMenuScope.() -> Unit
+        ) = Menu(title, enabled, icon, null, null, block)
+
         fun KerningStandard(
             title: String = getString(Res.string.kerning_standard),
             enabled: Boolean = true,
@@ -677,6 +627,14 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             icon: MenuIcon? = null,
             onClick: (() -> Unit)?
         ) { elements += FormatStd.KerningLoosen(title, enabled, icon, onClick) }
+
+
+        fun LigaturesMenu(
+            title: String = getString(Res.string.ligatures),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            block: MacMenuScope.() -> Unit
+        ) = Menu(title, enabled, icon, null, null, block)
 
         fun LigaturesNone(
             title: String = getString(Res.string.ligatures_none),
@@ -707,6 +665,12 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             block: MacMenuScope.() -> Unit
         ) = Menu(title, enabled, icon, null, null, block)
 
+        fun BaselineStandard(
+            title: String = getString(Res.string.baseline_standard),
+            enabled: Boolean = true,
+            icon: MenuIcon? = null,
+            onClick: (() -> Unit)?
+        ) { elements += FormatStd.BaselineStandard(title, enabled, icon, onClick) }
 
         fun RaiseBaseline(
             title: String = getString(Res.string.raise_baseline),
@@ -926,12 +890,16 @@ class AdvancedMacMenuScope(private val strings: List<Pair<StringResource, String
             elements += Submenu(title, s.elements.toList(), enabled, icon, subtitle, badge)
         }
 
+        private fun SectionHeader(title: String) {
+            elements += MacCocoaMenuBar.SectionHeader(title)
+        }
+
         fun MacMenuScope.Section(
             title: String,
             content: MacMenuScope.() -> Unit
         ) {
             Separator()
-            Item(title, enabled = false) {}
+            SectionHeader(title)
             content()
             Separator()
         }

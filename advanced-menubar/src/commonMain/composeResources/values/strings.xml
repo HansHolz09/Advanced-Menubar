@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">About %1$s</string>
     <string name="settings">Settings…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Select All</string>
     <string name="find">Find</string>
     <string name="find_dots">Find…</string>
+    <string name="find_and_replace">Find and Replace…</string>
     <string name="find_next">Find Next</string>
     <string name="find_previous">Find Previous</string>
     <string name="use_selection_for_find">Use Selection for Find</string>
     <string name="jump_to_selection">Jump to Selection</string>
-    <string name="replace">Find and Replace…</string>
-    <string name="replace_and_find">Find and Replace…</string>
-    <string name="replace_all">Find and Replace…</string>
     <string name="spelling_and_grammar">Spelling and Grammar</string>
     <string name="toggle_correct_spelling_automatically">Correct Spelling Automatically</string>
     <string name="substitutions">Substitutions</string>
@@ -62,14 +59,17 @@
     <string name="underline">Underline</string>
     <string name="bigger">Larger</string>
     <string name="smaller">Smaller</string>
+    <string name="kerning">Kern</string>
     <string name="kerning_standard">Use Default</string>
     <string name="kerning_none">Use None</string>
     <string name="kerning_tighten">Tighten</string>
     <string name="kerning_loosen">Loosen</string>
+    <string name="ligatures">Ligature</string>
     <string name="ligatures_none">Use None</string>
     <string name="ligatures_standard">Use Default</string>
     <string name="ligatures_all">Use All</string>
     <string name="baseline">Baseline</string>
+    <string name="baseline_standard">Use Default</string>
     <string name="raise_baseline">Raise</string>
     <string name="lower_baseline">Lower</string>
     <string name="superscript">Superscript</string>

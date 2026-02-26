@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Om %1$s</string>
     <string name="settings">Innstillinger…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Marker alle</string>
     <string name="find">Finn</string>
     <string name="find_dots">Finn…</string>
+    <string name="find_and_replace">Søk og erstatt…</string>
     <string name="find_next">Finn neste</string>
     <string name="find_previous">Finn forrige</string>
     <string name="use_selection_for_find">Bruk markering til søk</string>
     <string name="jump_to_selection">Gå til markering</string>
-    <string name="replace">Søk og erstatt…</string>
-    <string name="replace_and_find">Søk og erstatt…</string>
-    <string name="replace_all">Søk og erstatt…</string>
     <string name="spelling_and_grammar">Stavekontroll og grammatikk</string>
     <string name="toggle_correct_spelling_automatically">Korriger stavemåte automatisk</string>
     <string name="substitutions">Automatiske endringer</string>
@@ -62,14 +59,17 @@
     <string name="underline">Understreket</string>
     <string name="bigger">Større</string>
     <string name="smaller">Mindre</string>
+    <string name="kerning">Kniping</string>
     <string name="kerning_standard">Bruk standard</string>
     <string name="kerning_none">Ingen</string>
     <string name="kerning_tighten">Tettere</string>
     <string name="kerning_loosen">Løsere</string>
+    <string name="ligatures">Ligatur</string>
     <string name="ligatures_none">Ingen</string>
     <string name="ligatures_standard">Bruk standard</string>
     <string name="ligatures_all">Bruk alle</string>
     <string name="baseline">Skriftlinje</string>
+    <string name="baseline_standard">Bruk standard</string>
     <string name="raise_baseline">Hev</string>
     <string name="lower_baseline">Lavere</string>
     <string name="superscript">Hevet tekst</string>

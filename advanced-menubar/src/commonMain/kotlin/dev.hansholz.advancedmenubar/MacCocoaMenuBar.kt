@@ -9,8 +9,8 @@ import com.sun.jna.Pointer
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.ConcurrentHashMap
 
-object MacCocoaMenu {
-    interface ObjC : Library {
+internal object MacCocoaMenuBar {
+    private interface ObjC : Library {
         fun objc_getClass(name: String): Pointer
         fun sel_registerName(name: String): Pointer
 
@@ -19,6 +19,7 @@ object MacCocoaMenu {
         fun objc_msgSend(receiver: Pointer, selector: Pointer, arg: Long): Pointer
         fun objc_msgSend(receiver: Pointer, selector: Pointer, arg1: Pointer, arg2: Pointer): Pointer
         fun objc_msgSend(receiver: Pointer, selector: Pointer, arg1: Pointer, arg2: Long): Pointer
+        fun objc_msgSend(receiver: Pointer, selector: Pointer, arg1: Double, arg2: Double): Pointer
 
         fun objc_allocateClassPair(supercls: Pointer, name: String, extraBytes: Long): Pointer
         fun objc_registerClassPair(cls: Pointer)
@@ -27,10 +28,10 @@ object MacCocoaMenu {
     private val objc: ObjC = Native.load("objc", ObjC::class.java)
     private fun sel(name: String): Pointer = objc.sel_registerName(name)
 
-    interface Dispatch : Library {
+    private interface Dispatch : Library {
         fun dispatch_sync_f(queue: Pointer?, context: Pointer?, work: DispatchFunction)
     }
-    interface DispatchFunction : Callback { fun invoke(context: Pointer?) }
+    private interface DispatchFunction : Callback { fun invoke(context: Pointer?) }
     private val dispatch: Dispatch? by lazy {
         listOf("dispatch", "System").firstNotNullOfOrNull { lib ->
             try { Native.load(lib, Dispatch::class.java) } catch (_: Throwable) { null }
@@ -82,13 +83,11 @@ object MacCocoaMenu {
         data class SelectAll(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
 
         data class Find(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
+        data class FindAndReplace(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
         data class FindNext(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
         data class FindPrevious(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
         data class UseSelectionForFind(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
         data class JumpToSelection(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
-        data class Replace(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
-        data class ReplaceAndFind(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
-        data class ReplaceAll(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null) : EditStd()
 
         data class ToggleSmartQuotes(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): EditStd()
         data class ToggleSmartDashes(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val checked: Boolean? = null, val onToggle: ((Boolean) -> Unit)? = null): EditStd()
@@ -123,6 +122,7 @@ object MacCocoaMenu {
         data class LigaturesStandard(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
         data class LigaturesAll(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
 
+        data class BaselineStandard(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
         data class RaiseBaseline(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
         data class LowerBaseline(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
         data class Superscript(val title: String, val enabled: Boolean = true, val icon: MenuIcon? = null, val onClick: (() -> Unit)? = null): FormatStd()
@@ -201,31 +201,6 @@ object MacCocoaMenu {
         data class Custom(val title: String, val elements: List<MenuElement>) : TopMenu()
     }
 
-    sealed interface MenuIcon {
-        data class SFSymbol(val name: String, val template: Boolean = true) : MenuIcon
-        data class Png(val bytes: ByteArray, val template: Boolean = true) : MenuIcon {
-            override fun equals(other: Any?): Boolean {
-                if (this === other) return true
-                if (javaClass != other?.javaClass) return false
-
-                other as Png
-
-                if (template != other.template) return false
-                if (!bytes.contentEquals(other.bytes)) return false
-
-                return true
-            }
-
-            override fun hashCode(): Int {
-                var result = template.hashCode()
-                result = 31 * result + bytes.contentHashCode()
-                return result
-            }
-        }
-
-        data class File(val path: String, val template: Boolean = true) : MenuIcon
-    }
-
     object Modifiers {
         const val none: Long = 0L
         const val shift: Long = 1L shl 17
@@ -281,13 +256,11 @@ object MacCocoaMenu {
         is EditStd.Delete -> el.enabled
         is EditStd.SelectAll -> el.enabled
         is EditStd.Find -> el.enabled
+        is EditStd.FindAndReplace -> el.enabled
         is EditStd.FindNext -> el.enabled
         is EditStd.FindPrevious -> el.enabled
         is EditStd.UseSelectionForFind -> el.enabled
         is EditStd.JumpToSelection -> el.enabled
-        is EditStd.Replace -> el.enabled
-        is EditStd.ReplaceAndFind -> el.enabled
-        is EditStd.ReplaceAll -> el.enabled
         is EditStd.ToggleSmartQuotes -> el.enabled
         is EditStd.ToggleSmartDashes -> el.enabled
         is EditStd.ToggleLinkDetection -> el.enabled
@@ -313,6 +286,7 @@ object MacCocoaMenu {
         is FormatStd.LigaturesNone -> el.enabled
         is FormatStd.LigaturesStandard -> el.enabled
         is FormatStd.LigaturesAll -> el.enabled
+        is FormatStd.BaselineStandard -> el.enabled
         is FormatStd.RaiseBaseline -> el.enabled
         is FormatStd.LowerBaseline -> el.enabled
         is FormatStd.Superscript -> el.enabled
@@ -439,6 +413,10 @@ object MacCocoaMenu {
     private fun msgSendPPL(recv: Pointer?, cmd: String, a: Pointer?, l: Long): Pointer =
         try { objc.objc_msgSend(nn(recv), selPtr(cmd), nn(a), l) } catch (_: Throwable) { Pointer.NULL }
 
+    @Suppress("SameParameterValue")
+    private fun msgSendPDD(recv: Pointer?, cmd: String, d1: Double, d2: Double): Pointer =
+        try { objc.objc_msgSend(nn(recv), selPtr(cmd), d1, d2) } catch (_: Throwable) { Pointer.NULL }
+
     private fun dispatchMainQueue(): Pointer {
         val lib = dispatchLib ?: error("could not load libdispatch/libSystem")
         val names = listOf("_dispatch_main_q", "__dispatch_main_q")
@@ -484,9 +462,18 @@ object MacCocoaMenu {
             is MenuIcon.Png -> msgSendPP(msgSendP(NSImage, "alloc"), "initWithData:", nsDataFrom(icon.bytes))
             is MenuIcon.File -> msgSendPP(msgSendP(NSImage, "alloc"), "initWithContentsOfFile:", nsString(icon.path))
         }
-        val template = when (icon) { is MenuIcon.SFSymbol -> icon.template; is MenuIcon.Png -> icon.template; is MenuIcon.File -> icon.template }
+
         if (!isNull(img)) {
-            msgSendPL(img, "setTemplate:", if (template) 1 else 0)
+            if (icon is MenuIcon.Png || icon is MenuIcon.File) {
+                msgSendPDD(img, "setSize:", 16.0, 16.0)
+            }
+
+            val template = when (icon) {
+                is MenuIcon.SFSymbol -> icon.template
+                is MenuIcon.Png -> icon.template
+                is MenuIcon.File -> icon.template
+            }
+            msgSendPL(img, "setTemplate:", if (template) 1L else 0L)
         } else if (icon is MenuIcon.SFSymbol) {
             System.err.println("\"${icon.name}\" is no valid SF-Symbol")
             return null
@@ -561,7 +548,7 @@ object MacCocoaMenu {
     private val checkboxStates = ConcurrentHashMap<Long, Boolean>()
     @Volatile private var actionTargetInstance: Pointer? = null
 
-    interface MenuItemInvokeCallback : Callback { fun invoke(self: Pointer?, _cmd: Pointer?, sender: Pointer?) }
+    private interface MenuItemInvokeCallback : Callback { fun invoke(self: Pointer?, _cmd: Pointer?, sender: Pointer?) }
     private val invokeCallback = object : MenuItemInvokeCallback {
         override fun invoke(self: Pointer?, _cmd: Pointer?, sender: Pointer?) {
             val key = Pointer.nativeValue(nn(sender))
@@ -770,13 +757,11 @@ object MacCocoaMenu {
             is EditStd.SelectAll -> addStd(menu, el.title, "selectAll:", "a", Modifiers.command, el.enabled, el.icon, el.onClick, target)
 
             is EditStd.Find -> addFind(menu, el.title, FIND_TAG_SHOW, "f", Modifiers.command, el.enabled, el.icon, el.onClick, target)
+            is EditStd.FindAndReplace -> addFind(menu, el.title, FIND_TAG_FIND_AND_REPLACE, "f", Modifiers.combo(Modifiers.command, Modifiers.option), el.enabled, el.icon, el.onClick, target)
             is EditStd.FindNext -> addFind(menu, el.title, FIND_TAG_NEXT, "g", Modifiers.command, el.enabled, el.icon, el.onClick, target)
             is EditStd.FindPrevious -> addFind(menu, el.title, FIND_TAG_PREV, "G", Modifiers.combo(Modifiers.command, Modifiers.shift), el.enabled, el.icon, el.onClick, target)
             is EditStd.UseSelectionForFind -> addFind(menu, el.title, FIND_TAG_SET_FIND, "e", Modifiers.command, el.enabled, el.icon, el.onClick, target)
             is EditStd.JumpToSelection -> addStd(menu, el.title, "centerSelectionInVisibleArea:", "j", Modifiers.command, el.enabled, el.icon, el.onClick, target)
-            is EditStd.Replace -> addFind(menu, el.title, FIND_TAG_REPLACE, "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is EditStd.ReplaceAndFind -> addFind(menu, el.title, FIND_TAG_REPLACE_AND_FIND, "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
-            is EditStd.ReplaceAll -> addFind(menu, el.title, FIND_TAG_REPLACE_ALL, "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
 
             is EditStd.ToggleSmartQuotes -> addStdToggle(menu, el.title, "toggleAutomaticQuoteSubstitution:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
             is EditStd.ToggleSmartDashes -> addStdToggle(menu, el.title, "toggleAutomaticDashSubstitution:", "", Modifiers.none, el.enabled, el.icon, el.checked, el.onToggle, target)
@@ -813,6 +798,7 @@ object MacCocoaMenu {
             is FormatStd.LigaturesStandard -> addStd(menu, el.title, "useStandardLigatures:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is FormatStd.LigaturesAll -> addStd(menu, el.title, "useAllLigatures:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
 
+            is FormatStd.BaselineStandard -> addStd(menu, el.title, "unscript:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is FormatStd.RaiseBaseline -> addStd(menu, el.title, "raiseBaseline:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is FormatStd.LowerBaseline -> addStd(menu, el.title, "lowerBaseline:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
             is FormatStd.Superscript -> addStd(menu, el.title, "superscript:", "", Modifiers.none, el.enabled, el.icon, el.onClick, target)
@@ -1132,11 +1118,9 @@ object MacCocoaMenu {
     }
 
     private const val FIND_TAG_SHOW = 1
+    private const val FIND_TAG_FIND_AND_REPLACE = 12
     private const val FIND_TAG_NEXT = 2
     private const val FIND_TAG_PREV = 3
-    private const val FIND_TAG_REPLACE_ALL = 4
-    private const val FIND_TAG_REPLACE = 5
-    private const val FIND_TAG_REPLACE_AND_FIND = 6
     private const val FIND_TAG_SET_FIND = 7
 
     private fun addFind(menu: Pointer, title: String, tag: Int, key: String, mods: Long, enabled: Boolean, icon: MenuIcon?, onClick: (() -> Unit)?, target: Pointer) {

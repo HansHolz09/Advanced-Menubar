@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Acerca de %1$s</string>
     <string name="settings">Ajustes…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Seleccionar todo</string>
     <string name="find">Buscar</string>
     <string name="find_dots">Buscar…</string>
+    <string name="find_and_replace">Buscar y reemplazar…</string>
     <string name="find_next">Buscar siguiente</string>
     <string name="find_previous">Buscar anterior</string>
     <string name="use_selection_for_find">Usar selección para buscar</string>
     <string name="jump_to_selection">Ir a la selección</string>
-    <string name="replace">Buscar y reemplazar…</string>
-    <string name="replace_and_find">Buscar y reemplazar…</string>
-    <string name="replace_all">Buscar y reemplazar…</string>
     <string name="spelling_and_grammar">Ortografía y gramática</string>
     <string name="toggle_correct_spelling_automatically">Corregir ortografía automáticamente</string>
     <string name="substitutions">Sustituciones</string>
@@ -62,14 +59,17 @@
     <string name="underline">Subrayado</string>
     <string name="bigger">Más grande</string>
     <string name="smaller">Más pequeño</string>
+    <string name="kerning">Interletraje</string>
     <string name="kerning_standard">Utilizar por omisión</string>
     <string name="kerning_none">Ninguno</string>
     <string name="kerning_tighten">Reducir</string>
     <string name="kerning_loosen">Aumentar</string>
+    <string name="ligatures">Ligadura</string>
     <string name="ligatures_none">Ninguno</string>
     <string name="ligatures_standard">Utilizar por omisión</string>
     <string name="ligatures_all">Todas</string>
     <string name="baseline">Línea base</string>
+    <string name="baseline_standard">Utilizar por omisión</string>
     <string name="raise_baseline">Subir</string>
     <string name="lower_baseline">Bajar</string>
     <string name="superscript">Superíndice</string>

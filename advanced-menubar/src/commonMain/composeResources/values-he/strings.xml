@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">מידע על ״⁨%1$s⁩״</string>
     <string name="settings">הגדרות…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">בחירת הכול</string>
     <string name="find">חיפוש</string>
     <string name="find_dots">חיפוש…</string>
+    <string name="find_and_replace">חיפוש והחלפה…</string>
     <string name="find_next">מציאת הבא</string>
     <string name="find_previous">מציאת הקודם</string>
     <string name="use_selection_for_find">שימוש במלל שנבחר לחיפוש</string>
     <string name="jump_to_selection">מעבר לבחירה</string>
-    <string name="replace">חיפוש והחלפה…</string>
-    <string name="replace_and_find">חיפוש והחלפה…</string>
-    <string name="replace_all">חיפוש והחלפה…</string>
     <string name="spelling_and_grammar">איות ודקדוק</string>
     <string name="toggle_correct_spelling_automatically">תיקון אוטומטי של האיות</string>
     <string name="substitutions">החלפות</string>
@@ -62,14 +59,17 @@
     <string name="underline">קו תחתון</string>
     <string name="bigger">גדול יותר</string>
     <string name="smaller">קטן יותר</string>
+    <string name="kerning">מרווח בין אותיות</string>
     <string name="kerning_standard">שימוש בברירת המחדל</string>
     <string name="kerning_none">ללא</string>
     <string name="kerning_tighten">הדוק יותר</string>
     <string name="kerning_loosen">מרווח יותר</string>
+    <string name="ligatures">משלב אותיות</string>
     <string name="ligatures_none">ללא</string>
     <string name="ligatures_standard">שימוש בברירת המחדל</string>
     <string name="ligatures_all">שימוש בכולם</string>
     <string name="baseline">קו בסיס</string>
+    <string name="baseline_standard">שימוש בברירת המחדל</string>
     <string name="raise_baseline">גבוה יותר</string>
     <string name="lower_baseline">נמוך יותר</string>
     <string name="superscript">כתב עילי</string>

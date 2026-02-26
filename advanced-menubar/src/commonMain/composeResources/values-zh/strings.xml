@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">关于%1$s</string>
     <string name="settings">设置…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">全选</string>
     <string name="find">查找</string>
     <string name="find_dots">查找…</string>
+    <string name="find_and_replace">查找和替换…</string>
     <string name="find_next">查找下一个</string>
     <string name="find_previous">查找上一个</string>
     <string name="use_selection_for_find">用所选内容查找</string>
     <string name="jump_to_selection">跳到所选内容</string>
-    <string name="replace">查找和替换…</string>
-    <string name="replace_and_find">查找和替换…</string>
-    <string name="replace_all">查找和替换…</string>
     <string name="spelling_and_grammar">拼写和语法</string>
     <string name="toggle_correct_spelling_automatically">自动纠正拼写</string>
     <string name="substitutions">替换</string>
@@ -62,14 +59,17 @@
     <string name="underline">下划线</string>
     <string name="bigger">调大</string>
     <string name="smaller">调小</string>
+    <string name="kerning">字距调整</string>
     <string name="kerning_standard">使用默认</string>
     <string name="kerning_none">都不使用</string>
     <string name="kerning_tighten">紧排</string>
     <string name="kerning_loosen">松排</string>
+    <string name="ligatures">连字</string>
     <string name="ligatures_none">都不使用</string>
     <string name="ligatures_standard">使用默认</string>
     <string name="ligatures_all">使用全部</string>
     <string name="baseline">基线</string>
+    <string name="baseline_standard">使用默认</string>
     <string name="raise_baseline">升高</string>
     <string name="lower_baseline">降低</string>
     <string name="superscript">上标</string>

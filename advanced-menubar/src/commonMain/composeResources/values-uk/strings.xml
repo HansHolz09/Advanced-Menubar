@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Про програму «%1$s»</string>
     <string name="settings">Параметри…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Вибрати все</string>
     <string name="find">Знайти</string>
     <string name="find_dots">Знайти…</string>
+    <string name="find_and_replace">Знайти і замінити…</string>
     <string name="find_next">Знайти наступне</string>
     <string name="find_previous">Знайти попереднє</string>
     <string name="use_selection_for_find">Використати вибране для пошуку</string>
     <string name="jump_to_selection">Перейти до вибраного</string>
-    <string name="replace">Знайти і замінити…</string>
-    <string name="replace_and_find">Знайти і замінити…</string>
-    <string name="replace_all">Знайти і замінити…</string>
     <string name="spelling_and_grammar">Правопис і граматика</string>
     <string name="toggle_correct_spelling_automatically">Автоматично виправляти правопис</string>
     <string name="substitutions">Заміни</string>
@@ -62,14 +59,17 @@
     <string name="underline">Підкреслення</string>
     <string name="bigger">Більший</string>
     <string name="smaller">Менший</string>
+    <string name="kerning">Кернінг</string>
     <string name="kerning_standard">Стандартні</string>
     <string name="kerning_none">Вимкнути</string>
     <string name="kerning_tighten">Ущільнити</string>
     <string name="kerning_loosen">Розширити</string>
+    <string name="ligatures">Лігатури</string>
     <string name="ligatures_none">Вимкнути</string>
     <string name="ligatures_standard">Стандартні</string>
     <string name="ligatures_all">Всі</string>
     <string name="baseline">Базова лінія</string>
+    <string name="baseline_standard">Стандартні</string>
     <string name="raise_baseline">Вище</string>
     <string name="lower_baseline">Нижче</string>
     <string name="superscript">Надрядковий</string>

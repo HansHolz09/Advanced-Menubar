@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Om %1$s</string>
     <string name="settings">Inställningar…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Markera alla</string>
     <string name="find">Sök</string>
     <string name="find_dots">Sök…</string>
+    <string name="find_and_replace">Sök och ersätt…</string>
     <string name="find_next">Sök nästa</string>
     <string name="find_previous">Sök föregående</string>
     <string name="use_selection_for_find">Använd markering för sökning</string>
     <string name="jump_to_selection">Gå till markering</string>
-    <string name="replace">Sök och ersätt…</string>
-    <string name="replace_and_find">Sök och ersätt…</string>
-    <string name="replace_all">Sök och ersätt…</string>
     <string name="spelling_and_grammar">Stavning och grammatik</string>
     <string name="toggle_correct_spelling_automatically">Rätta stavning automatiskt</string>
     <string name="substitutions">Ersättningar</string>
@@ -62,14 +59,17 @@
     <string name="underline">Understruken</string>
     <string name="bigger">Större</string>
     <string name="smaller">Mindre</string>
+    <string name="kerning">Teckenmellanrum</string>
     <string name="kerning_standard">Använd förval</string>
     <string name="kerning_none">Inga</string>
     <string name="kerning_tighten">Minska</string>
     <string name="kerning_loosen">Öka</string>
+    <string name="ligatures">Ligatur</string>
     <string name="ligatures_none">Inga</string>
     <string name="ligatures_standard">Använd förval</string>
     <string name="ligatures_all">Använd alla</string>
     <string name="baseline">Baslinje</string>
+    <string name="baseline_standard">Använd förval</string>
     <string name="raise_baseline">Höj</string>
     <string name="lower_baseline">Sänk</string>
     <string name="superscript">Upphöjd</string>

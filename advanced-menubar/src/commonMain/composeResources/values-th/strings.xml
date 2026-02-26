@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">เกี่ยวกับ%1$s</string>
     <string name="settings">การตั้งค่า…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">เลือกทั้งหมด</string>
     <string name="find">ค้นหา</string>
     <string name="find_dots">ค้นหา…</string>
+    <string name="find_and_replace">ค้นหาและแทนที่…</string>
     <string name="find_next">ค้นหาถัดไป</string>
     <string name="find_previous">ค้นหาก่อนหน้า</string>
     <string name="use_selection_for_find">ใช้การเลือกสำหรับค้นหา</string>
     <string name="jump_to_selection">ข้ามไปยังการเลือก</string>
-    <string name="replace">ค้นหาและแทนที่…</string>
-    <string name="replace_and_find">ค้นหาและแทนที่…</string>
-    <string name="replace_all">ค้นหาและแทนที่…</string>
     <string name="spelling_and_grammar">การสะกดและไวยากรณ์</string>
     <string name="toggle_correct_spelling_automatically">แก้ไขการสะกดโดยอัตโนมัติ</string>
     <string name="substitutions">การเปลี่ยนแทนที่</string>
@@ -62,14 +59,17 @@
     <string name="underline">ขีดเส้นใต้</string>
     <string name="bigger">ขนาดใหญ่ขึ้น</string>
     <string name="smaller">เล็กลง</string>
+    <string name="kerning">ระยะห่าง</string>
     <string name="kerning_standard">ใช้ค่าเริ่มต้น</string>
     <string name="kerning_none">ไม่ใช้</string>
     <string name="kerning_tighten">แน่น</string>
     <string name="kerning_loosen">หลวม</string>
+    <string name="ligatures">ลิเกเจอร์</string>
     <string name="ligatures_none">ไม่ใช้</string>
     <string name="ligatures_standard">ใช้ค่าเริ่มต้น</string>
     <string name="ligatures_all">ใช้ทั้งหมด</string>
     <string name="baseline">เส้นบรรทัด</string>
+    <string name="baseline_standard">ใช้ค่าเริ่มต้น</string>
     <string name="raise_baseline">ยกขึ้น</string>
     <string name="lower_baseline">ต่ำลง</string>
     <string name="superscript">ตัวยก</string>

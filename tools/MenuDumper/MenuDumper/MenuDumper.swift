@@ -451,19 +451,11 @@ private func buildValuesAndMeta(keys: [String], scopes: MenuScopes, appNameInMen
         put("find", findMenu, path: ["Edit"])
         if let sub = findMenu.submenu {
             put("find_dots", findFindAction(sub, tag: 1), path: ["Edit", findMenu.title])
+            put("find_and_replace", findFindAction(sub, tag: 12), path: ["Edit", findMenu.title])
             put("find_next", findFindAction(sub, tag: 2), path: ["Edit", findMenu.title])
             put("find_previous", findFindAction(sub, tag: 3), path: ["Edit", findMenu.title])
             put("use_selection_for_find", findFindAction(sub, tag: 7), path: ["Edit", findMenu.title])
             put("jump_to_selection", findFirst(sub, action: "centerSelectionInVisibleArea:"), path: ["Edit", findMenu.title])
-
-            // Replace set: prefer official tags 5/6/4. Fallback to tag 12 if present in your OS.
-            let repl = findFindAction(sub, tag: 5) ?? findFindAction(sub, tag: 12)
-            let replFind = findFindAction(sub, tag: 6) ?? findFindAction(sub, tag: 12)
-            let replAll = findFindAction(sub, tag: 4) ?? findFindAction(sub, tag: 12)
-
-            put("replace", repl, path: ["Edit", findMenu.title])
-            put("replace_and_find", replFind, path: ["Edit", findMenu.title])
-            put("replace_all", replAll, path: ["Edit", findMenu.title])
         }
     }
 
@@ -531,12 +523,19 @@ private func buildValuesAndMeta(keys: [String], scopes: MenuScopes, appNameInMen
                 put("ligatures_all", findFirst(lig, action: "useAllLigatures:"), path: ["Format", fontContainer.title, "Ligatures"])
             }
             if let base = findContainerWithDirectChild(fontSub, predicate: { $0.actionName == "raiseBaseline:" })?.submenu {
+                put("baseline_standard", findFirst(base, action: "unscript:"), path: ["Format", fontContainer.title, "Baseline"])
                 put("raise_baseline", findFirst(base, action: "raiseBaseline:"), path: ["Format", fontContainer.title, "Baseline"])
                 put("lower_baseline", findFirst(base, action: "lowerBaseline:"), path: ["Format", fontContainer.title, "Baseline"])
                 put("superscript", findFirst(base, action: "superscript:"), path: ["Format", fontContainer.title, "Baseline"])
                 put("subscript", findFirst(base, action: "subscript:"), path: ["Format", fontContainer.title, "Baseline"])
             }
-            if let baselineContainer = findContainerWithDirectChild(fontSub, predicate: { $0.actionName == "raiseBaseline:" }) {
+            if let kerningContainer = findContainerWithDirectChild(fontSub, predicate: { $0.actionName == "useStandardKerning:" }) {
+                put("kerning", kerningContainer, path: ["Format", fontContainer.title])
+            }
+            if let ligaturesContainer = findContainerWithDirectChild(fontSub, predicate: { $0.actionName == "turnOffLigatures:" }) {
+                put("ligatures", ligaturesContainer, path: ["Format", fontContainer.title])
+            }
+            if let baselineContainer = findContainerWithDirectChild(fontSub, predicate: { $0.actionName == "unscript:" }) {
                 put("baseline", baselineContainer, path: ["Format", fontContainer.title])
             }
         }
@@ -708,8 +707,7 @@ private func updateStringsXMLPreservingFormatting(baseline: String, newValues: [
 }
 
 private func generateStringsXML(keys: [String], values: [String: String]) -> String {
-    var s = #"<?xml version="1.0" encoding="utf-8"?>"# + "\n"
-    s += "<resources>\n"
+    var s = "<resources>\n"
     for k in keys {
         s += #"    <string name="\#(k)">\#(xmlEscape(values[k] ?? ""))</string>"# + "\n"
     }
@@ -752,15 +750,15 @@ private func defaultKeys() -> [String] {
         "about","settings","services","hide","hide_others","show_all","quit",
         "file","file_new","file_open","file_open_recent","file_clear_recent","file_close","file_close_all","file_save","file_save_as","file_duplicate","file_rename","file_move_to","file_page_setup","file_print",
         "edit","edit_undo","edit_redo","edit_cut","edit_copy","edit_paste","paste_and_match_style","edit_delete","edit_select_all",
-        "find","find_dots","find_next","find_previous","use_selection_for_find","jump_to_selection","replace","replace_and_find","replace_all",
+        "find","find_dots","find_and_replace","find_next","find_previous","use_selection_for_find","jump_to_selection",
         "spelling_and_grammar","toggle_correct_spelling_automatically",
         "substitutions","toggle_smart_quotes","toggle_smart_dashes","toggle_smart_links","toggle_text_replacement",
         "transformations","make_upper_case","make_lower_case","capitalize",
         "speech","start_speaking","stop_speaking",
         "format","font","show_fonts","show_colors","bold","italic","underline","bigger","smaller",
-        "kerning_standard","kerning_none","kerning_tighten","kerning_loosen",
-        "ligatures_none","ligatures_standard","ligatures_all",
-        "baseline","raise_baseline","lower_baseline","superscript","subscript",
+        "kerning","kerning_standard","kerning_none","kerning_tighten","kerning_loosen",
+        "ligatures","ligatures_none","ligatures_standard","ligatures_all",
+        "baseline","baseline_standard","raise_baseline","lower_baseline","superscript","subscript",
         "text","align_left","align_center","align_right","align_justified",
         "view","show_toolbar","customize_toolbar","full_screen","show_sidebar","show_tab_bar",
         "window","window_close","window_minimize","window_minimize_all","window_zoom","bring_all_to_front","show_next_tab","show_previous_tab","merge_all_windows","move_tab_to_new_window",

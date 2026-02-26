@@ -14,6 +14,7 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.align_right
 import composeadvancedmenubar.advanced_menubar.generated.resources.allStringResources
 import composeadvancedmenubar.advanced_menubar.generated.resources.app_help
 import composeadvancedmenubar.advanced_menubar.generated.resources.baseline
+import composeadvancedmenubar.advanced_menubar.generated.resources.baseline_standard
 import composeadvancedmenubar.advanced_menubar.generated.resources.bigger
 import composeadvancedmenubar.advanced_menubar.generated.resources.bold
 import composeadvancedmenubar.advanced_menubar.generated.resources.bring_all_to_front
@@ -42,6 +43,7 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.file_rename
 import composeadvancedmenubar.advanced_menubar.generated.resources.file_save
 import composeadvancedmenubar.advanced_menubar.generated.resources.file_save_as
 import composeadvancedmenubar.advanced_menubar.generated.resources.find
+import composeadvancedmenubar.advanced_menubar.generated.resources.find_and_replace
 import composeadvancedmenubar.advanced_menubar.generated.resources.find_dots
 import composeadvancedmenubar.advanced_menubar.generated.resources.find_next
 import composeadvancedmenubar.advanced_menubar.generated.resources.find_previous
@@ -53,10 +55,12 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.hide
 import composeadvancedmenubar.advanced_menubar.generated.resources.hide_others
 import composeadvancedmenubar.advanced_menubar.generated.resources.italic
 import composeadvancedmenubar.advanced_menubar.generated.resources.jump_to_selection
+import composeadvancedmenubar.advanced_menubar.generated.resources.kerning
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_loosen
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_none
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_standard
 import composeadvancedmenubar.advanced_menubar.generated.resources.kerning_tighten
+import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures
 import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_all
 import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_none
 import composeadvancedmenubar.advanced_menubar.generated.resources.ligatures_standard
@@ -68,9 +72,6 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.move_tab_to_n
 import composeadvancedmenubar.advanced_menubar.generated.resources.paste_and_match_style
 import composeadvancedmenubar.advanced_menubar.generated.resources.quit
 import composeadvancedmenubar.advanced_menubar.generated.resources.raise_baseline
-import composeadvancedmenubar.advanced_menubar.generated.resources.replace
-import composeadvancedmenubar.advanced_menubar.generated.resources.replace_all
-import composeadvancedmenubar.advanced_menubar.generated.resources.replace_and_find
 import composeadvancedmenubar.advanced_menubar.generated.resources.services
 import composeadvancedmenubar.advanced_menubar.generated.resources.settings
 import composeadvancedmenubar.advanced_menubar.generated.resources.show_all
@@ -104,29 +105,28 @@ import composeadvancedmenubar.advanced_menubar.generated.resources.window_close
 import composeadvancedmenubar.advanced_menubar.generated.resources.window_minimize
 import composeadvancedmenubar.advanced_menubar.generated.resources.window_minimize_all
 import composeadvancedmenubar.advanced_menubar.generated.resources.window_zoom
-import dev.hansholz.advancedmenubar.MacCocoaMenu.CheckboxItem
-import dev.hansholz.advancedmenubar.MacCocoaMenu.CustomItem
-import dev.hansholz.advancedmenubar.MacCocoaMenu.EditStd
-import dev.hansholz.advancedmenubar.MacCocoaMenu.FileStd
-import dev.hansholz.advancedmenubar.MacCocoaMenu.FormatStd
-import dev.hansholz.advancedmenubar.MacCocoaMenu.HelpItem
-import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuElement
-import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuIcon
-import dev.hansholz.advancedmenubar.MacCocoaMenu.SectionHeader
-import dev.hansholz.advancedmenubar.MacCocoaMenu.Separator
-import dev.hansholz.advancedmenubar.MacCocoaMenu.Submenu
-import dev.hansholz.advancedmenubar.MacCocoaMenu.SystemItem
-import dev.hansholz.advancedmenubar.MacCocoaMenu.TopMenu
-import dev.hansholz.advancedmenubar.MacCocoaMenu.ViewStd
-import dev.hansholz.advancedmenubar.MacCocoaMenu.WindowStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.CheckboxItem
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.CustomItem
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.EditStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.FileStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.FormatStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.HelpItem
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.MenuElement
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.SectionHeader
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.Separator
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.Submenu
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.SystemItem
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.TopMenu
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.ViewStd
+import dev.hansholz.advancedmenubar.MacCocoaMenuBar.WindowStd
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.skiko.hostOs
 import javax.swing.SwingUtilities
 
 @Composable
-fun FrameWindowScope.CompatibilityMenu(
-    appName: String,
+fun FrameWindowScope.CompatibilityMenuBar(
+    appName: String = window.title,
     content: AdvancedMenuScope.() -> Unit
 ) {
     val strings = Res.allStringResources.map {
@@ -142,7 +142,7 @@ fun FrameWindowScope.CompatibilityMenu(
     if (hostOs.isMacOS) {
         LaunchedEffect(model) {
             SwingUtilities.invokeLater {
-                MacCocoaMenu.rebuildMenuBar(model)
+                MacCocoaMenuBar.rebuildMenuBar(model)
             }
         }
     } else {
@@ -229,13 +229,11 @@ private fun MenuScope.renderElements(elements: List<MenuElement>) {
             is EditStd.Delete                  -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is EditStd.SelectAll               -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is EditStd.Find                    -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
+            is EditStd.FindAndReplace          -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is EditStd.FindNext                -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is EditStd.FindPrevious            -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is EditStd.UseSelectionForFind     -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is EditStd.JumpToSelection         -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
-            is EditStd.Replace                 -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
-            is EditStd.ReplaceAndFind          -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
-            is EditStd.ReplaceAll              -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is EditStd.ToggleSmartQuotes       -> CheckboxItem(el.title, checked = el.checked ?: false, enabled = el.enabled) { el.onToggle?.invoke(it) }
             is EditStd.ToggleSmartDashes       -> CheckboxItem(el.title, checked = el.checked ?: false, enabled = el.enabled) { el.onToggle?.invoke(it) }
             is EditStd.ToggleLinkDetection     -> CheckboxItem(el.title, checked = el.checked ?: false, enabled = el.enabled) { el.onToggle?.invoke(it) }
@@ -261,6 +259,7 @@ private fun MenuScope.renderElements(elements: List<MenuElement>) {
             is FormatStd.LigaturesNone         -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is FormatStd.LigaturesStandard     -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is FormatStd.LigaturesAll          -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
+            is FormatStd.BaselineStandard      -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is FormatStd.RaiseBaseline         -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is FormatStd.LowerBaseline         -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
             is FormatStd.Superscript           -> Item(el.title, enabled = el.enabled) { el.onClick?.invoke() }
@@ -597,6 +596,14 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
             onClick: (() -> Unit)
         ) = ifVisible(visibility) { elements += EditStd.Find(title, enabled, macIcon, onClick) }
 
+        fun FindAndReplace(
+            title: String = getString(Res.string.find_and_replace),
+            visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
+            enabled: Boolean = true,
+            macIcon: MenuIcon? = null,
+            onClick: (() -> Unit)
+        ) = ifVisible(visibility) { elements += EditStd.FindAndReplace(title, enabled, macIcon, onClick) }
+
         fun FindNext(
             title: String = getString(Res.string.find_next),
             visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
@@ -628,30 +635,6 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
             macIcon: MenuIcon? = null,
             onClick: (() -> Unit)
         ) = ifVisible(visibility) { elements += EditStd.JumpToSelection(title, enabled, macIcon, onClick) }
-
-        fun Replace(
-            title: String = getString(Res.string.replace),
-            visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
-            enabled: Boolean = true,
-            macIcon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) = ifVisible(visibility) { elements += EditStd.Replace(title, enabled, macIcon, onClick) }
-
-        fun ReplaceAndFind(
-            title: String = getString(Res.string.replace_and_find),
-            visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
-            enabled: Boolean = true,
-            macIcon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) = ifVisible(visibility) { elements += EditStd.ReplaceAndFind(title, enabled, macIcon, onClick) }
-
-        fun ReplaceAll(
-            title: String = getString(Res.string.replace_all),
-            visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
-            enabled: Boolean = true,
-            macIcon: MenuIcon? = null,
-            onClick: (() -> Unit)
-        ) = ifVisible(visibility) { elements += EditStd.ReplaceAll(title, enabled, macIcon, onClick) }
 
 
         fun SpellingAndGrammarMenu(
@@ -843,6 +826,15 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
             onClick: (() -> Unit)?
         ) = ifVisible(visibility) { elements += FormatStd.Smaller(title, enabled, macIcon, onClick) }
 
+
+        fun KerningMenu(
+            title: String = getString(Res.string.kerning),
+            visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
+            enabled: Boolean = true,
+            macIcon: MenuIcon? = null,
+            block: CompatibilityMenuScope.() -> Unit
+        ) = Menu(title, visibility, enabled, macIcon, null, null, block)
+
         fun KerningStandard(
             title: String = getString(Res.string.kerning_standard),
             visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
@@ -874,6 +866,15 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
             macIcon: MenuIcon? = null,
             onClick: (() -> Unit)?
         ) = ifVisible(visibility) { elements += FormatStd.KerningLoosen(title, enabled, macIcon, onClick) }
+
+
+        fun LigaturesMenu(
+            title: String = getString(Res.string.ligatures),
+            visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
+            enabled: Boolean = true,
+            macIcon: MenuIcon? = null,
+            block: CompatibilityMenuScope.() -> Unit
+        ) = Menu(title, visibility, enabled, macIcon, null, null, block)
 
         fun LigaturesNone(
             title: String = getString(Res.string.ligatures_none),
@@ -908,6 +909,14 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
             block: CompatibilityMenuScope.() -> Unit
         ) = Menu(title, visibility, enabled, macIcon, null, null, block)
 
+
+        fun BaselineStandard(
+            title: String = getString(Res.string.baseline_standard),
+            visibility: MenuVisibility = MenuVisibility.ALWAYS_VISIBLE,
+            enabled: Boolean = true,
+            macIcon: MenuIcon? = null,
+            onClick: (() -> Unit)?
+        ) = ifVisible(visibility) { elements += FormatStd.RaiseBaseline(title, enabled, macIcon, onClick) }
 
         fun RaiseBaseline(
             title: String = getString(Res.string.raise_baseline),
@@ -1155,7 +1164,7 @@ class AdvancedMenuScope(private val strings: List<Pair<StringResource, String>>)
         }
 
         private fun SectionHeader(title: String) {
-            elements += MacCocoaMenu.SectionHeader(title)
+            elements += MacCocoaMenuBar.SectionHeader(title)
         }
 
         fun CompatibilityMenuScope.Section(

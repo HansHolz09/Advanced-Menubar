@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Tietoja: %1$s</string>
     <string name="settings">Asetukset…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Valitse kaikki</string>
     <string name="find">Etsi</string>
     <string name="find_dots">Etsi…</string>
+    <string name="find_and_replace">Etsi ja korvaa…</string>
     <string name="find_next">Etsi seuraava</string>
     <string name="find_previous">Etsi edellinen</string>
     <string name="use_selection_for_find">Käytä valintaa etsinnässä</string>
     <string name="jump_to_selection">Siirry valintaan</string>
-    <string name="replace">Etsi ja korvaa…</string>
-    <string name="replace_and_find">Etsi ja korvaa…</string>
-    <string name="replace_all">Etsi ja korvaa…</string>
     <string name="spelling_and_grammar">Oikeinkirjoitus ja kielioppi</string>
     <string name="toggle_correct_spelling_automatically">Korjaa oikeinkirjoitus automaattisesti</string>
     <string name="substitutions">Korvaukset</string>
@@ -62,14 +59,17 @@
     <string name="underline">Alleviivaus</string>
     <string name="bigger">Suurenna</string>
     <string name="smaller">Pienennä</string>
+    <string name="kerning">Parivälistys</string>
     <string name="kerning_standard">Käytä oletusta</string>
     <string name="kerning_none">Älä käytä mitään</string>
     <string name="kerning_tighten">Tiivistä</string>
     <string name="kerning_loosen">Harvenna</string>
+    <string name="ligatures">Ligatuuri</string>
     <string name="ligatures_none">Älä käytä mitään</string>
     <string name="ligatures_standard">Käytä oletusta</string>
     <string name="ligatures_all">Käytä kaikkia</string>
     <string name="baseline">Peruslinja</string>
+    <string name="baseline_standard">Käytä oletusta</string>
     <string name="raise_baseline">Nosta</string>
     <string name="lower_baseline">Laske</string>
     <string name="superscript">Yläindeksoi</string>

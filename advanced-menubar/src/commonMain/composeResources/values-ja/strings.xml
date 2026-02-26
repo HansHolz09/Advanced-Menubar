@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">%1$sについて</string>
     <string name="settings">設定…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">すべてを選択</string>
     <string name="find">検索</string>
     <string name="find_dots">検索…</string>
+    <string name="find_and_replace">検索と置換…</string>
     <string name="find_next">次を検索</string>
     <string name="find_previous">前を検索</string>
     <string name="use_selection_for_find">選択部分を検索に使用</string>
     <string name="jump_to_selection">選択部分へジャンプ</string>
-    <string name="replace">検索と置換…</string>
-    <string name="replace_and_find">検索と置換…</string>
-    <string name="replace_all">検索と置換…</string>
     <string name="spelling_and_grammar">スペルと文法</string>
     <string name="toggle_correct_spelling_automatically">スペルを自動的に修正</string>
     <string name="substitutions">自動置換</string>
@@ -62,14 +59,17 @@
     <string name="underline">アンダーライン</string>
     <string name="bigger">大きく</string>
     <string name="smaller">小さく</string>
+    <string name="kerning">カーニング</string>
     <string name="kerning_standard">デフォルト</string>
     <string name="kerning_none">使用しない</string>
     <string name="kerning_tighten">きつく</string>
     <string name="kerning_loosen">ゆるく</string>
+    <string name="ligatures">リガチャ</string>
     <string name="ligatures_none">使用しない</string>
     <string name="ligatures_standard">デフォルト</string>
     <string name="ligatures_all">すべて使用</string>
     <string name="baseline">ベースライン</string>
+    <string name="baseline_standard">デフォルト</string>
     <string name="raise_baseline">上げる</string>
     <string name="lower_baseline">下げる</string>
     <string name="superscript">上付き</string>

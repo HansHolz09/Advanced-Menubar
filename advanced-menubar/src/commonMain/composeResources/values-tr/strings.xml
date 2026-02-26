@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">%1$s Hakkında</string>
     <string name="settings">Ayarlar…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Tümünü Seç</string>
     <string name="find">Bul</string>
     <string name="find_dots">Bul…</string>
+    <string name="find_and_replace">Bul ve Değiştir…</string>
     <string name="find_next">Sonrakini Bul</string>
     <string name="find_previous">Öncekini Bul</string>
     <string name="use_selection_for_find">Bul İçin Seçimi Kullan</string>
     <string name="jump_to_selection">Seçime Git</string>
-    <string name="replace">Bul ve Değiştir…</string>
-    <string name="replace_and_find">Bul ve Değiştir…</string>
-    <string name="replace_all">Bul ve Değiştir…</string>
     <string name="spelling_and_grammar">Yazım ve Dilbilgisi Denetimi</string>
     <string name="toggle_correct_spelling_automatically">Yazım Hatalarını Otomatik Düzelt</string>
     <string name="substitutions">Değişimler</string>
@@ -62,14 +59,17 @@
     <string name="underline">Altı Çizgili</string>
     <string name="bigger">Daha Büyük</string>
     <string name="smaller">Daha Küçük</string>
+    <string name="kerning">Karakter Çifti Aralığı</string>
     <string name="kerning_standard">Saptanmışı Kullan</string>
     <string name="kerning_none">Hiçbirini Kullanma</string>
     <string name="kerning_tighten">Sıkıştır</string>
     <string name="kerning_loosen">Gevşet</string>
+    <string name="ligatures">Birleşik Harfler</string>
     <string name="ligatures_none">Hiçbirini Kullanma</string>
     <string name="ligatures_standard">Saptanmışı Kullan</string>
     <string name="ligatures_all">Tümünü Kullan</string>
     <string name="baseline">Taban Çizgisi</string>
+    <string name="baseline_standard">Saptanmışı Kullan</string>
     <string name="raise_baseline">Yükselt</string>
     <string name="lower_baseline">Alçalt</string>
     <string name="superscript">Üs</string>

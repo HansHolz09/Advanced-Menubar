@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Više o aplikaciji %1$s</string>
     <string name="settings">Postavke…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Odaberi sve</string>
     <string name="find">Pronađi</string>
     <string name="find_dots">Pronađi…</string>
+    <string name="find_and_replace">Pronađi i zamijeni…</string>
     <string name="find_next">Pronađi sljedeće</string>
     <string name="find_previous">Pronađi prethodno</string>
     <string name="use_selection_for_find">Koristi odabir za pretraživanje</string>
     <string name="jump_to_selection">Idi na odabir</string>
-    <string name="replace">Pronađi i zamijeni…</string>
-    <string name="replace_and_find">Pronađi i zamijeni…</string>
-    <string name="replace_all">Pronađi i zamijeni…</string>
     <string name="spelling_and_grammar">Pravopis i gramatika</string>
     <string name="toggle_correct_spelling_automatically">Automatski ispravi pravopis</string>
     <string name="substitutions">Zamjene</string>
@@ -62,14 +59,17 @@
     <string name="underline">Podcrtano</string>
     <string name="bigger">Veće</string>
     <string name="smaller">Manje</string>
+    <string name="kerning">Razmak između slovnih parova</string>
     <string name="kerning_standard">Koristi standardno</string>
     <string name="kerning_none">Nemoj koristiti nijedno</string>
     <string name="kerning_tighten">Zategni</string>
     <string name="kerning_loosen">Povećaj</string>
+    <string name="ligatures">Ligatura</string>
     <string name="ligatures_none">Nemoj koristiti nijedno</string>
     <string name="ligatures_standard">Koristi standardno</string>
     <string name="ligatures_all">Koristi sve</string>
     <string name="baseline">Osnovna crta</string>
+    <string name="baseline_standard">Koristi standardno</string>
     <string name="raise_baseline">Podigni</string>
     <string name="lower_baseline">Spusti</string>
     <string name="superscript">Eksponent</string>

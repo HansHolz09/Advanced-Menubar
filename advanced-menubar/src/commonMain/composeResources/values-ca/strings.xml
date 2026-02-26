@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Sobre l’app %1$s</string>
     <string name="settings">Configuració…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Selecciona‑ho tot</string>
     <string name="find">Cerca</string>
     <string name="find_dots">Cerca…</string>
+    <string name="find_and_replace">Cerca i substitueix…</string>
     <string name="find_next">Cerca el següent</string>
     <string name="find_previous">Cerca l’anterior</string>
     <string name="use_selection_for_find">Utilitza la selecció per cercar</string>
     <string name="jump_to_selection">Ves a la selecció</string>
-    <string name="replace">Cerca i substitueix…</string>
-    <string name="replace_and_find">Cerca i substitueix…</string>
-    <string name="replace_all">Cerca i substitueix…</string>
     <string name="spelling_and_grammar">Ortografia i gramàtica</string>
     <string name="toggle_correct_spelling_automatically">Corregeix l’ortografia automàticament</string>
     <string name="substitutions">Substitucions</string>
@@ -62,14 +59,17 @@
     <string name="underline">Subratlla</string>
     <string name="bigger">Més gran</string>
     <string name="smaller">Més petita</string>
+    <string name="kerning">Interlletratge</string>
     <string name="kerning_standard">Valor per omissió</string>
     <string name="kerning_none">Cap</string>
     <string name="kerning_tighten">Redueix</string>
     <string name="kerning_loosen">Augmenta</string>
+    <string name="ligatures">Lligadura</string>
     <string name="ligatures_none">Cap</string>
     <string name="ligatures_standard">Valor per omissió</string>
     <string name="ligatures_all">Totes</string>
     <string name="baseline">Línia base</string>
+    <string name="baseline_standard">Valor per omissió</string>
     <string name="raise_baseline">Apuja</string>
     <string name="lower_baseline">Abaixa</string>
     <string name="superscript">Superíndex</string>

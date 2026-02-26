@@ -7,13 +7,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.window.FrameWindowScope
 import androidx.compose.ui.window.WindowPlacement
-import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuIcon.SFSymbol
+import dev.hansholz.advancedmenubar.MenuIcon.SFSymbol
 import org.jetbrains.skiko.hostOs
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
 
 @Composable
-fun FrameWindowScope.DefaultMacMenu(
+fun FrameWindowScope.DefaultMacMenuBar(
     appName: String = window.title,
     onAboutClick: (() -> Unit)? = null,
     onSettingsClick: (() -> Unit)? = null,
@@ -35,7 +35,7 @@ fun FrameWindowScope.DefaultMacMenu(
         }
     })
 
-    AdvancedMacMenu(appName) {
+    AdvancedMacMenuBar(appName) {
         MacApplicationMenu {
             About(onClick = onAboutClick, icon = if (majorVersion >= 26) SFSymbol("info.circle") else null)
             Separator()

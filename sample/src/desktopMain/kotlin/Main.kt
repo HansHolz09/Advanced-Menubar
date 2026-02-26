@@ -15,7 +15,7 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import dev.hansholz.advancedmenubar.DefaultMacMenu
+import dev.hansholz.advancedmenubar.DefaultMacMenuBar
 import dev.hansholz.advancedmenubar.MenubarLanguage
 import org.jetbrains.skiko.hostOs
 import kotlin.uuid.ExperimentalUuidApi
@@ -70,7 +70,7 @@ fun main() = application {
                 val clickedItems = remember { mutableStateListOf<String>() }
                 val customMenus = remember { mutableStateListOf(1) }
 
-                val showDefaultMenu = remember { mutableStateOf(false) }
+                val selectedMenu = remember { mutableStateOf(0) }
 
                 val checkboxItem1 = remember { mutableStateOf(false) }
                 val checkboxItem2 = remember { mutableStateOf(true) }
@@ -79,23 +79,24 @@ fun main() = application {
                 val textFieldState = rememberTextFieldState()
 
                 key(focusTrigger, language.value) {
-                    if (showDefaultMenu.value) {
-                        DefaultMacMenu(
-                            onAboutClick = { clickedItems += "About" },
-                            onSettingsClick = { clickedItems += "Settings" },
-                            onHelpClick = { clickedItems += "Help" },
-                        )
-                    } else {
-                        MenuBar(
-                            window = window,
-                            customMenus = customMenus,
-                            checkboxItem1 = checkboxItem1,
-                            checkboxItem2 = checkboxItem2,
-                            checkboxItem3 = checkboxItem3,
-                            textFieldState = textFieldState
-                        ) {
-                            clickedItems += it
-                        }
+                    when (selectedMenu.value) {
+                        0 ->
+                            MenuBar(
+                                customMenus = customMenus,
+                                checkboxItem1 = checkboxItem1,
+                                checkboxItem2 = checkboxItem2,
+                                checkboxItem3 = checkboxItem3,
+                                textFieldState = textFieldState
+                            ) {
+                                clickedItems += it
+                            }
+                        1 ->
+                            DefaultMacMenuBar(
+                                onAboutClick = { clickedItems += "About" },
+                                onSettingsClick = { clickedItems += "Settings" },
+                                onHelpClick = { clickedItems += "Help" },
+                            )
+                        2 -> FullMacMenuBar()
                     }
                 }
 
@@ -103,7 +104,7 @@ fun main() = application {
                     language = language,
                     clickedItems = clickedItems,
                     customMenus = customMenus,
-                    showDefaultMenu = showDefaultMenu,
+                    selectedMenu = selectedMenu,
                     checkboxItem1 = checkboxItem1,
                     checkboxItem2 = checkboxItem2,
                     checkboxItem3 = checkboxItem3,

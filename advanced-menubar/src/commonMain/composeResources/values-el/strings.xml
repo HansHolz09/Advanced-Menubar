@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Πληροφορίες – %1$s</string>
     <string name="settings">Ρυθμίσεις…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Επιλογή όλων</string>
     <string name="find">Εύρεση</string>
     <string name="find_dots">Εύρεση…</string>
+    <string name="find_and_replace">Εύρεση και αντικατάσταση…</string>
     <string name="find_next">Εύρεση επόμενου</string>
     <string name="find_previous">Εύρεση προηγούμενου</string>
     <string name="use_selection_for_find">Χρήση επιλογής για εύρεση</string>
     <string name="jump_to_selection">Μετάβαση σε επιλογή</string>
-    <string name="replace">Εύρεση και αντικατάσταση…</string>
-    <string name="replace_and_find">Εύρεση και αντικατάσταση…</string>
-    <string name="replace_all">Εύρεση και αντικατάσταση…</string>
     <string name="spelling_and_grammar">Ορθογραφία και γραμματική</string>
     <string name="toggle_correct_spelling_automatically">Αυτόματη διόρθωση ορθογραφίας</string>
     <string name="substitutions">Υποκαταστάσεις</string>
@@ -62,14 +59,17 @@
     <string name="underline">Υπογράμμιση</string>
     <string name="bigger">Μεγαλύτερα</string>
     <string name="smaller">Μικρότερα</string>
+    <string name="kerning">Διαγραμμάτωση</string>
     <string name="kerning_standard">Χρήση προεπιλογής</string>
     <string name="kerning_none">Καμία</string>
     <string name="kerning_tighten">Πιο κοντά</string>
     <string name="kerning_loosen">Πιο αραιά</string>
+    <string name="ligatures">Σύμπλεγμα</string>
     <string name="ligatures_none">Καμία</string>
     <string name="ligatures_standard">Χρήση προεπιλογής</string>
     <string name="ligatures_all">Χρήση όλων</string>
     <string name="baseline">Γραμμή βάσης</string>
+    <string name="baseline_standard">Χρήση προεπιλογής</string>
     <string name="raise_baseline">Ανύψωση</string>
     <string name="lower_baseline">Χαμήλωμα</string>
     <string name="superscript">Εκθέτης</string>

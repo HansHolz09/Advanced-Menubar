@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Giới thiệu về %1$s</string>
     <string name="settings">Cài đặt…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Chọn tất cả</string>
     <string name="find">Tìm</string>
     <string name="find_dots">Tìm…</string>
+    <string name="find_and_replace">Tìm và thay thế…</string>
     <string name="find_next">Tìm mục tiếp theo</string>
     <string name="find_previous">Tìm mục trước đó</string>
     <string name="use_selection_for_find">Sử dụng lựa chọn để tìm</string>
     <string name="jump_to_selection">Chuyển tới lựa chọn</string>
-    <string name="replace">Tìm và thay thế…</string>
-    <string name="replace_and_find">Tìm và thay thế…</string>
-    <string name="replace_all">Tìm và thay thế…</string>
     <string name="spelling_and_grammar">Chính tả và ngữ pháp</string>
     <string name="toggle_correct_spelling_automatically">Sửa chính tả tự động</string>
     <string name="substitutions">Phương án thay thế</string>
@@ -62,14 +59,17 @@
     <string name="underline">Gạch chân</string>
     <string name="bigger">Lớn hơn</string>
     <string name="smaller">Nhỏ hơn</string>
+    <string name="kerning">Co giãn</string>
     <string name="kerning_standard">Sử dụng Mặc định</string>
     <string name="kerning_none">Không sử dụng</string>
     <string name="kerning_tighten">Co</string>
     <string name="kerning_loosen">Giãn</string>
+    <string name="ligatures">Chữ ghép</string>
     <string name="ligatures_none">Không sử dụng</string>
     <string name="ligatures_standard">Sử dụng Mặc định</string>
     <string name="ligatures_all">Sử dụng Tất cả</string>
     <string name="baseline">Đường cơ sở</string>
+    <string name="baseline_standard">Sử dụng Mặc định</string>
     <string name="raise_baseline">Nâng</string>
     <string name="lower_baseline">Hạ</string>
     <string name="superscript">Chỉ số trên</string>
@@ -82,7 +82,7 @@
     <string name="view">Xem</string>
     <string name="show_toolbar">Hiển thị thanh công cụ</string>
     <string name="customize_toolbar">Tùy chỉnh thanh công cụ…</string>
-    <string name="full_screen">Chuyển sang toàn màn hình</string>
+    <string name="full_screen">Vào chế độ Toàn màn hình</string>
     <string name="show_sidebar">Hiển thị thanh bên</string>
     <string name="show_tab_bar">Hiển thị Thanh Tab</string>
     <string name="window">Cửa sổ</string>

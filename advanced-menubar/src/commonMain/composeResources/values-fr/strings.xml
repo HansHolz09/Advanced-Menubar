@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">À propos de %1$s</string>
     <string name="settings">Réglages…</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Tout sélectionner</string>
     <string name="find">Rechercher</string>
     <string name="find_dots">Rechercher…</string>
+    <string name="find_and_replace">Rechercher et remplacer…</string>
     <string name="find_next">Suivante</string>
     <string name="find_previous">Précédente</string>
     <string name="use_selection_for_find">Rechercher la sélection</string>
     <string name="jump_to_selection">Aller à la sélection</string>
-    <string name="replace">Rechercher et remplacer…</string>
-    <string name="replace_and_find">Rechercher et remplacer…</string>
-    <string name="replace_all">Rechercher et remplacer…</string>
     <string name="spelling_and_grammar">Orthographe et grammaire</string>
     <string name="toggle_correct_spelling_automatically">Corriger l’orthographe automatiquement</string>
     <string name="substitutions">Substitutions</string>
@@ -62,14 +59,17 @@
     <string name="underline">Souligné</string>
     <string name="bigger">Plus grand</string>
     <string name="smaller">Plus petit</string>
+    <string name="kerning">Crénage</string>
     <string name="kerning_standard">Valeur par défaut</string>
     <string name="kerning_none">Aucune</string>
     <string name="kerning_tighten">Resserrer</string>
     <string name="kerning_loosen">Desserrer</string>
+    <string name="ligatures">Ligatures</string>
     <string name="ligatures_none">Aucune</string>
     <string name="ligatures_standard">Valeur par défaut</string>
     <string name="ligatures_all">Toutes</string>
     <string name="baseline">Ligne de base</string>
+    <string name="baseline_standard">Valeur par défaut</string>
     <string name="raise_baseline">Élever</string>
     <string name="lower_baseline">Abaisser</string>
     <string name="superscript">Exposant</string>

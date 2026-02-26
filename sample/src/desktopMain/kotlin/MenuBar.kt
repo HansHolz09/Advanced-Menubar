@@ -6,8 +6,6 @@ import androidx.compose.foundation.text.input.insert
 import androidx.compose.foundation.text.input.selectAll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.ui.awt.ComposeWindow
-import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.window.FrameWindowScope
@@ -28,9 +26,8 @@ import composeadvancedmenubar.sample.generated.resources.release_notes
 import composeadvancedmenubar.sample.generated.resources.resources
 import composeadvancedmenubar.sample.generated.resources.section
 import composeadvancedmenubar.sample.generated.resources.website
-import dev.hansholz.advancedmenubar.CompatibilityMenu
-import dev.hansholz.advancedmenubar.MacCocoaMenu.MenuIcon.SFSymbol
-import dev.hansholz.advancedmenubar.MenuShortcut
+import dev.hansholz.advancedmenubar.CompatibilityMenuBar
+import dev.hansholz.advancedmenubar.MenuIcon.SFSymbol
 import dev.hansholz.advancedmenubar.MenuVisibility
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
@@ -38,7 +35,6 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FrameWindowScope.MenuBar(
-    window: ComposeWindow,
     customMenus: List<Int>,
     checkboxItem1: MutableState<Boolean>,
     checkboxItem2: MutableState<Boolean>,
@@ -54,9 +50,9 @@ fun FrameWindowScope.MenuBar(
     }
     fun getString(stringResource: StringResource): String = strings.find { it.first == stringResource }?.second ?: "STRING NOT FOUND"
 
-    CompatibilityMenu(window.title) {
+    CompatibilityMenuBar {
         MacApplicationMenu {
-            About { onClick("About") }
+            About(macIcon = SFSymbol("info.circle")) { onClick("About") }
             Separator()
             Item(
                 title = getString(Res.string.check_for_updates),
@@ -68,7 +64,7 @@ fun FrameWindowScope.MenuBar(
                 onClick("Check for Updates")
             }
             Separator()
-            Settings { onClick("Settings") }
+            Settings(macIcon = SFSymbol("gear")) { onClick("Settings") }
             Separator()
             Services()
             Separator()

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Despre %1$s</string>
     <string name="settings">Configurări…</string>
@@ -20,7 +19,7 @@
     <string name="file_rename">Redenumiți…</string>
     <string name="file_move_to">Mutați în…</string>
     <string name="file_page_setup">Configurare pagină…</string>
-    <string name="file_print">Tipărire…</string>
+    <string name="file_print">Tipăriți…</string>
     <string name="edit">Editare</string>
     <string name="edit_undo">Infirmați</string>
     <string name="edit_redo">Refaceți</string>
@@ -32,13 +31,11 @@
     <string name="edit_select_all">Selectați tot</string>
     <string name="find">Găsiți</string>
     <string name="find_dots">Găsiți…</string>
+    <string name="find_and_replace">Găsiți și înlocuiți…</string>
     <string name="find_next">Găsiți următorul</string>
     <string name="find_previous">Găsiți anteriorul</string>
     <string name="use_selection_for_find">Găsiți selecția</string>
     <string name="jump_to_selection">Salt la selecție</string>
-    <string name="replace">Găsiți și înlocuiți…</string>
-    <string name="replace_and_find">Găsiți și înlocuiți…</string>
-    <string name="replace_all">Găsiți și înlocuiți…</string>
     <string name="spelling_and_grammar">Ortografie și gramatică</string>
     <string name="toggle_correct_spelling_automatically">Corectați ortografia automat</string>
     <string name="substitutions">Înlocuiri</string>
@@ -62,14 +59,17 @@
     <string name="underline">Subliniat</string>
     <string name="bigger">Lărgire</string>
     <string name="smaller">Micșorare</string>
+    <string name="kerning">spațiere selectivă caractere</string>
     <string name="kerning_standard">Utilizare valori implicite</string>
     <string name="kerning_none">Nu utilizați nimic</string>
     <string name="kerning_tighten">Mai strâns</string>
     <string name="kerning_loosen">Mai larg</string>
+    <string name="ligatures">Ligatură</string>
     <string name="ligatures_none">Nu utilizați nimic</string>
     <string name="ligatures_standard">Utilizare valori implicite</string>
     <string name="ligatures_all">Utilizați tot</string>
     <string name="baseline">Linie de bază</string>
+    <string name="baseline_standard">Utilizare valori implicite</string>
     <string name="raise_baseline">Mai sus</string>
     <string name="lower_baseline">Mai jos</string>
     <string name="superscript">Exponent</string>
