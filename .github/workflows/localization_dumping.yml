@@ -1,0 +1,33 @@
+name: Localization Dumping
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  dump-and-create-pr:
+    runs-on: macos-26
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start Localization Dumping
+        run: |
+          chmod +x tools/start_localization_dumping.sh
+          tools/start_localization_dumping.sh
+
+      - name: Create or Update PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Updated Localization Dumps"
+          title: "Automated Localization Dumps"
+          body: "_auto generated via GitHub Actions_"
+          branch: "automated-localization-dumps"
+          base: "main"
+          delete-branch: true
