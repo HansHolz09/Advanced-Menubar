@@ -83,8 +83,8 @@
     <string name="show_toolbar">Näytä työkalupalkki</string>
     <string name="hide_toolbar">Kätke työkalupalkki</string>
     <string name="customize_toolbar">Muokkaa työkalupalkkia…</string>
-    <string name="enter_full_screen">Siirry koko näytön tilaan</string>
-    <string name="exit_full_screen">Poistu koko näytön tilasta</string>
+    <string name="enter_full_screen">Koko näyttö</string>
+    <string name="exit_full_screen">Koko näyttö pois</string>
     <string name="show_sidebar">Näytä sivupalkki</string>
     <string name="hide_sidebar">Kätke sivupalkki</string>
     <string name="show_tab_bar">Näytä välilehtipalkki</string>
