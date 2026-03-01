@@ -81,12 +81,12 @@
     <string name="align_justified">Căn đều</string>
     <string name="view">Xem</string>
     <string name="show_toolbar">Hiển thị thanh công cụ</string>
-    <string name="hide_toolbar">Ẩn Thanh công cụ</string>
+    <string name="hide_toolbar">Ẩn thanh công cụ</string>
     <string name="customize_toolbar">Tùy chỉnh thanh công cụ…</string>
-    <string name="enter_full_screen">Vào chế độ Toàn màn hình</string>
-    <string name="exit_full_screen">Thoát toàn màn hình</string>
+    <string name="enter_full_screen">Chuyển sang Toàn Màn hình</string>
+    <string name="exit_full_screen">Thoát Toàn màn hình</string>
     <string name="show_sidebar">Hiển thị thanh bên</string>
-    <string name="hide_sidebar">Ẩn thanh bên</string>
+    <string name="hide_sidebar">Ẩn Thanh bên</string>
     <string name="show_tab_bar">Hiển thị Thanh Tab</string>
     <string name="hide_tab_bar">Ẩn Thanh Tab</string>
     <string name="window">Cửa sổ</string>
